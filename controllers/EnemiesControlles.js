@@ -17,7 +17,6 @@ class EnemiesController {
               const id = v4();
               return { id, name: enemy };
             });
-      console.log(jsEnemies);
       return res.status(200).json({
         status: "success",
         data: jsEnemies,
@@ -33,14 +32,12 @@ class EnemiesController {
   async saveEnemies(req, res) {
     try {
       const enemies = req.body.map(({ name }) => name).join("\n");
-      console.log(enemies);
       await writeFile("./data/enemies.txt", enemies, "utf8");
       return res.status(200).json({
         status: "success",
         data: enemies,
       });
     } catch (e) {
-      console.log(e);
       return res.status(400).send({
         status: "error",
         message: "Try again later.",
