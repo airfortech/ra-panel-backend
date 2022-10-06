@@ -1,3 +1,5 @@
+import { User } from "./User";
+
 export interface Config {
   app: {
     host: string;
@@ -6,15 +8,12 @@ export interface Config {
   frontend: {
     host: string;
   };
-  db?: {
-    port: number;
-    host: string;
-    user: string;
-    password: string;
-    database: string;
+  db: {
+    url: string;
   };
   jwt?: {
     passportSecretOrKey: string;
     salt: string;
   };
+  users?: User[];
 }

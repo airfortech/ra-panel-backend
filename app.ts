@@ -6,6 +6,9 @@ import { dataRouter } from "./routes/data";
 import { enemiesRouter } from "./routes/enemies";
 import { handleError } from "./utils/customError";
 import { config } from "./config/config";
+import { connectToDB } from "./db/mongoose";
+
+connectToDB();
 
 const app = express();
 

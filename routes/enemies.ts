@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getEnemies, saveEnemies } from "../controllers/EnemiesController";
+import { getEnemies, saveEnemies } from "../controllers/enemiesController";
 
 export const enemiesRouter = Router();
 
