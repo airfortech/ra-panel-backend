@@ -1,13 +1,14 @@
-const { readFile, writeFile } = require("fs").promises;
-const { join } = require("path");
-const { v4 } = require("uuid");
+import { Request, Response } from "express";
+import { readFile, writeFile } from "fs/promises";
+import { join } from "path";
+import { v4 } from "uuid";
 
-class EnemiesController {
-  async getEnemiesFile(req, res) {
+export class EnemiesController {
+  static async getEnemiesFile(req: Request, res: Response) {
     res.sendFile(join(__dirname, "../data/", "enemies.txt"));
   }
 
-  async getEnemies(req, res) {
+  static async getEnemies(req: Request, res: Response) {
     try {
       const enemies = await readFile("./data/enemies.txt", "utf8");
       const jsEnemies =
@@ -29,9 +30,9 @@ class EnemiesController {
     }
   }
 
-  async saveEnemies(req, res) {
+  static async saveEnemies(req: Request, res: Response) {
     try {
-      const enemies = req.body.map(({ name }) => name).join("\n");
+      const enemies = req.body.map(({ name }: any) => name).join("\n");
       await writeFile("./data/enemies.txt", enemies, "utf8");
       return res.status(200).json({
         status: "success",
@@ -45,5 +46,3 @@ class EnemiesController {
     }
   }
 }
-
-module.exports = new EnemiesController();

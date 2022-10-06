@@ -1,26 +1,26 @@
 import express from "express";
 import { join } from "path";
 import cors from "cors";
+import { dataRouter } from "./routes/data";
+import { enemiesRouter } from "./routes/enemies";
+import { config } from "./config/config";
 
 const app = express();
 
-const port = 3001;
-
 app.use(
   cors({
-    origin: "http://localhost:3000",
-    // origin: "https://ra.trycodeit.com",
+    origin: config.frontend.host,
   })
 );
 app.use(express.json());
 
-app.use("/api", require("./routes/enemies"));
-app.use("/", require("./routes/enemies"));
+app.use("/api", enemiesRouter);
+app.use("/data", dataRouter);
 
 app.get("/*", function (req, res) {
   res.sendFile(join(__dirname, "./public", "index.html"));
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
+app.listen(config.app.port, () => {
+  console.log(`Server is running on port: ${config.app.port}`);
 });
