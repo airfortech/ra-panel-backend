@@ -2,9 +2,14 @@ import { Request, Response } from "express";
 import { readFile, writeFile } from "fs/promises";
 import { join } from "path";
 import { v4 } from "uuid";
+import { Status } from "../types/responseMessages";
 
 export const getEnemiesFile = async (req: Request, res: Response) => {
-  res.sendFile(join(__dirname, "../data/", "enemies.txt"));
+  try {
+    res.sendFile(join(__dirname, "../data/", "enemies.txt"));
+  } catch (e) {
+    throw new Error();
+  }
 };
 
 export const getEnemies = async (req: Request, res: Response) => {
@@ -18,7 +23,7 @@ export const getEnemies = async (req: Request, res: Response) => {
             return { id, name: enemy };
           });
     return res.status(200).json({
-      status: "success",
+      status: Status.success,
       data: jsEnemies,
     });
   } catch (e) {

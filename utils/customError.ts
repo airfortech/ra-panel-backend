@@ -1,12 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-
-const messages = {
-  default: "Try again later.",
-};
-
-enum Status {
-  error = "error",
-}
+import { messages, Status } from "../types/responseMessages";
 
 export class CustomError extends Error {
   statusCode: number;
