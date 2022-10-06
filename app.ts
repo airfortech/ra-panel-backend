@@ -1,8 +1,10 @@
 import express from "express";
 import { join } from "path";
 import cors from "cors";
+import "express-async-errors";
 import { dataRouter } from "./routes/data";
 import { enemiesRouter } from "./routes/enemies";
+import { handleError } from "./utils/customError";
 import { config } from "./config/config";
 
 const app = express();
@@ -20,6 +22,8 @@ app.use("/data", dataRouter);
 app.get("/*", function (req, res) {
   res.sendFile(join(__dirname, "./public", "index.html"));
 });
+
+app.use(handleError);
 
 app.listen(config.app.port, () => {
   console.log(`Server is running on port: ${config.app.port}`);
