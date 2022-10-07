@@ -1,9 +1,9 @@
-import mongoose from "mongoose";
+import { connect } from "mongoose";
 import { config } from "../config/config";
 
 export const connectToDB = async () => {
   try {
-    await mongoose.connect(config.db.url, {
+    await connect(config.db.url, {
       serverSelectionTimeoutMS: 2000,
     });
     console.log("Connected to db.");
