@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { config } from "../../config/config";
+import { UserRole } from "../../types/UserRole";
 import { User } from "../models/User";
 import { connectToDB } from "../mongoose";
 

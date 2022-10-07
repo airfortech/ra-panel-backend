@@ -11,9 +11,8 @@ export interface Config {
   db: {
     url: string;
   };
-  jwt?: {
-    passportSecretOrKey: string;
-    salt: string;
+  secret?: {
+    passportSecretOrKey?: string;
   };
   users?: User[];
 }
