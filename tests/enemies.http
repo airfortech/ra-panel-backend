@@ -3,3 +3,4 @@
 ### Enemies Api
 ### get all enemies
 GET http://localhost:3001/api/enemies
+Authorization: dasdsadasd

@@ -1,3 +1,4 @@
+import { AuthRequest } from "../types/authRequest";
 import { Status } from "../types/responseMessages";
 import { Request, Response } from "express";
 import { readFile, writeFile } from "fs/promises";
@@ -12,7 +13,7 @@ export const getEnemiesFile = async (req: Request, res: Response) => {
   }
 };
 
-export const getEnemies = async (req: Request, res: Response) => {
+export const getEnemies = async (req: AuthRequest, res: Response) => {
   try {
     const enemies = await readFile("./data/enemies.txt", "utf8");
     const jsEnemies =

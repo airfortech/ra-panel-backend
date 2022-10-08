@@ -29,12 +29,10 @@ export const login = async (req: Request, res: Response) => {
 
 export const logout = async (req: Request, res: Response) => {
   try {
-    const token = req.headers.authorization.split("Bearer ")[1];
-    const role = decodeToken(token);
     res.removeHeader("Authorization");
     return res.status(200).json({
       status: Status.success,
-      data: { token, role },
+      message: messages.auth.logout,
     });
   } catch (e) {
     throw e;

@@ -9,5 +9,6 @@ export const messages = {
     wrongRole: "Role doesn't exist.",
     wrongPassword: "Wrong password.",
     unauthorized: "You have no permission.",
+    logout: "You have logged out.",
   },
 };

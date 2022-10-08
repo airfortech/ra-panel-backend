@@ -1,6 +1,6 @@
+import { User as IUser } from "../../types/User";
 import { compare, genSalt, hash } from "bcrypt";
 import { Schema, model, Document } from "mongoose";
-import { User as IUser } from "../../types/User";
 
 export interface IUserSchema extends Document, IUser {
   comparePassword: (password: string) => Promise<boolean>;

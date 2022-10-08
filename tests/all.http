@@ -1,11 +1,10 @@
 ### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
 
 ### Token variable
-
 @token = {{login.response.headers.Authorization}}
 
 ### Auth Api
-### Login
+### Login - Soldato
 # @name login
 POST http://localhost:3001/api/auth/login
 content-type: application/json
@@ -15,8 +14,27 @@ content-type: application/json
     "password": "test1234"
 }
 
-### Login - wrong role
+### Login - Caporegime
+# @name login
+POST http://localhost:3001/api/auth/login
+content-type: application/json
 
+{
+    "role": "Caporegime",
+    "password": "test1234"
+}
+
+### Login - Consigliore
+# @name login
+POST http://localhost:3001/api/auth/login
+content-type: application/json
+
+{
+    "role": "Consigliore",
+    "password": "test1234"
+}
+
+### Login - wrong role
 # @name login
 POST http://localhost:3001/api/auth/login
 content-type: application/json
@@ -27,7 +45,7 @@ content-type: application/json
 }
 
 ### Login - wrong password
-
+# @name login
 POST http://localhost:3001/api/auth/login
 content-type: application/json
 
@@ -37,5 +55,11 @@ content-type: application/json
 }
 
 ### Logout
+# @name login
 GET http://localhost:3001/api/auth/logout
+Authorization: {{token}}
+
+### Enemies Api
+### get all enemies
+GET http://localhost:3001/api/enemies
 Authorization: {{token}}
