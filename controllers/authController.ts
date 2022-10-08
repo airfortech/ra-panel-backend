@@ -4,7 +4,6 @@ import { Request, Response } from "express";
 import { User } from "../db/models/User";
 import { createToken } from "../utils/createToken";
 import { CustomError } from "../utils/customError";
-import { decodeToken } from "../utils/decodeToken";
 
 export const login = async (req: Request, res: Response) => {
   try {
