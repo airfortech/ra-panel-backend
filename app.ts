@@ -2,11 +2,12 @@ import express from "express";
 import { join } from "path";
 import cors from "cors";
 import "express-async-errors";
-import { dataRouter } from "./routes/data";
 import { enemiesRouter } from "./routes/enemies";
+import { authRouter } from "./routes/auth";
+import { dataRouter } from "./routes/data";
 import { handleError } from "./utils/customError";
-import { config } from "./config/config";
 import { connectToDB } from "./db/mongoose";
+import { config } from "./config/config";
 
 connectToDB();
 
@@ -20,6 +21,7 @@ app.use(
 app.use(express.json());
 
 app.use("/api", enemiesRouter);
+app.use("/api/auth", authRouter);
 app.use("/data", dataRouter);
 
 app.get("/*", function (req, res) {

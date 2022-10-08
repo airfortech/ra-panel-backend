@@ -1,0 +1,42 @@
+### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
+
+### Token variable
+
+@token = {{login.response.headers.Authorization}}
+
+### Auth Api
+### Login
+# @name login
+POST http://localhost:3001/api/auth/login
+content-type: application/json
+
+{
+    "role": "Soldato",
+    "password": "test1234"
+}
+
+
+### Login - wrong role
+
+# @name login
+POST http://localhost:3001/api/auth/login
+content-type: application/json
+
+{
+    "role": "Soldatos",
+    "password": "test1234"
+}
+
+### Login - wrong password
+
+POST http://localhost:3001/api/auth/login
+content-type: application/json
+
+{
+    "role": "Soldato",
+    "password": "test1234x"
+}
+
+### Logout
+GET http://localhost:3001/api/auth/logout
+Authorization: {{token}}

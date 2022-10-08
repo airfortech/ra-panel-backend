@@ -1,8 +1,8 @@
+import { Status } from "../types/responseMessages";
 import { Request, Response } from "express";
 import { readFile, writeFile } from "fs/promises";
 import { join } from "path";
 import { v4 } from "uuid";
-import { Status } from "../types/responseMessages";
 
 export const getEnemiesFile = async (req: Request, res: Response) => {
   try {

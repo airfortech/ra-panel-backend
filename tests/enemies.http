@@ -1,0 +1,5 @@
+### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
+
+### Enemies Api
+### get all enemies
+GET http://localhost:3001/api/enemies

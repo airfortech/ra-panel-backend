@@ -12,7 +12,7 @@ export interface Config {
     url: string;
   };
   secret?: {
-    passportSecretOrKey?: string;
+    jwt?: string;
   };
   users?: User[];
 }
