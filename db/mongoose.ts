@@ -6,7 +6,7 @@ export const connectToDB = async () => {
     await connect(config.db.url, {
       serverSelectionTimeoutMS: 2000,
     });
-    console.log("Connected to db.");
+    console.log("Connected to db. ✔");
   } catch (e) {
     console.log(e.message);
   }

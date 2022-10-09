@@ -4,6 +4,7 @@ import cors from "cors";
 import "express-async-errors";
 import { enemiesRouter } from "./routes/enemies";
 import { authRouter } from "./routes/auth";
+import { usersRouter } from "./routes/users";
 import { dataRouter } from "./routes/data";
 import { handleError } from "./utils/customError";
 import { connectToDB } from "./db/mongoose";
@@ -20,8 +21,9 @@ app.use(
 );
 app.use(express.json());
 
-app.use("/api", enemiesRouter);
+app.use("/api/enemies", enemiesRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/users", usersRouter);
 app.use("/data", dataRouter);
 
 app.get("/*", function (req, res) {

@@ -20,7 +20,7 @@ const createUsers = async () => {
     console.log(e.message);
   } finally {
     connection.close();
-    console.log("Users created.");
+    console.log("Users created. ✔");
   }
 };
 

@@ -1,4 +1,5 @@
 import { User as IUser } from "../../types/User";
+import { messages } from "../../types/responseMessages";
 import { compare, genSalt, hash } from "bcrypt";
 import { Schema, model, Document } from "mongoose";
 
@@ -15,7 +16,8 @@ const userSchema = new Schema<IUser>({
   },
   password: {
     type: String,
-    required: true,
+    required: [true, messages.users.passwordRequiredError],
+    minLength: [5, messages.users.passwordMinLengthError],
   },
 });
 

@@ -2,6 +2,7 @@
 
 ### Token variable
 @token = {{login.response.headers.Authorization}}
+@userId = {{users.response.body.data.users[2].id}}
 
 ### Auth Api
 ### Login - Soldato
@@ -58,6 +59,39 @@ content-type: application/json
 # @name login
 GET http://localhost:3001/api/auth/logout
 Authorization: {{token}}
+
+### Users Api
+### get all users
+# @name users
+GET http://localhost:3001/api/users
+Authorization: {{token}}
+
+### change password (of Soldato)
+PATCH http://localhost:3001/api/users/{{userId}}
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "password": "test1234"
+}
+
+### change password (of Soldato) - too short
+PATCH http://localhost:3001/api/users/{{userId}}
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "password": "test"
+}
+
+### change password (of Soldato) - not provided
+PATCH http://localhost:3001/api/users/{{userId}}
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "password": ""
+}
 
 ### Enemies Api
 ### get all enemies
