@@ -44,3 +44,23 @@ export const saveEnemies = async (req: Request, res: Response) => {
     throw new Error();
   }
 };
+
+export const addEnemy = async (req: Request, res: Response) => {
+  try {
+    return res.status(200).json({
+      status: "success",
+    });
+  } catch (e) {
+    throw e;
+  }
+};
+
+export const deleteEnemy = async (req: Request, res: Response) => {
+  try {
+    return res.status(200).json({
+      status: "success",
+    });
+  } catch (e) {
+    throw e;
+  }
+};

@@ -19,7 +19,7 @@ export const login = async (req: Request, res: Response) => {
       .status(200)
       .json({
         status: Status.success,
-        data: { token },
+        data: { role },
       });
   } catch (e) {
     throw e;
