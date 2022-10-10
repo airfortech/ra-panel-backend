@@ -3,6 +3,7 @@
 ### Token variable
 @token = {{login.response.headers.Authorization}}
 @userId = {{users.response.body.data.users[2].id}}
+@enemyId = {{enemies.response.body.data.enemies[0].id}}
 
 ### Auth Api
 ### Login - Soldato
@@ -95,5 +96,19 @@ content-type: application/json
 
 ### Enemies Api
 ### get all enemies
+# @name enemies
 GET http://localhost:3001/api/enemies
+Authorization: {{token}}
+
+### add enemy
+POST http://localhost:3001/api/enemies
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "name": "test"
+}
+
+### delete enemy
+DELETE http://localhost:3001/api/enemies/{{enemyId}}
 Authorization: {{token}}

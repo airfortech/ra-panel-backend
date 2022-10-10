@@ -17,4 +17,11 @@ export const messages = {
     passwordMinLengthError: "Password must be at least 5 characters long.",
     passwordRequiredError: "Password is required.",
   },
+  enemies: {
+    enemyExists: "Such enemy exists.",
+    enemyNotExists: "Such enemy not exists.",
+    enemyAdded: "Enemy has been added.",
+    nameIsRequired: "Enemy name is required.",
+    enemyDeleted: "Enemy has been deleted.",
+  },
 };

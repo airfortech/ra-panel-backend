@@ -1,9 +1,13 @@
 import { AuthRequest } from "../types/authRequest";
-import { Status } from "../types/responseMessages";
+import { messages, Status } from "../types/responseMessages";
 import { Request, Response } from "express";
 import { readFile, writeFile } from "fs/promises";
 import { join } from "path";
 import { v4 } from "uuid";
+import { Enemy } from "../db/models/Enemy";
+import { CustomError } from "../utils/customError";
+import { enemyNameValidator } from "../db/validators/enemyValidators";
+import { saveEnemiesToFile } from "../db/tools/saveEnemiesToFile";
 
 export const getEnemiesFile = async (req: Request, res: Response) => {
   try {
@@ -13,42 +17,34 @@ export const getEnemiesFile = async (req: Request, res: Response) => {
   }
 };
 
-export const getEnemies = async (req: AuthRequest, res: Response) => {
+export const getEnemies = async (req: Request, res: Response) => {
   try {
-    const enemies = await readFile("./data/enemies.txt", "utf8");
-    const jsEnemies =
-      enemies.trim().length === 0
-        ? []
-        : enemies.split("\n").map(enemy => {
-            const id = v4();
-            return { id, name: enemy };
-          });
+    const enemies = await Enemy.find({});
     return res.status(200).json({
       status: Status.success,
-      data: jsEnemies,
+      data: {
+        enemies: enemies.map(({ _id: id, name }) => {
+          return { id, name };
+        }),
+      },
     });
   } catch (e) {
-    throw new Error();
-  }
-};
-
-export const saveEnemies = async (req: Request, res: Response) => {
-  try {
-    const enemies = req.body.map(({ name }: any) => name).join("\n");
-    await writeFile("./data/enemies.txt", enemies, "utf8");
-    return res.status(200).json({
-      status: "success",
-      data: enemies,
-    });
-  } catch (e) {
-    throw new Error();
+    throw e;
   }
 };
 
 export const addEnemy = async (req: Request, res: Response) => {
   try {
+    const name = enemyNameValidator(req.body.name);
+    const enemy = await Enemy.findOne({ name });
+    if (enemy)
+      throw new CustomError(messages.enemies.enemyExists, 400, Status.error);
+    await new Enemy({ name }).save();
+    const enemies = await Enemy.find({});
+    await saveEnemiesToFile(enemies);
     return res.status(200).json({
       status: "success",
+      message: messages.enemies.enemyAdded,
     });
   } catch (e) {
     throw e;
@@ -57,8 +53,15 @@ export const addEnemy = async (req: Request, res: Response) => {
 
 export const deleteEnemy = async (req: Request, res: Response) => {
   try {
+    const id = req.params.id;
+    const enemy = await Enemy.findByIdAndDelete(id);
+    if (!enemy)
+      throw new CustomError(messages.enemies.enemyNotExists, 404, Status.error);
+    const enemies = await Enemy.find({});
+    await saveEnemiesToFile(enemies);
     return res.status(200).json({
       status: "success",
+      message: messages.enemies.enemyDeleted,
     });
   } catch (e) {
     throw e;

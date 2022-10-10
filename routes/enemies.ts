@@ -14,11 +14,6 @@ enemiesRouter.get(
   auth(UserRole.consigliore, UserRole.caporegime, UserRole.soldato),
   getEnemies
 );
-// enemiesRouter.post(
-//   "/",
-//   auth(UserRole.consigliore, UserRole.caporegime),
-//   saveEnemies
-// );
 enemiesRouter.post(
   "/",
   auth(UserRole.consigliore, UserRole.caporegime),
