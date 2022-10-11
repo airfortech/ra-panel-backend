@@ -11,14 +11,24 @@ export const getKeyGivers = async (req: Request, res: Response) => {
     return res.status(200).json({
       status: Status.success,
       data: {
-        keyGivers: keyGivers.map(({ id, name, respawns }) => {
-          return { id, name, lastRespawn: respawns[respawns.length - 1]?.date };
-        }),
+        keyGivers: keyGivers
+          .map(({ id, name, respawns }) => {
+            return {
+              id,
+              name,
+              lastRespawn: respawns[respawns.length - 1]?.date,
+            };
+          })
+          .sort((a, b) =>
+            a.name.toLowerCase() < b.name.toLowerCase()
+              ? -1
+              : a.name.toLowerCase() > b.name.toLowerCase()
+              ? 1
+              : 0
+          ),
       },
     });
   } catch (e) {
-    console.log(e.message);
-
     throw e;
   }
 };
@@ -47,8 +57,17 @@ export const addKeyGiver = async (req: Request, res: Response) => {
 
 export const deleteKeyGiver = async (req: Request, res: Response) => {
   try {
+    const id = req.params.id;
+    const keyGiver = await KeyGiver.findByIdAndDelete(id);
+    if (!keyGiver)
+      throw new CustomError(
+        messages.keyGivers.keyGiverNotExists,
+        404,
+        Status.error
+      );
     return res.status(200).json({
       status: Status.success,
+      message: messages.keyGivers.keyGiverDeleted,
     });
   } catch (e) {
     throw e;

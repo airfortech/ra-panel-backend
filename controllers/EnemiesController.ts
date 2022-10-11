@@ -40,7 +40,7 @@ export const addEnemy = async (req: Request, res: Response) => {
     const enemies = await Enemy.find({});
     await saveEnemiesToFile(enemies);
     return res.status(200).json({
-      status: "success",
+      status: Status.success,
       message: messages.enemies.enemyAdded,
     });
   } catch (e) {
@@ -57,7 +57,7 @@ export const deleteEnemy = async (req: Request, res: Response) => {
     const enemies = await Enemy.find({});
     await saveEnemiesToFile(enemies);
     return res.status(200).json({
-      status: "success",
+      status: Status.success,
       message: messages.enemies.enemyDeleted,
     });
   } catch (e) {

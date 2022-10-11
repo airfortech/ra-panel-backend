@@ -31,6 +31,8 @@ export const messages = {
     descriptionTooLong: "Description should have maximum 4000 characters.",
     respawnTimeNotANumber: "Respawn time must be a number of hours.",
     keyGiverAdded: "Keygiver has been added.",
+    keyGiverNotExists: "Such keygiver not exists.",
+    keyGiverDeleted: "Keygiver has been deleted.",
   },
   date: {
     invalidDate: "Invalid date format.",

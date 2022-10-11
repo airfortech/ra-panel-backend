@@ -131,6 +131,10 @@ content-type: application/json
 }
 
 ### add new timestamp
+DELETE http://localhost:3001/api/keygivers/{{keyGiverId}}
+Authorization: {{token}}
+
+### add new timestamp
 PATCH http://localhost:3001/api/keygivers/{{keyGiverId}}
 Authorization: {{token}}
 
