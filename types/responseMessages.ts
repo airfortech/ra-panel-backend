@@ -24,4 +24,15 @@ export const messages = {
     nameIsRequired: "Enemy name is required.",
     enemyDeleted: "Enemy has been deleted.",
   },
+  keyGivers: {
+    keyGiverExists: "Such keygiver exists.",
+    nameIsRequired: "Name is required.",
+    nameTooLong: "Name should have maximum 80 characters.",
+    descriptionTooLong: "Description should have maximum 4000 characters.",
+    respawnTimeNotANumber: "Respawn time must be a number of hours.",
+    keyGiverAdded: "Keygiver has been added.",
+  },
+  date: {
+    invalidDate: "Invalid date format.",
+  },
 };

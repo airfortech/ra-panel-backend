@@ -6,6 +6,7 @@ import { enemiesRouter } from "./routes/enemies";
 import { authRouter } from "./routes/auth";
 import { usersRouter } from "./routes/users";
 import { dataRouter } from "./routes/data";
+import { keyGiversRouter } from "./routes/keyGivers";
 import { handleError } from "./utils/customError";
 import { connectToDB } from "./db/mongoose";
 import { config } from "./config/config";
@@ -25,6 +26,7 @@ app.use("/api/enemies", enemiesRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
 app.use("/data", dataRouter);
+app.use("/api/keygivers", keyGiversRouter);
 
 app.get("/*", function (req, res) {
   res.sendFile(join(__dirname, "./public", "index.html"));

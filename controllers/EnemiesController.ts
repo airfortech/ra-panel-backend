@@ -1,19 +1,16 @@
-import { AuthRequest } from "../types/authRequest";
 import { messages, Status } from "../types/responseMessages";
 import { Request, Response } from "express";
-import { readFile, writeFile } from "fs/promises";
 import { join } from "path";
-import { v4 } from "uuid";
 import { Enemy } from "../db/models/Enemy";
-import { CustomError } from "../utils/customError";
 import { enemyNameValidator } from "../db/validators/enemyValidators";
 import { saveEnemiesToFile } from "../db/tools/saveEnemiesToFile";
+import { CustomError } from "../utils/customError";
 
 export const getEnemiesFile = async (req: Request, res: Response) => {
   try {
     res.sendFile(join(__dirname, "../data/", "enemies.txt"));
   } catch (e) {
-    throw new Error();
+    throw e;
   }
 };
 
