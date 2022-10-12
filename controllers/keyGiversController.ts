@@ -14,7 +14,7 @@ dayjs.extend(utc);
 
 export const getKeyGivers = async (req: Request, res: Response) => {
   try {
-    const keyGivers = await KeyGiver.find({});
+    const keyGivers = await KeyGiver.find({ isActive: true });
     return res.status(200).json({
       status: Status.success,
       data: {
@@ -70,7 +70,7 @@ export const getKeyGiverDetails = async (req: Request, res: Response) => {
 export const addKeyGiver = async (req: Request, res: Response) => {
   try {
     const { name, respawnTime } = req.body as IKeyGiver;
-    const keyGiver = await KeyGiver.findOne({ name });
+    const keyGiver = await KeyGiver.findOne({ name, isActive: true });
     if (keyGiver)
       throw new CustomError(messages.keyGivers.nameExists, 400, Status.error);
     await new KeyGiver({ name, respawnTime }).save();
@@ -89,7 +89,7 @@ export const deleteKeyGiver = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
     isIdValid(id, messages.keyGivers.keyGiverNotExists, 404);
-    const keyGiver = await KeyGiver.findByIdAndDelete(id);
+    const keyGiver = await KeyGiver.findByIdAndUpdate(id, { isActive: false });
     if (!keyGiver)
       throw new CustomError(
         messages.keyGivers.keyGiverNotExists,
@@ -113,6 +113,7 @@ export const updateKeyGiver = async (req: Request, res: Response) => {
     const keyGiverWithSameName = await KeyGiver.findOne({
       name,
       _id: { $ne: id },
+      isActive: true,
     });
     if (keyGiverWithSameName)
       throw new CustomError(messages.keyGivers.nameExists, 400, Status.error);

@@ -8,4 +8,5 @@ export interface KeyGiver {
   }[];
   lastRespawn?: string;
   nextRespawn?: string;
+  isActive: boolean;
 }

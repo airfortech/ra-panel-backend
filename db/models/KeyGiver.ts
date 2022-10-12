@@ -29,6 +29,10 @@ const keyGiverSchema = new Schema<IKeyGiver>({
     type: [{ date: String, wasEmpty: Boolean }],
     default: [],
   },
+  isActive: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 export const KeyGiver = model<IKeyGiverSchema>("KeyGiver", keyGiverSchema);
