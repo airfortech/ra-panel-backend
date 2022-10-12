@@ -4,6 +4,7 @@ import {
   addKeyGiver,
   addKeyGiverTimestamp,
   deleteKeyGiver,
+  getKeyGiverDetails,
   getKeyGivers,
   updateKeyGiver,
 } from "../controllers/keyGiversController";
@@ -16,16 +17,17 @@ keyGiversRouter.get(
   auth(UserRole.consigliore, UserRole.caporegime, UserRole.soldato),
   getKeyGivers
 );
+keyGiversRouter.get(
+  "/:id",
+  auth(UserRole.consigliore, UserRole.caporegime, UserRole.soldato),
+  getKeyGiverDetails
+);
 keyGiversRouter.post(
   "/",
   auth(UserRole.consigliore, UserRole.caporegime),
   addKeyGiver
 );
-keyGiversRouter.delete(
-  "/:id",
-  auth(UserRole.consigliore, UserRole.caporegime),
-  deleteKeyGiver
-);
+keyGiversRouter.delete("/:id", auth(UserRole.consigliore), deleteKeyGiver);
 keyGiversRouter.patch(
   "/:id",
   auth(UserRole.consigliore, UserRole.caporegime),

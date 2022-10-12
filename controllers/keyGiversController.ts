@@ -6,6 +6,9 @@ import utc from "dayjs/plugin/utc";
 import { KeyGiver } from "../db/models/KeyGiver";
 import { CustomError } from "../utils/customError";
 import { getErrorsMessages } from "../utils/getErrorsMessages";
+import { nextRespawnDate } from "../utils/nextRespawnDate";
+import { getLastRespawnDate } from "../utils/getLastRespawnDate";
+import { isIdValid } from "../db/validators/universalValidators";
 
 dayjs.extend(utc);
 
@@ -15,23 +18,48 @@ export const getKeyGivers = async (req: Request, res: Response) => {
     return res.status(200).json({
       status: Status.success,
       data: {
-        keyGivers: keyGivers
-          .map(({ id, name, description, respawnTime, respawns }) => {
-            return {
-              id,
-              name,
-              description,
-              respawnTime,
-              lastRespawn: respawns[respawns.length - 1]?.date,
-            };
-          })
-          .sort((a, b) =>
-            a.name.toLowerCase() < b.name.toLowerCase()
-              ? -1
-              : a.name.toLowerCase() > b.name.toLowerCase()
-              ? 1
-              : 0
-          ),
+        keyGivers: keyGivers.map(({ id, name, respawnTime, respawns }) => {
+          const lastRespawn: string = getLastRespawnDate(respawns);
+          return {
+            id,
+            name,
+            respawnTime,
+            lastRespawn,
+            nextRespawn: nextRespawnDate(lastRespawn, respawnTime),
+          };
+        }),
+      },
+    });
+  } catch (e) {
+    throw e;
+  }
+};
+
+export const getKeyGiverDetails = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    isIdValid(id, messages.keyGivers.keyGiverNotExists, 404);
+
+    const keyGiver = await KeyGiver.findById(id);
+    if (!keyGiver)
+      throw new CustomError(
+        messages.keyGivers.keyGiverNotExists,
+        404,
+        Status.error
+      );
+    const { name, description, respawnTime } = keyGiver;
+    const lastRespawn: string = getLastRespawnDate(keyGiver.respawns);
+    return res.status(200).json({
+      status: Status.success,
+      data: {
+        keyGiver: {
+          id,
+          name,
+          description,
+          respawnTime,
+          lastRespawn,
+          nextRespawn: nextRespawnDate(lastRespawn, respawnTime),
+        },
       },
     });
   } catch (e) {
@@ -64,6 +92,7 @@ export const addKeyGiver = async (req: Request, res: Response) => {
 export const deleteKeyGiver = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
+    isIdValid(id, messages.keyGivers.keyGiverNotExists, 404);
     const keyGiver = await KeyGiver.findByIdAndDelete(id);
     if (!keyGiver)
       throw new CustomError(
@@ -83,6 +112,7 @@ export const deleteKeyGiver = async (req: Request, res: Response) => {
 export const updateKeyGiver = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
+    isIdValid(id, messages.keyGivers.keyGiverNotExists, 404);
     const { name, description, respawnTime } = req.body as IKeyGiver;
     const keyGiverWithSameName = await KeyGiver.findOne({
       name,
@@ -116,6 +146,7 @@ export const updateKeyGiver = async (req: Request, res: Response) => {
 export const addKeyGiverTimestamp = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
+    isIdValid(id, messages.keyGivers.keyGiverNotExists, 404);
     const { date, wasEmpty }: { date: string; wasEmpty: boolean } = req.body;
 
     const newDate = dayjs.utc(date);

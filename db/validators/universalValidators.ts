@@ -1,11 +1,15 @@
-import { messages, Status } from "../../types/responseMessages";
+import { Status } from "../../types/responseMessages";
+import mongoose from "mongoose";
 import { CustomError } from "../../utils/customError";
 
-export const dateValidator = (date: string): string => {
+export const isIdValid = (
+  id: string,
+  errorMessage: string,
+  statusCode: number
+): void => {
   try {
-    const validatedDate = new Date(date.toString()).toUTCString();
-    return validatedDate;
+    if (!mongoose.Types.ObjectId.isValid(id)) throw new Error();
   } catch (e) {
-    throw e;
+    throw new CustomError(errorMessage, statusCode, Status.error);
   }
 };

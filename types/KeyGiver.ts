@@ -6,5 +6,6 @@ export interface KeyGiver {
     date: string;
     wasEmpty: boolean;
   }[];
-  wasEmpty: boolean;
+  lastRespawn?: string;
+  nextRespawn?: string;
 }
