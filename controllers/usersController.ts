@@ -13,7 +13,7 @@ export const getUsers = async (req: Request, res: Response) => {
     return res.status(200).json({
       status: Status.success,
       data: {
-        users: users.map(({ _id: id, role }) => {
+        users: users.map(({ id, role }) => {
           return { id, role };
         }),
       },
@@ -27,7 +27,7 @@ export const changeUserPassword = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
     const password: string = req.body.password;
-    const user = await User.findOne({ _id: id });
+    const user = await User.findOne({ id });
     if (!user)
       throw new CustomError(messages.auth.wrongRole, 404, Status.error);
 

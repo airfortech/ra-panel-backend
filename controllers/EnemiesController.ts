@@ -20,7 +20,7 @@ export const getEnemies = async (req: Request, res: Response) => {
     return res.status(200).json({
       status: Status.success,
       data: {
-        enemies: enemies.map(({ _id: id, name }) => {
+        enemies: enemies.map(({ id, name }) => {
           return { id, name };
         }),
       },

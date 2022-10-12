@@ -126,18 +126,28 @@ Authorization: {{token}}
 content-type: application/json
 
 {
-    "name": "test3bxxsxxx",
+    "name": "kluczek",
     "respawnTime": 0
 }
 
-### add new timestamp
+### update keyGiver
+PATCH http://localhost:3001/api/keygivers/{{keyGiverId}}
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "name": "klucz",
+    "respawnTime": 24,
+    "description": "Some description"
+}
+
+### delete keyGiver
 DELETE http://localhost:3001/api/keygivers/{{keyGiverId}}
 Authorization: {{token}}
 
 ### add new timestamp
-PATCH http://localhost:3001/api/keygivers/{{keyGiverId}}
+PATCH http://localhost:3001/api/keygivers/addtimestamp/{{keyGiverId}}
 Authorization: {{token}}
-
 content-type: application/json
 
 {

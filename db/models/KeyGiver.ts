@@ -16,6 +16,7 @@ const keyGiverSchema = new Schema<IKeyGiver>({
   description: {
     type: String,
     maxlength: [4000, messages.keyGivers.descriptionTooLong],
+    default: "",
   },
   respawnTime: {
     type: Number,

@@ -12,10 +12,12 @@ export const getKeyGivers = async (req: Request, res: Response) => {
       status: Status.success,
       data: {
         keyGivers: keyGivers
-          .map(({ id, name, respawns }) => {
+          .map(({ id, name, description, respawnTime, respawns }) => {
             return {
               id,
               name,
+              description,
+              respawnTime,
               lastRespawn: respawns[respawns.length - 1]?.date,
             };
           })
@@ -74,8 +76,43 @@ export const deleteKeyGiver = async (req: Request, res: Response) => {
   }
 };
 
+export const updateKeyGiver = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    const { name, description, respawnTime } = req.body as IKeyGiver;
+    const keyGiverWithSameName = await KeyGiver.findOne({
+      name,
+      _id: { $ne: id },
+    });
+    if (keyGiverWithSameName)
+      throw new CustomError(
+        messages.keyGivers.keyGiverExists,
+        400,
+        Status.error
+      );
+    const keyGiver = await KeyGiver.findByIdAndUpdate(id, {
+      name,
+      description,
+      respawnTime,
+    });
+    if (!keyGiver)
+      throw new CustomError(
+        messages.keyGivers.keyGiverNotExists,
+        404,
+        Status.error
+      );
+    return res.status(200).json({
+      status: Status.success,
+    });
+  } catch (e) {
+    throw e;
+  }
+};
+
 export const addKeyGiverTimestamp = async (req: Request, res: Response) => {
   try {
+    const id = req.params.id;
+    const keyGiver = await KeyGiver.findByIdAndUpdate(id);
     return res.status(200).json({
       status: Status.success,
     });

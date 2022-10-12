@@ -5,6 +5,7 @@ import {
   addKeyGiverTimestamp,
   deleteKeyGiver,
   getKeyGivers,
+  updateKeyGiver,
 } from "../controllers/keyGiversController";
 import { auth } from "../utils/auth";
 
@@ -27,6 +28,11 @@ keyGiversRouter.delete(
 );
 keyGiversRouter.patch(
   "/:id",
+  auth(UserRole.consigliore, UserRole.caporegime),
+  updateKeyGiver
+);
+keyGiversRouter.patch(
+  "/addtimestamp/:id",
   auth(UserRole.consigliore, UserRole.caporegime),
   addKeyGiverTimestamp
 );
