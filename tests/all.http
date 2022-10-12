@@ -126,8 +126,8 @@ Authorization: {{token}}
 content-type: application/json
 
 {
-    "name": "kluczek",
-    "respawnTime": 0
+    "name": "kluczek2",
+    "respawnTime": 20
 }
 
 ### update keyGiver
@@ -136,9 +136,9 @@ Authorization: {{token}}
 content-type: application/json
 
 {
-    "name": "klucz",
+    "name": "kluczek2",
     "respawnTime": 24,
-    "description": "Some description"
+    "description": "Some description2"
 }
 
 ### delete keyGiver
@@ -152,5 +152,15 @@ content-type: application/json
 
 {
     "date": "Tue, 12 Apr 2022 22:00:00 GMT",
+    "wasEmpty": true
+}
+
+### add new timestamp - bad date format
+PATCH http://localhost:3001/api/keygivers/addtimestamp/{{keyGiverId}}
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "date": "invalid date",
     "wasEmpty": true
 }

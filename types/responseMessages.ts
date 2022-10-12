@@ -36,5 +36,6 @@ export const messages = {
   },
   date: {
     invalidDate: "Invalid date format.",
+    dateNotNever: "Date must newer than previous one.",
   },
 };
