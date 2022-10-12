@@ -72,11 +72,7 @@ export const addKeyGiver = async (req: Request, res: Response) => {
     const { name, respawnTime } = req.body as IKeyGiver;
     const keyGiver = await KeyGiver.findOne({ name });
     if (keyGiver)
-      throw new CustomError(
-        messages.keyGivers.keyGiverExists,
-        400,
-        Status.error
-      );
+      throw new CustomError(messages.keyGivers.nameExists, 400, Status.error);
     await new KeyGiver({ name, respawnTime }).save();
     return res.status(200).json({
       status: Status.success,
@@ -119,11 +115,7 @@ export const updateKeyGiver = async (req: Request, res: Response) => {
       _id: { $ne: id },
     });
     if (keyGiverWithSameName)
-      throw new CustomError(
-        messages.keyGivers.keyGiverExists,
-        400,
-        Status.error
-      );
+      throw new CustomError(messages.keyGivers.nameExists, 400, Status.error);
     const keyGiver = await KeyGiver.findByIdAndUpdate(id, {
       name,
       description,

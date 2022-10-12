@@ -26,12 +26,13 @@ export const messages = {
   },
   keyGivers: {
     keyGiverExists: "Such keygiver exists.",
+    keyGiverNotExists: "Such keygiver not exists.",
     nameIsRequired: "Name is required.",
+    nameExists: "Such keygiver name exists. Choose other one.",
     nameTooLong: "Name should have maximum 80 characters.",
     descriptionTooLong: "Description should have maximum 4000 characters.",
     respawnTimeNotANumber: "Respawn time must be a number of hours.",
     keyGiverAdded: "Keygiver has been added.",
-    keyGiverNotExists: "Such keygiver not exists.",
     keyGiverDeleted: "Keygiver has been deleted.",
   },
   date: {
