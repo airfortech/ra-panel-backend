@@ -1,0 +1,103 @@
+### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
+
+### Token variable
+@token = {{login.response.headers.Authorization}}
+@keyId = {{keys.response.body.data.keyGivers[0].id}}
+
+### Auth Api
+### Login - Soldato
+# @name login
+POST http://localhost:3001/api/auth/login
+content-type: application/json
+
+{
+    "role": "Soldato",
+    "password": "test1234"
+}
+
+### Login - Caporegime
+# @name login
+POST http://localhost:3001/api/auth/login
+content-type: application/json
+
+{
+    "role": "Caporegime",
+    "password": "test1234"
+}
+
+### Login - Consigliore
+# @name login
+POST http://localhost:3001/api/auth/login
+content-type: application/json
+
+{
+    "role": "Consigliore",
+    "password": "test1234"
+}
+
+### Logout
+# @name login
+GET http://localhost:3001/api/auth/logout
+Authorization: {{token}}
+
+### keys Api
+### get all keys
+# @name keys
+GET http://localhost:3001/api/keys
+Authorization: {{token}}
+
+### get key details
+GET http://localhost:3001/api/keys/{{keyId}}
+Authorization: {{token}}
+
+### get key details - bad id
+GET http://localhost:3001/api/keys/6345d568ae474b461be9581c
+Authorization: {{token}}
+
+### add new key
+POST http://localhost:3001/api/keys
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "name": "duzy ciezki klucz",
+    "treasuryName": "Edalbert"
+}
+
+### update key
+PATCH http://localhost:3001/api/keys/{{keyId}}
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "name": "duzy ciezki klucz",
+    "treasuryName": "Edalbert2"
+}
+
+### delete key
+DELETE http://localhost:3001/api/keys/{{keyId}}
+Authorization: {{token}}
+
+### delete key - bad id
+DELETE http://localhost:3001/api/keys/6345d568ae474b
+Authorization: {{token}}
+
+### add new timestamp
+PATCH http://localhost:3001/api/keys/addtimestamp/{{keyId}}
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "date": "Tue, 30 Apr 2022 22:00:00 GMT",
+    "npcName": "Rivannon"
+}
+
+### add new timestamp - bad date format
+PATCH http://localhost:3001/api/keys/addtimestamp/{{keyId}}
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "date": "invalid date",
+    "wasEmpty": true
+}

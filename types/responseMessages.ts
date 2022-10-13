@@ -35,6 +35,11 @@ export const messages = {
     keyGiverAdded: "Keygiver has been added.",
     keyGiverDeleted: "Keygiver has been deleted.",
   },
+  keys: {
+    nameTooLong: "Name should have maximum 80 characters.",
+    nameIsRequired: "Name is required.",
+    treasuryNameTooLong: "Treasury name should have maximum 80 characters.",
+  },
   date: {
     invalidDate: "Invalid date format.",
     dateNotNever: "Date must newer than previous one.",
