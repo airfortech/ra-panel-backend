@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { login, logout } from "../controllers/authController";
+import { login } from "../controllers/auth/login";
+import { logout } from "../controllers/auth/logout";
 
 export const authRouter = Router();
 

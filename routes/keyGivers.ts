@@ -1,14 +1,12 @@
 import { UserRole } from "../types/UserRole";
 import { Router } from "express";
-import {
-  addKeyGiver,
-  addKeyGiverTimestamp,
-  deleteKeyGiver,
-  getKeyGiverDetails,
-  getKeyGivers,
-  updateKeyGiver,
-} from "../controllers/keyGiversController";
 import { auth } from "../utils/auth";
+import { getKeyGivers } from "../controllers/keyGivers/getKeyGivers";
+import { getKeyGiverDetails } from "../controllers/keyGivers/getKeyGiverDetails";
+import { addKeyGiver } from "../controllers/keyGivers/addKeyGiver";
+import { deleteKeyGiver } from "../controllers/keyGivers/deleteKeyGiver";
+import { updateKeyGiver } from "../controllers/keyGivers/updateKeyGiver";
+import { addKeyGiverTimestamp } from "../controllers/keyGivers/addKeyGiverTimestamp";
 
 export const keyGiversRouter = Router();
 

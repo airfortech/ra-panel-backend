@@ -1,11 +1,9 @@
 import { UserRole } from "../types/UserRole";
 import { Router } from "express";
-import {
-  addEnemy,
-  deleteEnemy,
-  getEnemies,
-} from "../controllers/enemiesController";
 import { auth } from "../utils/auth";
+import { getEnemies } from "../controllers/enemies/getEnemies";
+import { addEnemy } from "../controllers/enemies/addEnemy";
+import { deleteEnemy } from "../controllers/enemies/deleteEnemy";
 
 export const enemiesRouter = Router();
 

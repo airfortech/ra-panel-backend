@@ -1,9 +1,9 @@
-import { messages, Status } from "../types/responseMessages";
-import { User as IUser } from "../types/User";
+import { messages, Status } from "../../types/responseMessages";
+import { User as IUser } from "../../types/User";
 import { Request, Response } from "express";
-import { User } from "../db/models/User";
-import { createToken } from "../utils/createToken";
-import { CustomError } from "../utils/customError";
+import { User } from "../../db/models/User";
+import { createToken } from "../../utils/createToken";
+import { CustomError } from "../../utils/customError";
 
 export const login = async (req: Request, res: Response) => {
   try {
@@ -21,18 +21,6 @@ export const login = async (req: Request, res: Response) => {
         status: Status.success,
         data: { role },
       });
-  } catch (e) {
-    throw e;
-  }
-};
-
-export const logout = async (req: Request, res: Response) => {
-  try {
-    res.removeHeader("Authorization");
-    return res.status(200).json({
-      status: Status.success,
-      message: messages.auth.logout,
-    });
   } catch (e) {
     throw e;
   }

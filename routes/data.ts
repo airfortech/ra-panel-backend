@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getEnemiesFile } from "../controllers/enemiesController";
+import { getEnemiesFile } from "../controllers/enemies/getEnemiesFile";
 
 export const dataRouter = Router();
 
