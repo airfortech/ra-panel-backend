@@ -2,8 +2,6 @@
 
 ### Token variable
 @token = {{login.response.headers.Authorization}}
-@userId = {{users.response.body.data.users[2].id}}
-@enemyId = {{enemies.response.body.data.enemies[0].id}}
 @keyGiverId = {{keyGivers.response.body.data.keyGivers[0].id}}
 
 ### Auth Api
@@ -37,81 +35,9 @@ content-type: application/json
     "password": "test1234"
 }
 
-### Login - wrong role
-# @name login
-POST http://localhost:3001/api/auth/login
-content-type: application/json
-
-{
-    "role": "Soldatos",
-    "password": "test1234"
-}
-
-### Login - wrong password
-# @name login
-POST http://localhost:3001/api/auth/login
-content-type: application/json
-
-{
-    "role": "Soldato",
-    "password": "test1234x"
-}
-
 ### Logout
 # @name login
 GET http://localhost:3001/api/auth/logout
-Authorization: {{token}}
-
-### Users Api
-### get all users
-# @name users
-GET http://localhost:3001/api/users
-Authorization: {{token}}
-
-### change password (of Soldato)
-PATCH http://localhost:3001/api/users/{{userId}}
-Authorization: {{token}}
-content-type: application/json
-
-{
-    "password": "test1234"
-}
-
-### change password (of Soldato) - too short
-PATCH http://localhost:3001/api/users/{{userId}}
-Authorization: {{token}}
-content-type: application/json
-
-{
-    "password": "test"
-}
-
-### change password (of Soldato) - not provided
-PATCH http://localhost:3001/api/users/{{userId}}
-Authorization: {{token}}
-content-type: application/json
-
-{
-    "password": ""
-}
-
-### Enemies Api
-### get all enemies
-# @name enemies
-GET http://localhost:3001/api/enemies
-Authorization: {{token}}
-
-### add enemy
-POST http://localhost:3001/api/enemies
-Authorization: {{token}}
-content-type: application/json
-
-{
-    "name": "test"
-}
-
-### delete enemy
-DELETE http://localhost:3001/api/enemies/{{enemyId}}
 Authorization: {{token}}
 
 ### keyGivers Api
@@ -134,7 +60,7 @@ Authorization: {{token}}
 content-type: application/json
 
 {
-    "name": "kluczek9",
+    "name": "kluczek1",
     "respawnTime": 20
 }
 
@@ -144,7 +70,7 @@ Authorization: {{token}}
 content-type: application/json
 
 {
-    "name": "kluczek1",
+    "name": "kluczek3",
     "respawnTime": 24,
     "description": "Some description2"
 }
