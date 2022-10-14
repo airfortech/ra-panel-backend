@@ -27,7 +27,7 @@ const keySchema = new Schema<IKey>({
   },
 });
 
-keySchema.pre("save", async function (this: IKeySchema, next) {
+keySchema.pre("save", function (this: IKeySchema, next) {
   this.domain = domainValidate(this.domain);
   return next();
 });
