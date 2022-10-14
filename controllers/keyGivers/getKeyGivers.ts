@@ -2,7 +2,7 @@ import { Status } from "../../types/responseMessages";
 import { Request, Response } from "express";
 import { KeyGiver } from "../../db/models/KeyGiver";
 import { nextRespawnDate } from "../../utils/nextRespawnDate";
-import { getLastRespawnDate } from "../../utils/getLastRespawnDate";
+import { lastRespawnDate } from "../../utils/lastRespawnDate";
 
 export const getKeyGivers = async (req: Request, res: Response) => {
   try {
@@ -11,7 +11,7 @@ export const getKeyGivers = async (req: Request, res: Response) => {
       status: Status.success,
       data: {
         keyGivers: keyGivers.map(({ id, name, respawnTime, respawns }) => {
-          const lastRespawn: string = getLastRespawnDate(respawns);
+          const lastRespawn: string = lastRespawnDate(respawns);
           return {
             id,
             name,

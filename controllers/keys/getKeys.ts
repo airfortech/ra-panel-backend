@@ -1,6 +1,7 @@
 import { Status } from "../../types/responseMessages";
 import { Request, Response } from "express";
 import { Key } from "../../db/models/Key";
+import { averageKeyCaptureTime } from "../../utils/averageKeyCaptureTIme";
 
 export const getKeys = async (req: Request, res: Response) => {
   try {
@@ -10,12 +11,13 @@ export const getKeys = async (req: Request, res: Response) => {
       data: {
         keys: keys.map(
           ({ id, name, treasuryName, domain, foundTimestamps }) => {
-            // const lastRespawn: string = getLastRespawnDate(respawns);
+            const averageCaptureTime = averageKeyCaptureTime(foundTimestamps);
             return {
               id,
               name,
               treasuryName,
               domain,
+              averageCaptureTime,
             };
           }
         ),

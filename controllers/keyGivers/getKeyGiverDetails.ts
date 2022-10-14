@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import { KeyGiver } from "../../db/models/KeyGiver";
 import { CustomError } from "../../utils/customError";
 import { nextRespawnDate } from "../../utils/nextRespawnDate";
-import { getLastRespawnDate } from "../../utils/getLastRespawnDate";
+import { lastRespawnDate } from "../../utils/lastRespawnDate";
 import { isIdValid } from "../../db/validators/universalValidators";
 
 export const getKeyGiverDetails = async (req: Request, res: Response) => {
@@ -19,7 +19,7 @@ export const getKeyGiverDetails = async (req: Request, res: Response) => {
         Status.error
       );
     const { name, description, respawnTime } = keyGiver;
-    const lastRespawn: string = getLastRespawnDate(keyGiver.respawns);
+    const lastRespawn: string = lastRespawnDate(keyGiver.respawns);
     return res.status(200).json({
       status: Status.success,
       data: {

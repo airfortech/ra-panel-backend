@@ -8,5 +8,6 @@ export interface Key {
     date: string;
     npcName: string;
   }[];
+  averageCaptureTime?: number;
   isActive: boolean;
 }

@@ -1,4 +1,4 @@
-export const getLastRespawnDate = (
+export const lastRespawnDate = (
   respawns: { date: string; wasEmpty: boolean }[]
 ): string => {
   if (!respawns || respawns.length === 0) return null;
