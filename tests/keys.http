@@ -2,7 +2,7 @@
 
 ### Token variable
 @token = {{login.response.headers.Authorization}}
-@keyId = {{keys.response.body.data.keyGivers[0].id}}
+@keyId = {{keys.response.body.data.keys[0].id}}
 
 ### Auth Api
 ### Login - Soldato
@@ -60,8 +60,9 @@ Authorization: {{token}}
 content-type: application/json
 
 {
-    "name": "duzy ciezki klucz",
-    "treasuryName": "Edalbert"
+    "name": "duzy ciezki klucz25",
+    "treasuryName": "Edalbert",
+    "domain": "Ishtar"
 }
 
 ### update key

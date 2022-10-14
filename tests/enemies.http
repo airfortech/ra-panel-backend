@@ -52,7 +52,7 @@ Authorization: {{token}}
 content-type: application/json
 
 {
-    "name": "test"
+    "name": "test Dfdf"
 }
 
 ### delete enemy

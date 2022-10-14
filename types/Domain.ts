@@ -1,4 +1,4 @@
-export enum Realm {
+export enum Domain {
   OldWorld = "Old World",
   Ishtar = "Ishtar",
 }

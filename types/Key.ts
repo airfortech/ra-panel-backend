@@ -1,9 +1,9 @@
-import { Realm } from "./Realm";
+import { Domain } from "./Domain";
 
 export interface Key {
   name: string;
   treasuryName: string;
-  domain: Realm;
+  domain: Domain;
   foundTimestamps: {
     date: string;
     npcName: string;

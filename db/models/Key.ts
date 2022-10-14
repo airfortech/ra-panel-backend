@@ -1,6 +1,7 @@
 import { Key as IKey } from "../../types/Key";
 import { messages } from "../../types/responseMessages";
 import { Schema, model, Document } from "mongoose";
+import { domainValidate } from "../validators/keyValidators";
 
 export interface IKeySchema extends Document, IKey {}
 
@@ -26,4 +27,9 @@ const keySchema = new Schema<IKey>({
   },
 });
 
-export const Enemy = model<IKeySchema>("Enemy", keySchema);
+keySchema.pre("save", async function (this: IKeySchema, next) {
+  this.domain = domainValidate(this.domain);
+  return next();
+});
+
+export const Key = model<IKeySchema>("Key", keySchema);

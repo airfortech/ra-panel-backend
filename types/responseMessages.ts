@@ -36,9 +36,13 @@ export const messages = {
     keyGiverDeleted: "Keygiver has been deleted.",
   },
   keys: {
+    nameExists: "Such key name exists. Choose other one.",
+    keyNotExists: "Such key not exists.",
     nameTooLong: "Name should have maximum 80 characters.",
     nameIsRequired: "Name is required.",
     treasuryNameTooLong: "Treasury name should have maximum 80 characters.",
+    keyAdded: "Key has been added.",
+    keyDeleted: "Key has been deleted.",
   },
   date: {
     invalidDate: "Invalid date format.",

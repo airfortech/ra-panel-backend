@@ -1,5 +1,5 @@
 import { KeyGiver as IKeyGiver } from "../../types/KeyGiver";
-import { messages, Status } from "../../types/responseMessages";
+import { messages } from "../../types/responseMessages";
 import { Schema, model, Document } from "mongoose";
 
 export interface IKeyGiverSchema extends Document, IKeyGiver {
