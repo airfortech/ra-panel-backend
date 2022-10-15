@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ts-node app.ts",
     "start:watch": "tsnd app.ts",
-    "db:create-users": "ts-node ./db/tools/createUsers.ts",
+    "db:create-users": "ts-node ./db/tools/createDb/createUsersDb.ts",
+    "db:create-db": "ts-node ./db/tools/createDb/createDb.ts",
     "build": "tsc"
   },
   "author": "",
