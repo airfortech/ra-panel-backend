@@ -4,7 +4,7 @@ export interface KeyGiver {
   respawnTime: number;
   respawns: {
     date: string;
-    wasEmpty: boolean;
+    keyName: string;
   }[];
   lastRespawn?: string;
   nextRespawn?: string;

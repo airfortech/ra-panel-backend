@@ -1,5 +1,4 @@
 import { Key } from "../../models/Key";
-import { enemies } from "./data/enemies";
 import { keys } from "./data/keys";
 
 export const createKeys = async () => {

@@ -72,7 +72,7 @@ content-type: application/json
 
 {
     "name": "duzy ciezki klucz",
-    "treasuryName": "Edalbert2"
+    "treasuryName": "Edalbert"
 }
 
 ### delete key
@@ -89,7 +89,7 @@ Authorization: {{token}}
 content-type: application/json
 
 {
-    "date": "Tue, 30 Apr 2022 22:00:00 GMT",
+    "date": "Tue, 30 May 2022 23:00:00 GMT",
     "npcName": "Rivannon"
 }
 
@@ -100,5 +100,5 @@ content-type: application/json
 
 {
     "date": "invalid date",
-    "wasEmpty": true
+    "npcName": true
 }

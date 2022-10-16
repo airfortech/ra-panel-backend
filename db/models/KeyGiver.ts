@@ -26,7 +26,7 @@ const keyGiverSchema = new Schema<IKeyGiver>({
     cast: messages.keyGivers.respawnTimeNotANumber,
   },
   respawns: {
-    type: [{ date: String, wasEmpty: Boolean }],
+    type: [{ date: String, keyName: String }],
     default: [],
   },
   isActive: {

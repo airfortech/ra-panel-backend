@@ -18,8 +18,8 @@ export const getKeyGiverDetails = async (req: Request, res: Response) => {
         404,
         Status.error
       );
-    const { name, description, respawnTime } = keyGiver;
-    const lastRespawn: string = lastRespawnDate(keyGiver.respawns);
+    const { name, description, respawnTime, respawns } = keyGiver;
+    const lastRespawn: string = lastRespawnDate(respawns);
     return res.status(200).json({
       status: Status.success,
       data: {
@@ -28,6 +28,7 @@ export const getKeyGiverDetails = async (req: Request, res: Response) => {
           name,
           description,
           respawnTime,
+          respawns,
           lastRespawn,
           nextRespawn: nextRespawnDate(lastRespawn, respawnTime),
         },

@@ -12,7 +12,7 @@ export const addKeyGiverTimestamp = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
     isIdValid(id, messages.keyGivers.keyGiverNotExists, 404);
-    const { date, wasEmpty }: { date: string; wasEmpty: boolean } = req.body;
+    const { date, keyName }: { date: string; keyName: string } = req.body;
 
     const newDate = dayjs.utc(date);
     if (!newDate.isValid())
@@ -28,12 +28,12 @@ export const addKeyGiverTimestamp = async (req: Request, res: Response) => {
 
     const lastRespawn = keyGiver.respawns[keyGiver.respawns.length - 1];
     if (!lastRespawn)
-      keyGiver.respawns.push({ date: newDate.format(), wasEmpty });
+      keyGiver.respawns.push({ date: newDate.format(), keyName });
     else {
       const previousDate = dayjs.utc(lastRespawn.date);
       if (newDate.diff(previousDate) <= 0)
         throw new CustomError(messages.date.dateNotNever, 400, Status.error);
-      keyGiver.respawns.push({ date: newDate.format(), wasEmpty });
+      keyGiver.respawns.push({ date: newDate.format(), keyName });
     }
 
     await keyGiver.save();
