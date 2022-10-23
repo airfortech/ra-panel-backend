@@ -14,13 +14,11 @@ export const login = async (req: Request, res: Response) => {
     if (!(await user.comparePassword(password)))
       throw new CustomError(messages.auth.wrongPassword, 401, Status.error);
     const token = createToken(role, "1d");
-    return res
-      .header("Authorization", "Bearer " + token)
-      .status(200)
-      .json({
-        status: Status.success,
-        data: { role },
-      });
+    return res.status(200).json({
+      status: Status.success,
+      message: "Logged in",
+      data: { role, token },
+    });
   } catch (e) {
     throw e;
   }
