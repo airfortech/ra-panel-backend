@@ -1,6 +1,7 @@
 import express from "express";
 import { join } from "path";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import "express-async-errors";
 import { enemiesRouter } from "./routes/enemies";
 import { authRouter } from "./routes/auth";
@@ -10,6 +11,7 @@ import { keyGiversRouter } from "./routes/keyGivers";
 import { keysRouter } from "./routes/keys";
 import { handleError } from "./utils/customError";
 import { connectToDB } from "./db/mongoose";
+import { languageDetector } from "./utils/languageDetector";
 import { config } from "./config/config";
 
 connectToDB();
@@ -19,9 +21,12 @@ const app = express();
 app.use(
   cors({
     origin: config.frontend.host,
+    credentials: true,
   })
 );
 app.use(express.json());
+app.use(cookieParser());
+app.use(languageDetector());
 
 app.use("/data", dataRouter);
 app.use("/api/auth", authRouter);

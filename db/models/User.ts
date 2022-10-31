@@ -2,6 +2,7 @@ import { User as IUser } from "../../types/User";
 import { messages } from "../../types/responseMessages";
 import { compare, genSalt, hash } from "bcrypt";
 import { Schema, model, Document } from "mongoose";
+import { config } from "../../config/config";
 
 export interface IUserSchema extends Document, IUser {
   comparePassword: (password: string) => Promise<boolean>;
@@ -16,8 +17,8 @@ const userSchema = new Schema<IUser>({
   },
   password: {
     type: String,
-    required: [true, messages.users.passwordRequiredError],
-    minLength: [5, messages.users.passwordMinLengthError],
+    required: [true, messages[config.lang].users.passwordRequiredError],
+    minLength: [5, messages[config.lang].users.passwordMinLengthError],
   },
 });
 

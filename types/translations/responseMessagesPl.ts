@@ -1,0 +1,47 @@
+export const messagesPl = {
+  default: "Coś poszło nie tak.",
+  auth: {
+    wrongRole: "Taka rola nie istnieje.",
+    wrongPassword: "Błędne hasło.",
+    unauthorized: "Brak dostępu.",
+    logout: "Wylogowałeś się.",
+    login: "Zalogowałeś się.",
+  },
+  users: {
+    noRolesInDb: "No roles found in database. Contact with admin.",
+    passwordChanged: "Password has been changed.",
+    passwordMinLengthError: "Password must be at least 5 characters long.",
+    passwordRequiredError: "Password is required.",
+  },
+  enemies: {
+    enemyExists: (name: string) => `Wróg ${name} już istnieje.`,
+    enemyNotExists: "Taki wróg nie istnieje.",
+    enemyAdded: (name: string) => `Wróg ${name} został dodany.`,
+    nameIsRequired: "Podaj imię wroga.",
+    enemyDeleted: (name: string) => `Wróg ${name} został usunięty.`,
+  },
+  keyGivers: {
+    keyGiverExists: "Such keygiver exists.",
+    keyGiverNotExists: "Such keygiver not exists.",
+    nameIsRequired: "Name is required.",
+    nameExists: "Such keygiver name exists. Choose other one.",
+    nameTooLong: "Name should have maximum 80 characters.",
+    descriptionTooLong: "Description should have maximum 4000 characters.",
+    respawnTimeNotANumber: "Respawn time must be a number of hours.",
+    keyGiverAdded: "Keygiver has been added.",
+    keyGiverDeleted: "Keygiver has been deleted.",
+  },
+  keys: {
+    nameExists: "Such key name exists. Choose other one.",
+    keyNotExists: "Such key not exists.",
+    nameTooLong: "Name should have maximum 80 characters.",
+    nameIsRequired: "Name is required.",
+    treasuryNameTooLong: "Treasury name should have maximum 80 characters.",
+    keyAdded: "Key has been added.",
+    keyDeleted: "Key has been deleted.",
+  },
+  date: {
+    invalidDate: "Invalid date format.",
+    dateNotNever: "Date must newer than previous one.",
+  },
+};

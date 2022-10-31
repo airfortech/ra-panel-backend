@@ -13,6 +13,10 @@ export const decodeToken = (token: string): UserRole => {
     const { role } = verify(token, config.secret.jwt) as TokenPayload;
     return role;
   } catch (e) {
-    throw new CustomError(messages.auth.unauthorized, 401, Status.error);
+    throw new CustomError(
+      messages[config.lang].auth.unauthorized,
+      401,
+      Status.error
+    );
   }
 };

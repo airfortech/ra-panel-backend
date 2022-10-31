@@ -1,5 +1,6 @@
 import { Status } from "../../types/responseMessages";
-import { Request, Response } from "express";
+import { Request } from "../../types/Request";
+import { Response } from "express";
 import { KeyGiver } from "../../db/models/KeyGiver";
 import { nextRespawnDate } from "../../utils/nextRespawnDate";
 import { lastRespawnDate } from "../../utils/lastRespawnDate";

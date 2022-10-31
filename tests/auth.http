@@ -1,7 +1,7 @@
 ### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
 
 ### Token variable
-@token = {{login.response.headers.Authorization}}
+@token = {{login.response.body.data.token}}
 
 ### Auth Api
 ### Login - Soldato
@@ -53,6 +53,10 @@ content-type: application/json
     "role": "Soldato",
     "password": "test1234x"
 }
+
+### GetMe
+GET http://localhost:3001/api/auth/getme
+Cookie: auth_token=asdasd
 
 ### Logout
 # @name login

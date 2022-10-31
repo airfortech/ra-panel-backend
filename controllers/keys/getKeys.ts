@@ -1,5 +1,6 @@
 import { Status } from "../../types/responseMessages";
-import { Request, Response } from "express";
+import { Request } from "../../types/Request";
+import { Response } from "express";
 import { Key } from "../../db/models/Key";
 import { averageKeyCaptureTime } from "../../utils/averageKeyCaptureTIme";
 

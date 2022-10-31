@@ -1,5 +1,6 @@
 import { messages, Status } from "../../types/responseMessages";
-import { Request, Response } from "express";
+import { Request } from "../../types/Request";
+import { Response } from "express";
 import { User } from "../../db/models/User";
 import { CustomError } from "../../utils/customError";
 import { getErrorsMessages } from "../../utils/getErrorsMessages";
@@ -10,12 +11,16 @@ export const changeUserPassword = async (req: Request, res: Response) => {
     const password: string = req.body.password;
     const user = await User.findOne({ id });
     if (!user)
-      throw new CustomError(messages.auth.wrongRole, 404, Status.error);
+      throw new CustomError(
+        messages[req.lang].auth.wrongRole,
+        404,
+        Status.error
+      );
 
     await user.changePassword(password);
     return res.status(200).json({
       status: Status.success,
-      message: messages.users.passwordChanged,
+      message: messages[req.lang].users.passwordChanged,
     });
   } catch (e) {
     if (e.errors)

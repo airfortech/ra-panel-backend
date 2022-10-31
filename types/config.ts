@@ -1,3 +1,4 @@
+import { Language } from "./Language";
 import { User } from "./User";
 
 export interface Config {
@@ -15,4 +16,5 @@ export interface Config {
     jwt?: string;
   };
   users?: User[];
+  lang: Language;
 }

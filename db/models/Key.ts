@@ -2,18 +2,19 @@ import { Key as IKey } from "../../types/Key";
 import { messages } from "../../types/responseMessages";
 import { Schema, model, Document } from "mongoose";
 import { domainValidate } from "../validators/keyValidators";
+import { config } from "../../config/config";
 
 export interface IKeySchema extends Document, IKey {}
 
 const keySchema = new Schema<IKey>({
   name: {
     type: String,
-    maxlength: [80, messages.keys.nameTooLong],
-    required: [true, messages.keys.nameIsRequired],
+    maxlength: [80, messages[config.lang].keys.nameTooLong],
+    required: [true, messages[config.lang].keys.nameIsRequired],
   },
   treasuryName: {
     type: String,
-    maxlength: [80, messages.keys.treasuryNameTooLong],
+    maxlength: [80, messages[config.lang].keys.treasuryNameTooLong],
     default: "",
   },
   domain: { type: String, default: null },

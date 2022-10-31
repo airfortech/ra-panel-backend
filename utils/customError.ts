@@ -1,5 +1,6 @@
-import { NextFunction, Request, Response } from "express";
 import { messages, Status } from "../types/responseMessages";
+import { Request } from "../types/Request";
+import { NextFunction, Response } from "express";
 
 export class CustomError extends Error {
   statusCode: number;
@@ -28,6 +29,8 @@ export const handleError = (
       .status(err.statusCode)
       .json({ status: err.status, message: err.message });
   } else {
-    res.status(500).json({ status: Status.error, message: messages.default });
+    res
+      .status(500)
+      .json({ status: Status.error, message: messages[req.lang].default });
   }
 };

@@ -12,6 +12,7 @@ export const config: Config = {
   db: {
     url: "mongodb://localhost:27017/ra-panel-db",
   },
+  lang: "en",
   secret: {
     jwt: "ljOIojISDLKJDSA8dUD)(SAJdA)(DS7AS)D(AJMAIPOSd890^&S(A*D^*&ASDLKASDJasdaSd",
   },
