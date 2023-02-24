@@ -12,11 +12,11 @@ const keyGiverSchema = new Schema<IKeyGiver>({
   name: {
     type: String,
     required: [true, messages[config.lang].keyGivers.nameIsRequired],
-    maxlength: [80, messages[config.lang].keyGivers.nameTooLong],
+    maxLength: [80, messages[config.lang].keyGivers.nameTooLong],
   },
   description: {
     type: String,
-    maxlength: [4000, messages[config.lang].keyGivers.descriptionTooLong],
+    maxLength: [4000, messages[config.lang].keyGivers.descriptionTooLong],
     default: "",
   },
   respawnTime: {

@@ -10,7 +10,7 @@ export const config: Config = {
     host: "http://localhost:3000",
   },
   db: {
-    url: "mongodb://localhost:27017/ra-panel-db",
+    url: "mongodb://127.0.0.1:27017/ra-panel-db",
   },
   lang: "en",
   secret: {

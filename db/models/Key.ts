@@ -9,12 +9,12 @@ export interface IKeySchema extends Document, IKey {}
 const keySchema = new Schema<IKey>({
   name: {
     type: String,
-    maxlength: [80, messages[config.lang].keys.nameTooLong],
+    maxLength: [80, messages[config.lang].keys.nameTooLong],
     required: [true, messages[config.lang].keys.nameIsRequired],
   },
   treasuryName: {
     type: String,
-    maxlength: [80, messages[config.lang].keys.treasuryNameTooLong],
+    maxLength: [80, messages[config.lang].keys.treasuryNameTooLong],
     default: "",
   },
   domain: { type: String, default: null },
