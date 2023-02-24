@@ -39,25 +39,25 @@ content-type: application/json
 ### Logout
 # @name login
 GET {{url}}/api/auth/logout
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### keys Api
 ### get all keys
 # @name keys
 GET {{url}}/api/keys
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### get key details
 GET {{url}}/api/keys/{{keyId}}
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### get key details - bad id
 GET {{url}}/api/keys/6345d568ae474b461be9581c
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### add new key
 POST {{url}}/api/keys
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 content-type: application/json
 
 {
@@ -68,7 +68,7 @@ content-type: application/json
 
 ### update key
 PATCH {{url}}/api/keys/{{keyId}}
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 content-type: application/json
 
 {
@@ -78,15 +78,15 @@ content-type: application/json
 
 ### delete key
 DELETE {{url}}/api/keys/{{keyId}}
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### delete key - bad id
 DELETE {{url}}/api/keys/6345d568ae474b
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### add new timestamp
 PATCH {{url}}/api/keys/addtimestamp/{{keyId}}
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 content-type: application/json
 
 {
@@ -96,7 +96,7 @@ content-type: application/json
 
 ### add new timestamp - bad date format
 PATCH {{url}}/api/keys/addtimestamp/{{keyId}}
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 content-type: application/json
 
 {
