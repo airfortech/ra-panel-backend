@@ -48,7 +48,7 @@ Authorization: Bearer {{token}}
 
 ### add enemy
 POST http://localhost:3001/api/enemies
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 content-type: application/json
 
 {
