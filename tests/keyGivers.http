@@ -1,13 +1,14 @@
 ### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
 
-### Token variable
+### Global variables
+@url = http://localhost:3001
 @token = {{login.response.headers.Authorization}}
 @keyGiverId = {{keyGivers.response.body.data.keyGivers[0].id}}
 
 ### Auth Api
 ### Login - Soldato
 # @name login
-POST http://localhost:3001/api/auth/login
+POST {{url}}/api/auth/login
 content-type: application/json
 
 {
@@ -17,7 +18,7 @@ content-type: application/json
 
 ### Login - Caporegime
 # @name login
-POST http://localhost:3001/api/auth/login
+POST {{url}}/api/auth/login
 content-type: application/json
 
 {
@@ -27,7 +28,7 @@ content-type: application/json
 
 ### Login - Consigliore
 # @name login
-POST http://localhost:3001/api/auth/login
+POST {{url}}/api/auth/login
 content-type: application/json
 
 {
@@ -37,25 +38,25 @@ content-type: application/json
 
 ### Logout
 # @name login
-GET http://localhost:3001/api/auth/logout
+GET {{url}}/api/auth/logout
 Authorization: {{token}}
 
 ### keyGivers Api
 ### get all keyGivers
 # @name keyGivers
-GET http://localhost:3001/api/keygivers
+GET {{url}}/api/keygivers
 Authorization: {{token}}
 
 ### get keyGiver details
-GET http://localhost:3001/api/keygivers/{{keyGiverId}}
+GET {{url}}/api/keygivers/{{keyGiverId}}
 Authorization: {{token}}
 
 ### get keyGiver details - bad id
-GET http://localhost:3001/api/keygivers/6345d568ae474b461be9581c
+GET {{url}}/api/keygivers/6345d568ae474b461be9581c
 Authorization: {{token}}
 
 ### add new keyGiver
-POST http://localhost:3001/api/keygivers
+POST {{url}}/api/keygivers
 Authorization: {{token}}
 content-type: application/json
 
@@ -65,7 +66,7 @@ content-type: application/json
 }
 
 ### update keyGiver
-PATCH http://localhost:3001/api/keygivers/{{keyGiverId}}
+PATCH {{url}}/api/keygivers/{{keyGiverId}}
 Authorization: {{token}}
 content-type: application/json
 
@@ -76,15 +77,15 @@ content-type: application/json
 }
 
 ### delete keyGiver
-DELETE http://localhost:3001/api/keygivers/{{keyGiverId}}
+DELETE {{url}}/api/keygivers/{{keyGiverId}}
 Authorization: {{token}}
 
 ### delete keyGiver - bad id
-DELETE http://localhost:3001/api/keygivers/6345d568ae474b
+DELETE {{url}}/api/keygivers/6345d568ae474b
 Authorization: {{token}}
 
 ### add new timestamp
-PATCH http://localhost:3001/api/keygivers/addtimestamp/{{keyGiverId}}
+PATCH {{url}}/api/keygivers/addtimestamp/{{keyGiverId}}
 Authorization: {{token}}
 content-type: application/json
 
@@ -94,7 +95,7 @@ content-type: application/json
 }
 
 ### add new timestamp - bad date format
-PATCH http://localhost:3001/api/keygivers/addtimestamp/{{keyGiverId}}
+PATCH {{url}}/api/keygivers/addtimestamp/{{keyGiverId}}
 Authorization: {{token}}
 content-type: application/json
 

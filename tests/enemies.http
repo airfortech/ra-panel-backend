@@ -1,13 +1,14 @@
 ### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
 
-### Token variable
+### Global variables
+@url = http://localhost:3001
 @token = {{login.response.body.data.token}}
 @enemyId = {{enemies.response.body.data.enemies[0].id}}
 
 ### Auth Api
 ### Login - Soldato
 # @name login
-POST http://localhost:3001/api/auth/login
+POST {{url}}/api/auth/login
 content-type: application/json
 
 {
@@ -17,7 +18,7 @@ content-type: application/json
 
 ### Login - Caporegime
 # @name login
-POST http://localhost:3001/api/auth/login
+POST {{url}}/api/auth/login
 content-type: application/json
 
 {
@@ -27,7 +28,7 @@ content-type: application/json
 
 ### Login - Consigliore
 # @name login
-POST http://localhost:3001/api/auth/login
+POST {{url}}/api/auth/login
 content-type: application/json
 
 {
@@ -37,17 +38,17 @@ content-type: application/json
 
 ### Logout
 # @name login
-GET http://localhost:3001/api/auth/logout
+GET {{url}}/api/auth/logout
 Authorization: {{token}}
 
 ### Enemies Api
 ### get all enemies
 # @name enemies
-GET http://localhost:3001/api/enemies
+GET {{url}}/api/enemies
 Authorization: Bearer {{token}}
 
 ### add enemy
-POST http://localhost:3001/api/enemies
+POST {{url}}/api/enemies
 Authorization: Bearer {{token}}
 content-type: application/json
 
@@ -56,5 +57,5 @@ content-type: application/json
 }
 
 ### delete enemy
-DELETE http://localhost:3001/api/enemies/{{enemyId}}
+DELETE {{url}}/api/enemies/{{enemyId}}
 Authorization: Bearer {{token}}

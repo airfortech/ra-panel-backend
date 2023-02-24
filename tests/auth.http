@@ -1,12 +1,13 @@
 ### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
 
-### Token variable
+### Global variables
+@url = http://localhost:3001
 @token = {{login.response.body.data.token}}
 
 ### Auth Api
 ### Login - Soldato
 # @name login
-POST http://localhost:3001/api/auth/login
+POST {{url}}/api/auth/login
 content-type: application/json
 
 {
@@ -16,7 +17,7 @@ content-type: application/json
 
 ### Login - Caporegime
 # @name login
-POST http://localhost:3001/api/auth/login
+POST {{url}}/api/auth/login
 content-type: application/json
 
 {
@@ -26,7 +27,7 @@ content-type: application/json
 
 ### Login - Consigliore
 # @name login
-POST http://localhost:3001/api/auth/login
+POST {{url}}/api/auth/login
 content-type: application/json
 
 {
@@ -36,7 +37,7 @@ content-type: application/json
 
 ### Login - wrong role
 # @name login
-POST http://localhost:3001/api/auth/login
+POST {{url}}/api/auth/login
 content-type: application/json
 
 {
@@ -46,7 +47,7 @@ content-type: application/json
 
 ### Login - wrong password
 # @name login
-POST http://localhost:3001/api/auth/login
+POST {{url}}/api/auth/login
 content-type: application/json
 
 {
@@ -55,10 +56,10 @@ content-type: application/json
 }
 
 ### GetMe
-GET http://localhost:3001/api/auth/getme
-Cookie: auth_token=asdasd
+GET {{url}}/api/auth/getme
+Cookie: auth_token={{token}}
 
 ### Logout
 # @name login
-GET http://localhost:3001/api/auth/logout
+GET {{url}}/api/auth/logout
 Authorization: {{token}}
