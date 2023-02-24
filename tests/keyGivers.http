@@ -2,7 +2,7 @@
 
 ### Global variables
 @url = http://localhost:3001
-@token = {{login.response.headers.Authorization}}
+@token = {{login.response.body.data.token}}
 @keyGiverId = {{keyGivers.response.body.data.keyGivers[0].id}}
 
 ### Auth Api
@@ -39,25 +39,25 @@ content-type: application/json
 ### Logout
 # @name login
 GET {{url}}/api/auth/logout
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### keyGivers Api
 ### get all keyGivers
 # @name keyGivers
 GET {{url}}/api/keygivers
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### get keyGiver details
 GET {{url}}/api/keygivers/{{keyGiverId}}
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### get keyGiver details - bad id
 GET {{url}}/api/keygivers/6345d568ae474b461be9581c
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### add new keyGiver
 POST {{url}}/api/keygivers
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 content-type: application/json
 
 {
@@ -67,7 +67,7 @@ content-type: application/json
 
 ### update keyGiver
 PATCH {{url}}/api/keygivers/{{keyGiverId}}
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 content-type: application/json
 
 {
@@ -78,25 +78,25 @@ content-type: application/json
 
 ### delete keyGiver
 DELETE {{url}}/api/keygivers/{{keyGiverId}}
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### delete keyGiver - bad id
 DELETE {{url}}/api/keygivers/6345d568ae474b
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### add new timestamp
 PATCH {{url}}/api/keygivers/addtimestamp/{{keyGiverId}}
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "date": "Tue, 30 Apr 2022 22:00:00 GMT",
+    "date": "Tue, 30 Apr 2023 23:00:00 GMT",
     "keyName": "duzy ciezki klucz"
 }
 
 ### add new timestamp - bad date format
 PATCH {{url}}/api/keygivers/addtimestamp/{{keyGiverId}}
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 content-type: application/json
 
 {

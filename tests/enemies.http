@@ -39,7 +39,7 @@ content-type: application/json
 ### Logout
 # @name login
 GET {{url}}/api/auth/logout
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### Enemies Api
 ### get all enemies
@@ -53,7 +53,7 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "name": "test Dfdf"
+    "name": "Dfdf"
 }
 
 ### delete enemy
