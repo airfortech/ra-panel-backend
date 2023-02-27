@@ -1,7 +1,4 @@
 ### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
 
-### Global variables
-@url = http://localhost:3001
-
 ### get enemies.txt
 GET {{url}}/data/enemies.txt

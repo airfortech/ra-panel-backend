@@ -1,7 +1,6 @@
 ### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
 
 ### Global variables
-@url = http://localhost:3001
 @token = {{login.response.body.data.token}}
 @keyId = {{keys.response.body.data.keys[0].id}}
 
