@@ -3,7 +3,7 @@ name: "[Test] Reset database"
 on: workflow_dispatch
 
 jobs:
-  reset database:
+  reset-database:
     runs-on: ubuntu-latest
 
     steps:

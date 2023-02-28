@@ -3,7 +3,7 @@ name: "[Test] Create Users"
 on: workflow_dispatch
 
 jobs:
-  create users:
+  create-users:
     runs-on: ubuntu-latest
 
     steps:
