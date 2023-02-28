@@ -1,4 +1,4 @@
-name: [Test] Create Users
+name: "[Test] Create Users"
 
 on: workflow_dispatch
 

@@ -1,4 +1,4 @@
-name: [Test] Reset database
+name: "[Test] Reset database"
 
 on: workflow_dispatch
 

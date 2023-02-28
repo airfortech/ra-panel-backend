@@ -1,4 +1,4 @@
-name: [Production] Create Users
+name: "[Production] Create Users"
 
 on: workflow_dispatch
 
