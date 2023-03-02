@@ -11,18 +11,23 @@ inputs:
 runs:
   using: composite
 
-    steps:
-      - name: get code
-        run: echo "get code"
-      - name: cache dependencies
-        run: echo "cache dependencies"
-      - name: install dependencies
-        run: echo "install dependencies"
-      - name: build app
-        run: echo "build app"
-      - name: create .env
-        uses: ./.github/actions/create-env
-        with:
-          environment: inputs.environment
-      - name: send app via ftp
-        run: echo "send app via ftp"
+  steps:
+    - name: get code
+      run: echo "get code"
+      shell: bash
+    - name: cache dependencies
+      run: echo "cache dependencies"
+      shell: bash
+    - name: install dependencies
+      run: echo "install dependencies"
+      shell: bash
+    - name: build app
+      run: echo "build app"
+      shell: bash
+    - name: create .env
+      uses: ./.github/actions/create-env
+      with:
+        environment: inputs.environment
+    - name: send app via ftp
+      run: echo "send app via ftp"
+      shell: bash
