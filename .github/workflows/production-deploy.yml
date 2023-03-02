@@ -7,5 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploying
-        run: echo "Deploying..."
+      - name: deploy
+        uses: ./.github/actions/deploy
+        with:
+          environment: "production"
+      - name: restart app via ssh
+        run: echo "restart app via ssh"
