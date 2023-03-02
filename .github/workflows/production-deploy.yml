@@ -1,0 +1,15 @@
+name: "[Production] Deploy"
+
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: deploy
+        uses: ./.github/actions/deploy
+        with:
+          environment: "production"
+      - name: restart app via ssh
+        run: echo "restart app via ssh"

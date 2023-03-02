@@ -1,0 +1,11 @@
+name: "[Production] Create Users"
+
+on: workflow_dispatch
+
+jobs:
+  create-users:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Creating users
+        run: echo "Creating users"

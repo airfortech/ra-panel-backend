@@ -1,0 +1,15 @@
+name: "[Test] Deploy"
+
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: deploy
+        uses: ./.github/actions/deploy
+        with:
+          environment: "test"
+      - name: restart app via ssh
+        run: echo "restart app via ssh"
