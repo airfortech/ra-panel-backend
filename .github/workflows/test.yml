@@ -1,0 +1,20 @@
+name: filters
+
+on:
+  workflow_dispatch:
+  push:
+    # triggerowanie pushowania wybranych branchy
+    branches:
+      - main
+      # * zastępuje każdy znak poza "/"
+      - "dev-*"
+      # może zawierać wiele "/"
+      - "feature/**"
+    # każda zmiana w "src"
+    paths:
+      - "src/**"
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job"

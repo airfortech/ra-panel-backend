@@ -21,7 +21,7 @@ runs:
       - name: build app
         run: echo "build app"
       - name: create .env
-        uses: ./github/actions/create-env
+        uses: ./.github/actions/create-env
         with:
           environment: inputs.environment
       - name: send app via ftp
