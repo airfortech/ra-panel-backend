@@ -1,0 +1,20 @@
+name: Create Env
+
+description: Create .env file based on env type
+
+inputs:
+  environment:
+    description: test/production
+    required: true
+    type: string
+
+runs:
+  using: composite
+
+    steps:
+      - name: create test .env
+        if: inputs.environment == "test"
+        run: echo "create test env"
+      - name: create production .env
+        if: inputs.environment == "production"
+        run: echo "create production env"
