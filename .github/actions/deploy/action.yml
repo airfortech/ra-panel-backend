@@ -4,17 +4,13 @@ description: Build app and deploy via ftp
 
 inputs:
   environment:
-    description: test/production
+    description: "test/production input"
     required: true
-    type: string
 
 runs:
   using: composite
 
   steps:
-    - name: get code
-      run: echo "get code"
-      shell: bash
     - name: cache dependencies
       run: echo "cache dependencies"
       shell: bash
@@ -27,7 +23,7 @@ runs:
     - name: create .env
       uses: ./.github/actions/create-env
       with:
-        environment: inputs.environment
+        environment: ${{ inputs.environment }}
     - name: send app via ftp
       run: echo "send app via ftp"
       shell: bash
