@@ -12,18 +12,34 @@ runs:
 
   steps:
     - name: cache dependencies
-      run: echo "cache dependencies"
+      id: cache
+      uses: actions/cache@v3
+      with:
+        path: node_modules
+        key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+    - name: Install dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm ci
       shell: bash
-    - name: install dependencies
-      run: echo "install dependencies"
+    - name: check installed files
+      run: |
+        ls -al
+        cd node_modules
+        ls -al
       shell: bash
     - name: build app
-      run: echo "build app"
+      run: npm run build
       shell: bash
     - name: create .env
       uses: ./.github/actions/create-env
       with:
         environment: ${{ inputs.environment }}
+    - name: check installed files
+      run: |
+        ls -al
+        cd dist
+        ls -al
+      shell: bash
     - name: send app via ftp
       run: echo "send app via ftp"
       shell: bash
