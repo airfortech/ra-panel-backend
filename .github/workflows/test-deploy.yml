@@ -9,9 +9,23 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
+      - name: Create env file
+        uses: ./.github/actions/create-env
+        with:
+          file-name: ".env"
+          directory: "./config"
+          APP_HOST: ${{ vars.APP_HOST_TEST }}
+          APP_PORT: ${{ vars.APP_PORT_TEST }}
+          FRONTEND_HOST: ${{ vars.FRONTEND_HOST_TEST }}
+          DB_URL: ${{ secrets.DB_URL_TEST }}
+          SECRET_JWT: ${{ secrets.SECRET_JWT_TEST }}
+          CONSIGLIORE_PASSWORD: ${{ secrets.CONSIGLIORE_PASSWORD_TEST }}
+          CAPOREGIME_PASSWORD: ${{ secrets.CAPOREGIME_PASSWORD_TEST }}
+          SOLDATO_PASSWORD: ${{ secrets.SOLDATO_PASSWORD_TEST }}
       - name: deploy
         uses: ./.github/actions/deploy
         with:
           environment: "test"
+          node-version: 18
       - name: restart app via ssh
         run: echo "restart app via ssh"

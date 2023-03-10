@@ -2,3 +2,4 @@
 /dist
 /config/config-production.ts
 .env.production
+.env.test

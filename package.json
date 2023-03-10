@@ -9,7 +9,7 @@
     "start:watch": "tsnd app.ts",
     "db:create-users": "ts-node ./db/tools/createDb/createUsersDb.ts",
     "db:create-db": "ts-node ./db/tools/createDb/createDb.ts",
-    "build": "tsc && cpy ./ !./node_modules !./**/*.ts !./.git !./tsconfig.json !./.* !./**/.env* !./tests !./.github !./.vscode dist"
+    "build": "tsc && cpy ./ !./node_modules !./**/*.ts !./.git !./tsconfig.json !./.* !./tests !./.github !./.vscode dist"
   },
   "author": "",
   "license": "ISC",
