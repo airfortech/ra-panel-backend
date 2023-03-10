@@ -9,9 +9,22 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
+      - name: Create env file
+        uses: ./.github/actions/create-env
+        with:
+          file-name: ".env"
+          directory: "./config"
+          APP_HOST: ${{ vars.APP_HOST_PRODUCTION }}
+          APP_PORT: ${{ vars.APP_PORT_PRODUCTION }}
+          FRONTEND_HOST: ${{ vars.FRONTEND_HOST_PRODUCTION }}
+          DB_URL: ${{ secrets.DB_URL_PRODUCTION }}
+          SECRET_JWT: ${{ secrets.SECRET_JWT_PRODUCTION }}
+          CONSIGLIORE_PASSWORD: ${{ secrets.CONSIGLIORE_PASSWORD_PRODUCTION }}
+          CAPOREGIME_PASSWORD: ${{ secrets.CAPOREGIME_PASSWORD_PRODUCTION }}
+          SOLDATO_PASSWORD: ${{ secrets.SOLDATO_PASSWORD_PRODUCTION }}
       - name: deploy
         uses: ./.github/actions/deploy
         with:
-          environment: "production"
+          environment: "test"
       - name: restart app via ssh
         run: echo "restart app via ssh"

@@ -31,17 +31,8 @@ runs:
     - name: build app
       run: |
         less ./config/.env
-        npm run build
-      shell: bash
-    - name: check installed files
-      run: |
         node -v
-        ls -al
-        cd dist
-        ls -al
-        cd config
-        ls -al
-        less .env
+        npm run build
       shell: bash
     - name: send app via ftp
       run: echo "send app via ftp"

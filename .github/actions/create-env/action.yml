@@ -40,5 +40,4 @@ runs:
         echo "CONSIGLIORE_PASSWORD: ${{ inputs.CONSIGLIORE_PASSWORD }}" >> ${{ inputs.file-name }}
         echo "CAPOREGIME_PASSWORD: ${{ inputs.CAPOREGIME_PASSWORD }}" >> ${{ inputs.file-name }}
         echo "SOLDATO_PASSWORD: ${{ inputs.SOLDATO_PASSWORD }}" >> ${{ inputs.file-name }}
-        less ${{ inputs.file-name }}
       shell: bash
