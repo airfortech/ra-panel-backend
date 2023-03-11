@@ -32,12 +32,12 @@ runs:
       run: |
         mkdir -p ${{ inputs.directory }}
         cd ${{ inputs.directory}}
-        echo "APP_HOST: ${{ inputs.APP_HOST }}" > ${{ inputs.file-name }}
-        echo "APP_PORT: ${{ inputs.APP_PORT }}" >> ${{ inputs.file-name }}
-        echo "FRONTEND_HOST: ${{ inputs.FRONTEND_HOST }}" >> ${{ inputs.file-name }}
-        echo "DB_URL: ${{ inputs.DB_URL }}" >> ${{ inputs.file-name }}
-        echo "SECRET_JWT: ${{ inputs.SECRET_JWT }}" >> ${{ inputs.file-name }}
-        echo "CONSIGLIORE_PASSWORD: ${{ inputs.CONSIGLIORE_PASSWORD }}" >> ${{ inputs.file-name }}
-        echo "CAPOREGIME_PASSWORD: ${{ inputs.CAPOREGIME_PASSWORD }}" >> ${{ inputs.file-name }}
-        echo "SOLDATO_PASSWORD: ${{ inputs.SOLDATO_PASSWORD }}" >> ${{ inputs.file-name }}
+        echo "APP_HOST=${{ inputs.APP_HOST }}" > ${{ inputs.file-name }}
+        echo "APP_PORT=${{ inputs.APP_PORT }}" >> ${{ inputs.file-name }}
+        echo "FRONTEND_HOST=${{ inputs.FRONTEND_HOST }}" >> ${{ inputs.file-name }}
+        echo "DB_URL=${{ inputs.DB_URL }}" >> ${{ inputs.file-name }}
+        echo "SECRET_JWT=${{ inputs.SECRET_JWT }}" >> ${{ inputs.file-name }}
+        echo "CONSIGLIORE_PASSWORD=${{ inputs.CONSIGLIORE_PASSWORD }}" >> ${{ inputs.file-name }}
+        echo "CAPOREGIME_PASSWORD=${{ inputs.CAPOREGIME_PASSWORD }}" >> ${{ inputs.file-name }}
+        echo "SOLDATO_PASSWORD=${{ inputs.SOLDATO_PASSWORD }}" >> ${{ inputs.file-name }}
       shell: bash

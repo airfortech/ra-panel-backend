@@ -27,5 +27,9 @@ jobs:
         with:
           environment: "test"
           node-version: 18
+          server: ${{ secrets.FTP_SERVER_TEST}}
+          username: ${{ secrets.FTP_USERNAME_TEST}}
+          password: ${{ secrets.FTP_PASSWORD_TEST}}
+          local-dir: ./dist/
       - name: restart app via ssh
         run: echo "restart app via ssh"

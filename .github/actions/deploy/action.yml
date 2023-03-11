@@ -3,12 +3,23 @@ name: Deploy
 description: Build app and deploy via ftp
 
 inputs:
-  environment:
-    description: "test/production input"
-    required: true
   node-version:
     description: "providing node version"
     required: false
+  server:
+    required: true
+  username:
+    required: true
+  password:
+    required: true
+  local-dir:
+    description: "must end with trailing slash /"
+    required: false
+    default: ./
+  server-dir:
+    description: "must end with trailing slash /"
+    required: false
+    default: ./
 
 runs:
   using: composite
@@ -29,11 +40,15 @@ runs:
       run: npm ci
       shell: bash
     - name: build app
-      run: |
-        less ./config/.env
-        node -v
-        npm run build
+      run: npm run build
       shell: bash
     - name: send app via ftp
-      run: echo "send app via ftp"
-      shell: bash
+      uses: SamKirkland/FTP-Deploy-Action@4.3.3
+      with:
+        server: ${{ inputs.server }}
+        username: ${{ inputs.username }}
+        password: ${{ inputs.password }}
+        local-dir: ${{ inputs.local-dir }}
+        server-dir: ${{ inputs.server-dir }}
+        timeout: 5000
+        protocol: ftps
