@@ -51,4 +51,4 @@ runs:
         local-dir: ${{ inputs.local-dir }}
         server-dir: ${{ inputs.server-dir }}
         timeout: 5000
-        protocol: ftps
+        protocol: ftp
