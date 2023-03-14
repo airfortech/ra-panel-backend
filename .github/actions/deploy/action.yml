@@ -12,14 +12,14 @@ inputs:
     required: true
   password:
     required: true
-  local-dir:
+  file:
     description: "must end with trailing slash /"
     required: false
     default: ./
   server-dir:
     description: "must end with trailing slash /"
     required: false
-    default: ./
+    default:
 
 runs:
   using: composite
@@ -42,13 +42,12 @@ runs:
     - name: build app
       run: npm run build
       shell: bash
+    - name: archive dist folder
+      run: |
+        cd dist
+        zip -r dist.zip .
+        mv dist.zip ../
+      shell: bash
     - name: send app via ftp
-      uses: SamKirkland/FTP-Deploy-Action@4.3.3
-      with:
-        server: ${{ inputs.server }}
-        username: ${{ inputs.username }}
-        password: ${{ inputs.password }}
-        local-dir: ${{ inputs.local-dir }}
-        server-dir: ${{ inputs.server-dir }}
-        timeout: 5000
-        protocol: ftp
+      run: curl -u ${{ inputs.username }}:${{ inputs.password }} -T ${{ inputs.file }} ftp://${{ inputs.server }}/${{ inputs.server-dir }}
+      shell: bash

@@ -25,11 +25,9 @@ jobs:
       - name: deploy
         uses: ./.github/actions/deploy
         with:
-          environment: "test"
-          node-version: 18
           server: ${{ secrets.FTP_SERVER_PRODUCTION}}
           username: ${{ secrets.FTP_USERNAME_PRODUCTION}}
           password: ${{ secrets.FTP_PASSWORD_PRODUCTION}}
-          local-dir: ./dist/
+          file: dist.zip
       - name: restart app via ssh
         run: echo "restart app via ssh"
