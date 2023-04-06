@@ -5,6 +5,15 @@ on: workflow_dispatch
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      APP_HOST: "${{ vars.APP_HOST_TEST }}"
+      APP_PORT: ${{ vars.APP_PORT_TEST }}
+      FRONTEND_HOST: ${{ vars.FRONTEND_HOST_TEST }}
+      DB_URL: ${{ secrets.DB_URL_TEST }}
+      SECRET_JWT: ${{ secrets.SECRET_JWT_TEST }}
+      CONSIGLIORE_PASSWORD: ${{ secrets.CONSIGLIORE_PASSWORD_TEST }}
+      CAPOREGIME_PASSWORD: ${{ secrets.CAPOREGIME_PASSWORD_TEST }}
+      SOLDATO_PASSWORD: ${{ secrets.SOLDATO_PASSWORD_TEST }}
 
     steps:
       - name: Get code
@@ -14,14 +23,14 @@ jobs:
         with:
           file-name: ".env"
           directory: "./config"
-          APP_HOST: ${{ vars.APP_HOST_TEST }}
-          APP_PORT: ${{ vars.APP_PORT_TEST }}
-          FRONTEND_HOST: ${{ vars.FRONTEND_HOST_TEST }}
-          DB_URL: ${{ secrets.DB_URL_TEST }}
-          SECRET_JWT: ${{ secrets.SECRET_JWT_TEST }}
-          CONSIGLIORE_PASSWORD: ${{ secrets.CONSIGLIORE_PASSWORD_TEST }}
-          CAPOREGIME_PASSWORD: ${{ secrets.CAPOREGIME_PASSWORD_TEST }}
-          SOLDATO_PASSWORD: ${{ secrets.SOLDATO_PASSWORD_TEST }}
+          app_host: ${{ env.APP_HOST }}
+          app_port: ${{ env.APP_PORT }}
+          frontend_host: ${{ env.FRONTEND_HOST }}
+          db_url: ${{ env.DB_URL }}
+          secret_jwt: ${{ env.SECRET_JWT }}
+          consigliore_password: ${{ env.CONSIGLIORE_PASSWORD }}
+          caporegime_password: ${{ env.CAPOREGIME_PASSWORD }}
+          soldato_password: ${{ env.SOLDATO_PASSWORD }}
       - name: deploy
         uses: ./.github/actions/deploy
         with:

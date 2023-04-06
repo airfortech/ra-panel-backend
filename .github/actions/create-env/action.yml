@@ -7,21 +7,21 @@ inputs:
     required: false
   file-name:
     required: true
-  APP_HOST:
+  app_host:
     required: true
-  APP_PORT:
+  app_port:
     required: true
-  FRONTEND_HOST:
+  frontend_host:
     required: true
-  DB_URL:
+  db_url:
     required: true
-  SECRET_JWT:
+  secret_jwt:
     required: true
-  CONSIGLIORE_PASSWORD:
+  consigliore_password:
     required: true
-  CAPOREGIME_PASSWORD:
+  caporegime_password:
     required: true
-  SOLDATO_PASSWORD:
+  soldato_password:
     required: true
 
 runs:
@@ -32,12 +32,12 @@ runs:
       run: |
         mkdir -p ${{ inputs.directory }}
         cd ${{ inputs.directory}}
-        echo 'APP_HOST="${{ inputs.APP_HOST }}"' > ${{ inputs.file-name }}
-        echo 'APP_PORT=${{ inputs.APP_PORT }}' >> ${{ inputs.file-name }}
-        echo 'FRONTEND_HOST="${{ inputs.FRONTEND_HOST }}"' >> ${{ inputs.file-name }}
-        echo 'DB_URL="${{ inputs.DB_URL }}"' >> ${{ inputs.file-name }}
-        echo 'SECRET_JWT="${{ inputs.SECRET_JWT }}"' >> ${{ inputs.file-name }}
-        echo 'CONSIGLIORE_PASSWORD="${{ inputs.CONSIGLIORE_PASSWORD }}"' >> ${{ inputs.file-name }}
-        echo 'CAPOREGIME_PASSWORD="${{ inputs.CAPOREGIME_PASSWORD }}"' >> ${{ inputs.file-name }}
-        echo 'SOLDATO_PASSWORD="${{ inputs.SOLDATO_PASSWORD }}"' >> ${{ inputs.file-name }}
+        echo 'APP_HOST="${{ inputs.app_host }}"' > ${{ inputs.file-name }}
+        echo 'APP_PORT=${{ inputs.app_port }}' >> ${{ inputs.file-name }}
+        echo 'FRONTEND_HOST="${{ inputs.frontend_host }}"' >> ${{ inputs.file-name }}
+        echo 'DB_URL="${{ inputs.db_url }}"' >> ${{ inputs.file-name }}
+        echo 'SECRET_JWT="${{ inputs.secret_jwt }}"' >> ${{ inputs.file-name }}
+        echo 'CONSIGLIORE_PASSWORD="${{ inputs.consigliore_password }}"' >> ${{ inputs.file-name }}
+        echo 'CAPOREGIME_PASSWORD="${{ inputs.caporegime_password }}"' >> ${{ inputs.file-name }}
+        echo 'SOLDATO_PASSWORD="${{ inputs.soldato_password }}"' >> ${{ inputs.file-name }}
       shell: bash
