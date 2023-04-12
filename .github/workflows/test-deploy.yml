@@ -14,7 +14,10 @@ jobs:
       CONSIGLIORE_PASSWORD: ${{ secrets.CONSIGLIORE_PASSWORD_TEST }}
       CAPOREGIME_PASSWORD: ${{ secrets.CAPOREGIME_PASSWORD_TEST }}
       SOLDATO_PASSWORD: ${{ secrets.SOLDATO_PASSWORD_TEST }}
-
+      SSH_USERNAME: ${{secrets.SSH_USERNAME_TEST}}
+      SSH_SERVER: ${{secrets.SSH_SERVER_TEST}}
+      SSH_KEY: ${{secrets.SSH_KEY_TEST}}
+      SSH_SERVER_DIR: ${{secrets.SSH_SERVER_DIR_TEST}}
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -35,9 +38,10 @@ jobs:
         uses: ./.github/actions/deploy
         with:
           node-version: 18
-          server: ${{ secrets.FTP_SERVER_TEST}}
-          username: ${{ secrets.FTP_USERNAME_TEST}}
-          password: ${{ secrets.FTP_PASSWORD_TEST}}
+          username: ${{ env.SSH_USERNAME}}
+          server: ${{ env.SSH_SERVER}}
+          server-dir: ${{ env.SSH_SERVER_DIR}}
+          ssh-key: ${{ env.SSH_KEY}}
           file: dist.zip
       - name: restart app via ssh
         run: echo "restart app via ssh"

@@ -6,20 +6,18 @@ inputs:
   node-version:
     description: "providing node version"
     required: false
-  server:
-    required: true
   username:
     required: true
-  password:
+  server:
     required: true
-  file:
-    description: "must end with trailing slash /"
-    required: false
-    default: ./
   server-dir:
     description: "must end with trailing slash /"
     required: false
-    default:
+    default: ~/
+  ssh-key:
+    required: true
+  file:
+    required: true
 
 runs:
   using: composite
@@ -48,6 +46,9 @@ runs:
         zip -r dist.zip .
         mv dist.zip ../
       shell: bash
-    - name: send app via ftp
-      run: curl -u ${{ inputs.username }}:${{ inputs.password }} -T ${{ inputs.file }} ftp://${{ inputs.server }}/${{ inputs.server-dir }}
+    - name: send app via ssh
+      run: |
+        echo "${{ inputs.ssh-key }}" > ~/.ssh.private-key
+        chmod 600 ~/.ssh.private-key
+        scp -o StrictHostKeyChecking=no -i ~/.ssh.private-key ${{ inputs.file }} ${{ inputs.username }}@${{ inputs.server }}:${{ inputs.server-dir }}
       shell: bash
