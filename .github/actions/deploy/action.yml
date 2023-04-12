@@ -11,7 +11,7 @@ inputs:
   server:
     required: true
   server-dir:
-    description: "must end with trailing slash /"
+    description: "must end with trailing slash / and must exist"
     required: false
     default: ~/
   ssh-key:
@@ -42,13 +42,23 @@ runs:
       shell: bash
     - name: archive dist folder
       run: |
+        mkdir -p dist/config
+        cp config/.env dist/config
         cd dist
-        zip -r dist.zip .
-        mv dist.zip ../
+        zip -r ${{ inputs.file }} .
+        mv ${{ inputs.file }} ../
       shell: bash
     - name: send app via ssh
       run: |
         echo "${{ inputs.ssh-key }}" > ~/.ssh.private-key
         chmod 600 ~/.ssh.private-key
         scp -o StrictHostKeyChecking=no -i ~/.ssh.private-key ${{ inputs.file }} ${{ inputs.username }}@${{ inputs.server }}:${{ inputs.server-dir }}
+      shell: bash
+    - name: unpack files and delete archive file
+      run: |
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh.private-key ${{ inputs.username }}@${{ inputs.server }} << EOL
+        cd ${{ inputs.server-dir}}
+        unzip -o ${{ inputs.file }}
+        rm ${{ inputs.file }}
+        EOL
       shell: bash

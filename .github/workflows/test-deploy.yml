@@ -40,7 +40,7 @@ jobs:
           node-version: 18
           username: ${{ env.SSH_USERNAME}}
           server: ${{ env.SSH_SERVER}}
-          server-dir: ${{ env.SSH_SERVER_DIR}}
+          server-dir: test/
           ssh-key: ${{ env.SSH_KEY}}
           file: dist.zip
       - name: restart app via ssh
