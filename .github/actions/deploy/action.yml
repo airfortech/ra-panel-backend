@@ -54,11 +54,12 @@ runs:
         chmod 600 ~/.ssh.private-key
         scp -o StrictHostKeyChecking=no -i ~/.ssh.private-key ${{ inputs.file }} ${{ inputs.username }}@${{ inputs.server }}:${{ inputs.server-dir }}
       shell: bash
-    - name: unpack files and delete archive file
+    - name: unpack files, delete archive file and install packages
       run: |
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh.private-key ${{ inputs.username }}@${{ inputs.server }} << EOL
+        ssh -T -o StrictHostKeyChecking=no -i ~/.ssh.private-key ${{ inputs.username }}@${{ inputs.server }} << EOL
         cd ${{ inputs.server-dir}}
         unzip -o ${{ inputs.file }}
         rm ${{ inputs.file }}
+        npm ci --no-optional
         EOL
       shell: bash

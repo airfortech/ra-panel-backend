@@ -21,7 +21,7 @@ runs:
       run: |
         echo "${{ inputs.ssh-key }}" > ~/.ssh.private-key
         chmod 600 ~/.ssh.private-key
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh.private-key ${{ inputs.username }}@${{ inputs.server }} << EOL
+        ssh -T -o StrictHostKeyChecking=no -i ~/.ssh.private-key ${{ inputs.username }}@${{ inputs.server }} << EOL
         devil www restart ${{ inputs.domain }}
         EOL
       shell: bash
