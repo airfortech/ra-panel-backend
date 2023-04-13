@@ -6,6 +6,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
+      DOMAIN: ${{ vars.DOMAIN_TEST }}
       APP_HOST: "${{ vars.APP_HOST_TEST }}"
       APP_PORT: ${{ vars.APP_PORT_TEST }}
       FRONTEND_HOST: ${{ vars.FRONTEND_HOST_TEST }}
@@ -40,8 +41,13 @@ jobs:
           node-version: 18
           username: ${{ env.SSH_USERNAME}}
           server: ${{ env.SSH_SERVER}}
-          server-dir: test/
+          server-dir: ${{ env.SSH_SERVER_DIR}}
           ssh-key: ${{ env.SSH_KEY}}
           file: dist.zip
       - name: restart app via ssh
-        run: echo "restart app via ssh"
+        uses: ./.github/actions/restart-app
+        with:
+          username: ${{ env.SSH_USERNAME}}
+          server: ${{ env.SSH_SERVER}}
+          ssh-key: ${{ env.SSH_KEY}}
+          domain: ${{ env.DOMAIN}}
