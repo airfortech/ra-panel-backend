@@ -60,6 +60,7 @@ runs:
         cd ${{ inputs.server-dir}}
         unzip -o ${{ inputs.file }}
         rm ${{ inputs.file }}
-        npm ci --no-optional
+        node -v
+        npm install --production
         EOL
       shell: bash
