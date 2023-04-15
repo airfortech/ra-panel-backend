@@ -5,7 +5,20 @@ on: workflow_dispatch
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    env:
+      DOMAIN: ${{ vars.DOMAIN_PRODUCTION }}
+      APP_HOST: "${{ vars.APP_HOST_PRODUCTION }}"
+      APP_PORT: ${{ vars.APP_PORT_PRODUCTION }}
+      FRONTEND_HOST: ${{ vars.FRONTEND_HOST_PRODUCTION }}
+      DB_URL: ${{ secrets.DB_URL_PRODUCTION }}
+      SECRET_JWT: ${{ secrets.SECRET_JWT_PRODUCTION }}
+      CONSIGLIORE_PASSWORD: ${{ secrets.CONSIGLIORE_PASSWORD_PRODUCTION }}
+      CAPOREGIME_PASSWORD: ${{ secrets.CAPOREGIME_PASSWORD_PRODUCTION }}
+      SOLDATO_PASSWORD: ${{ secrets.SOLDATO_PASSWORD_PRODUCTION }}
+      SSH_USERNAME: ${{secrets.SSH_USERNAME_PRODUCTION}}
+      SSH_SERVER: ${{secrets.SSH_SERVER_PRODUCTION}}
+      SSH_KEY: ${{secrets.SSH_KEY_PRODUCTION}}
+      SSH_SERVER_DIR: ${{secrets.SSH_SERVER_DIR_PRODUCTION}}
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -14,20 +27,27 @@ jobs:
         with:
           file-name: ".env"
           directory: "./config"
-          APP_HOST: ${{ vars.APP_HOST_PRODUCTION }}
-          APP_PORT: ${{ vars.APP_PORT_PRODUCTION }}
-          FRONTEND_HOST: ${{ vars.FRONTEND_HOST_PRODUCTION }}
-          DB_URL: ${{ secrets.DB_URL_PRODUCTION }}
-          SECRET_JWT: ${{ secrets.SECRET_JWT_PRODUCTION }}
-          CONSIGLIORE_PASSWORD: ${{ secrets.CONSIGLIORE_PASSWORD_PRODUCTION }}
-          CAPOREGIME_PASSWORD: ${{ secrets.CAPOREGIME_PASSWORD_PRODUCTION }}
-          SOLDATO_PASSWORD: ${{ secrets.SOLDATO_PASSWORD_PRODUCTION }}
+          app_host: ${{ env.APP_HOST }}
+          app_port: ${{ env.APP_PORT }}
+          frontend_host: ${{ env.FRONTEND_HOST }}
+          db_url: ${{ env.DB_URL }}
+          secret_jwt: ${{ env.SECRET_JWT }}
+          consigliore_password: ${{ env.CONSIGLIORE_PASSWORD }}
+          caporegime_password: ${{ env.CAPOREGIME_PASSWORD }}
+          soldato_password: ${{ env.SOLDATO_PASSWORD }}
       - name: deploy
         uses: ./.github/actions/deploy
         with:
-          server: ${{ secrets.FTP_SERVER_PRODUCTION}}
-          username: ${{ secrets.FTP_USERNAME_PRODUCTION}}
-          password: ${{ secrets.FTP_PASSWORD_PRODUCTION}}
+          node-version: 18
+          username: ${{ env.SSH_USERNAME}}
+          server: ${{ env.SSH_SERVER}}
+          server-dir: ${{ env.SSH_SERVER_DIR}}
+          ssh-key: ${{ env.SSH_KEY}}
           file: dist.zip
       - name: restart app via ssh
-        run: echo "restart app via ssh"
+        uses: ./.github/actions/restart-app
+        with:
+          username: ${{ env.SSH_USERNAME}}
+          server: ${{ env.SSH_SERVER}}
+          ssh-key: ${{ env.SSH_KEY}}
+          domain: ${{ env.DOMAIN}}
