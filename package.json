@@ -9,7 +9,7 @@
     "start:watch": "tsnd app.ts",
     "db:create-users": "ts-node ./db/tools/createDb/createUsersDb.ts",
     "db:create-db": "ts-node ./db/tools/createDb/createDb.ts",
-    "build": "tsc && cpy ./ '!node_modules' '!**/*.ts' '!tsconfig.json' '!.*' '!tests' '!config/.env*' '!dist' dist"
+    "build": "tsc && rsync -avm --exclude-from='.build-rsync-exclude' ./ dist"
   },
   "author": "",
   "license": "ISC",
@@ -17,7 +17,6 @@
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
-    "cpy-cli": "^4.2.0",
     "dayjs": "^1.11.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
