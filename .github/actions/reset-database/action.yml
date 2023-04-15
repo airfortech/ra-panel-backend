@@ -1,0 +1,27 @@
+name: Reset database
+
+inputs:
+  username:
+    required: true
+  server:
+    required: true
+  ssh-key:
+    required: true
+  server-dir:
+    description: "must end with trailing slash / and must exist"
+    required: false
+    default: ~/
+
+runs:
+  using: composite
+
+  steps:
+    - name: reset database
+      run: |
+        echo "${{ inputs.ssh-key }}" > ~/.ssh.private-key
+        chmod 600 ~/.ssh.private-key
+        ssh -T -o StrictHostKeyChecking=no -i ~/.ssh.private-key ${{ inputs.username }}@${{ inputs.server }} << EOL
+        cd ${{ inputs.server-dir}}
+        node ./db/tools/createDb/createDb.js
+        EOL
+      shell: bash
