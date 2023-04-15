@@ -1,21 +1,43 @@
-name: Create Env
+name: Create env
 
-description: Create .env file based on env type
+description: Create env file
 
 inputs:
-  environment:
-    description: "test/production input"
+  directory:
+    required: false
+  file-name:
+    required: true
+  app_host:
+    required: true
+  app_port:
+    required: true
+  frontend_host:
+    required: true
+  db_url:
+    required: true
+  secret_jwt:
+    required: true
+  consigliore_password:
+    required: true
+  caporegime_password:
+    required: true
+  soldato_password:
     required: true
 
 runs:
   using: composite
 
   steps:
-    - name: create test .env
-      if: inputs.environment == 'test'
-      run: echo "create test env"
-      shell: bash
-    - name: create production .env
-      if: inputs.environment == 'production'
-      run: echo "create production env"
+    - name: create file
+      run: |
+        mkdir -p ${{ inputs.directory }}
+        cd ${{ inputs.directory}}
+        echo 'APP_HOST="${{ inputs.app_host }}"' > ${{ inputs.file-name }}
+        echo 'APP_PORT=${{ inputs.app_port }}' >> ${{ inputs.file-name }}
+        echo 'FRONTEND_HOST="${{ inputs.frontend_host }}"' >> ${{ inputs.file-name }}
+        echo 'DB_URL="${{ inputs.db_url }}"' >> ${{ inputs.file-name }}
+        echo 'SECRET_JWT="${{ inputs.secret_jwt }}"' >> ${{ inputs.file-name }}
+        echo 'CONSIGLIORE_PASSWORD="${{ inputs.consigliore_password }}"' >> ${{ inputs.file-name }}
+        echo 'CAPOREGIME_PASSWORD="${{ inputs.caporegime_password }}"' >> ${{ inputs.file-name }}
+        echo 'SOLDATO_PASSWORD="${{ inputs.soldato_password }}"' >> ${{ inputs.file-name }}
       shell: bash

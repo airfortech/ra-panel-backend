@@ -5,13 +5,49 @@ on: workflow_dispatch
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    env:
+      DOMAIN: ${{ vars.DOMAIN_TEST }}
+      APP_HOST: "${{ vars.APP_HOST_TEST }}"
+      APP_PORT: ${{ vars.APP_PORT_TEST }}
+      FRONTEND_HOST: ${{ vars.FRONTEND_HOST_TEST }}
+      DB_URL: ${{ secrets.DB_URL_TEST }}
+      SECRET_JWT: ${{ secrets.SECRET_JWT_TEST }}
+      CONSIGLIORE_PASSWORD: ${{ secrets.CONSIGLIORE_PASSWORD_TEST }}
+      CAPOREGIME_PASSWORD: ${{ secrets.CAPOREGIME_PASSWORD_TEST }}
+      SOLDATO_PASSWORD: ${{ secrets.SOLDATO_PASSWORD_TEST }}
+      SSH_USERNAME: ${{secrets.SSH_USERNAME_TEST}}
+      SSH_SERVER: ${{secrets.SSH_SERVER_TEST}}
+      SSH_KEY: ${{secrets.SSH_KEY_TEST}}
+      SSH_SERVER_DIR: ${{secrets.SSH_SERVER_DIR_TEST}}
     steps:
       - name: Get code
         uses: actions/checkout@v3
+      - name: Create env file
+        uses: ./.github/actions/create-env
+        with:
+          file-name: ".env"
+          directory: "./config"
+          app_host: ${{ env.APP_HOST }}
+          app_port: ${{ env.APP_PORT }}
+          frontend_host: ${{ env.FRONTEND_HOST }}
+          db_url: ${{ env.DB_URL }}
+          secret_jwt: ${{ env.SECRET_JWT }}
+          consigliore_password: ${{ env.CONSIGLIORE_PASSWORD }}
+          caporegime_password: ${{ env.CAPOREGIME_PASSWORD }}
+          soldato_password: ${{ env.SOLDATO_PASSWORD }}
       - name: deploy
         uses: ./.github/actions/deploy
         with:
-          environment: "test"
+          node-version: 18
+          username: ${{ env.SSH_USERNAME}}
+          server: ${{ env.SSH_SERVER}}
+          server-dir: ${{ env.SSH_SERVER_DIR}}
+          ssh-key: ${{ env.SSH_KEY}}
+          file: dist.zip
       - name: restart app via ssh
-        run: echo "restart app via ssh"
+        uses: ./.github/actions/restart-app
+        with:
+          username: ${{ env.SSH_USERNAME}}
+          server: ${{ env.SSH_SERVER}}
+          ssh-key: ${{ env.SSH_KEY}}
+          domain: ${{ env.DOMAIN}}

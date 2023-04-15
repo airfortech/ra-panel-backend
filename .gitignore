@@ -1,4 +1,5 @@
 /node_modules
 /dist
-/config/config-production.ts
 .env.production
+.env.test
+todo.txt
