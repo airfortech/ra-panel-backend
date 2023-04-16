@@ -3,6 +3,9 @@
     "local": {
       "url": "http://localhost:3001"
     },
+    "local-wsl2": {
+      "url": "http://192.168.145.85:3001"
+    },
     "test": {
       "url": "https://ra-test.trycodeit.com:3001"
     },
