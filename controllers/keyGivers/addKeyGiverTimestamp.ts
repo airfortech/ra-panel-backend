@@ -2,20 +2,17 @@ import { messages, Status } from "../../types/responseMessages";
 import { Request } from "../../types/Request";
 import { Response } from "express";
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
 import { KeyGiver } from "../../db/models/KeyGiver";
 import { CustomError } from "../../utils/customError";
 import { isIdValid } from "../../db/validators/universalValidators";
-
-dayjs.extend(utc);
 
 export const addKeyGiverTimestamp = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
     isIdValid(id, messages[req.lang].keyGivers.keyGiverNotExists, 404);
-    const { date, keyName }: { date: string; keyName: string } = req.body;
+    const { date, keyName }: { date: number; keyName: string } = req.body;
 
-    const newDate = dayjs.utc(date);
+    const newDate = dayjs(date);
     if (!newDate.isValid())
       throw new CustomError(
         messages[req.lang].date.invalidDate,
@@ -33,16 +30,16 @@ export const addKeyGiverTimestamp = async (req: Request, res: Response) => {
 
     const lastRespawn = keyGiver.respawns[keyGiver.respawns.length - 1];
     if (!lastRespawn)
-      keyGiver.respawns.push({ date: newDate.format(), keyName });
+      keyGiver.respawns.push({ date: newDate.valueOf(), keyName });
     else {
-      const previousDate = dayjs.utc(lastRespawn.date);
+      const previousDate = dayjs(lastRespawn.date);
       if (newDate.diff(previousDate) <= 0)
         throw new CustomError(
           messages[req.lang].date.dateNotNever,
           400,
           Status.error
         );
-      keyGiver.respawns.push({ date: newDate.format(), keyName });
+      keyGiver.respawns.push({ date: newDate.valueOf(), keyName });
     }
 
     await keyGiver.save();

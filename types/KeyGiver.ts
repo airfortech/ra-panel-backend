@@ -3,10 +3,10 @@ export interface KeyGiver {
   description?: string;
   respawnTime: number;
   respawns: {
-    date: string;
+    date: number;
     keyName: string;
   }[];
-  lastRespawn?: string;
-  nextRespawn?: string;
+  lastRespawn?: number;
+  nextRespawn?: number;
   isActive: boolean;
 }

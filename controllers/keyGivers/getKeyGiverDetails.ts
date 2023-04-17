@@ -20,7 +20,7 @@ export const getKeyGiverDetails = async (req: Request, res: Response) => {
         Status.error
       );
     const { name, description, respawnTime, respawns } = keyGiver;
-    const lastRespawn: string = lastRespawnDate(respawns);
+    const lastRespawn = lastRespawnDate(respawns);
     return res.status(200).json({
       status: Status.success,
       data: {

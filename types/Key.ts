@@ -5,7 +5,7 @@ export interface Key {
   treasuryName: string;
   domain: Domain;
   foundTimestamps: {
-    date: string;
+    date: number;
     npcName: string;
   }[];
   averageCaptureTime?: number;

@@ -19,7 +19,7 @@ const keySchema = new Schema<IKey>({
   },
   domain: { type: String, default: null },
   foundTimestamps: {
-    type: [{ date: String, npcName: String }],
+    type: [{ date: Number, npcName: String }],
     default: [],
   },
   isActive: {

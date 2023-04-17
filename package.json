@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "start:dev": "ts-node app.ts",
-    "start:watch": "tsnd app.ts",
+    "start:watch": "tsnd --poll --ignore-watch node_modules app.ts",
     "db:create-users": "ts-node ./db/tools/createDb/createUsersDb.ts",
     "db:create-db": "ts-node ./db/tools/createDb/createDb.ts",
     "build": "tsc && rsync -avm --exclude-from='.build-rsync-exclude' ./ dist"
