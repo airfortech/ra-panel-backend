@@ -1,5 +1,5 @@
 import { messagesEn } from "./translations/responseMessagesEn";
-import { messagesPl } from "./translations/responseMessagesPl";
+// import { messagesPl } from "./translations/responseMessagesPl";
 
 export enum Status {
   success = "success",
@@ -8,5 +8,5 @@ export enum Status {
 
 export const messages = {
   en: messagesEn,
-  pl: messagesPl,
+  // pl: messagesPl,
 };

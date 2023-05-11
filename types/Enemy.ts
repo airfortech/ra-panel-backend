@@ -15,5 +15,5 @@ export interface Enemy {
   comment: string;
   addDates: number[];
   removeDates: number[];
-  isActiveEnemy: number;
+  isActiveEnemy: boolean;
 }

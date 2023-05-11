@@ -19,6 +19,7 @@ export const messagesPl = {
     enemyAdded: (name: string) => `Wróg ${name} został dodany.`,
     nameIsRequired: "Podaj imię wroga.",
     enemyDeleted: (name: string) => `Wróg ${name} został usunięty.`,
+    nameTooLong: "Name should have maximum 30 characters.",
   },
   keyGivers: {
     keyGiverExists: "Such keygiver exists.",
