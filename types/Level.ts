@@ -1,0 +1,15 @@
+export enum Level {
+  level01 = "niedoświadczony",
+  level02 = "widział już to i owo",
+  level03 = "pewnie stąpa po świecie",
+  level04 = "niejedno widział",
+  level05 = "swoje przeżył",
+  level06 = "doświadczony",
+  level07 = "wiele przeszedł",
+  level08 = "widział kawal świata",
+  level09 = "bardzo doświadczony",
+  level10 = "zwiedził cały świat",
+  level11 = "wielce doświadczony",
+  level12 = "widział i doświadczył wszystkiego",
+  level13 = "osoba owiana legendą",
+}
