@@ -1,9 +1,9 @@
 export enum Race {
-  human = "człowiek",
+  human = "czlowiek",
   elf = "elf",
   dwarf = "krasnolud",
   ogr = "ogr",
   halfling = "halfling",
   gnome = "gnom",
-  halfelf = "półelf",
+  halfelf = "polelf",
 }

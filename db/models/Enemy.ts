@@ -19,14 +19,13 @@ const enemySchema = new Schema<IEnemy>({
   },
   short: {
     type: String,
-    required: [true, messages[config.lang].keys.nameIsRequired],
     maxLength: [50, messages[config.lang].enemies.shortTooLong],
     default: null,
   },
   race: {
     type: String,
     enum: {
-      values: Object.values(Race),
+      values: [...Object.values(Race), null],
       message: messages[config.lang].enemies.wrongRace,
     },
     default: null,
@@ -34,7 +33,7 @@ const enemySchema = new Schema<IEnemy>({
   class: {
     type: String,
     enum: {
-      values: Object.values(Class),
+      values: [...Object.values(Class), null],
       message: messages[config.lang].enemies.wrongClass,
     },
     default: null,
@@ -42,7 +41,7 @@ const enemySchema = new Schema<IEnemy>({
   guild: {
     type: String,
     enum: {
-      values: Object.values(Guild),
+      values: [...Object.values(Guild), null],
       message: messages[config.lang].enemies.wrongGuild,
     },
     default: null,
@@ -50,7 +49,7 @@ const enemySchema = new Schema<IEnemy>({
   level: {
     type: String,
     enum: {
-      values: Object.values(Level),
+      values: [...Object.values(Level), null],
       message: messages[config.lang].enemies.wrongLevel,
     },
     default: null,
@@ -58,7 +57,7 @@ const enemySchema = new Schema<IEnemy>({
   weapon: {
     type: String,
     enum: {
-      values: Object.values(Weapon),
+      values: [...Object.values(Weapon), null],
       message: messages[config.lang].enemies.wrongWeapon,
     },
     default: null,
@@ -70,9 +69,11 @@ const enemySchema = new Schema<IEnemy>({
   },
   addDates: {
     type: [Number],
+    default: [],
   },
   removeDates: {
     type: [Number],
+    default: [],
   },
   isActiveEnemy: {
     type: Boolean,

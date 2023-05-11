@@ -6,14 +6,14 @@ import { Weapon } from "./Weapon";
 
 export interface Enemy {
   name: string;
-  short: string;
-  race: Race;
-  class: Class;
-  guild: Guild;
-  level: Level;
-  weapon: Weapon;
-  comment: string;
+  short?: string;
+  race?: Race;
+  class?: Class;
+  guild?: Guild;
+  level?: Level;
+  weapon?: Weapon;
+  comment?: string;
   addDates: number[];
-  removeDates: number[];
+  removeDates?: number[];
   isActiveEnemy: boolean;
 }

@@ -1,14 +1,14 @@
 export enum Class {
-  barbarian = "barbarzyńca",
+  barbarian = "barbarzynca",
   fanatic = "fanatyk",
   gladiator = "gladiator",
   corsair = "korsarz",
   legionary = "legionista",
   swordsman = "miecznik",
-  cutthroat = "nożownik",
+  cutthroat = "nozownik",
   partisan = "partyzant",
-  guardian = "strażnik",
+  guardian = "straznik",
   merchant = "kupiec",
-  hunter = "myśliwy",
+  hunter = "mysliwy",
   explorer = "odkrywca",
 }

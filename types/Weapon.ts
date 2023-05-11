@@ -1,8 +1,8 @@
 export enum Weapon {
   sword = "miecz",
-  axe = "topór",
+  axe = "topor",
   dagger = "sztylet",
-  hammer = "młot",
+  hammer = "mlot",
   club = "maczuga",
   poleArms = "drzewiec",
 }
