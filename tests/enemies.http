@@ -52,9 +52,19 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "name": "Bilbo"
+    "name": "bilbo"
 }
 
 ### delete enemy
 DELETE {{url}}/api/enemies/{{enemyId}}
 Authorization: Bearer {{token}}
+
+### update enemy
+PATCH {{url}}/api/enemies/{{enemyId}}
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "name": "Bilbo",
+    "guild": "wks"
+}

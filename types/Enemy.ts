@@ -22,3 +22,26 @@ export interface EnemyResponse
   extends Omit<Enemy, "addDates" | "removeDates" | "isActiveEnemy"> {
   id: string;
 }
+
+export interface EnemyRequest
+  extends Omit<
+    EnemyResponse,
+    | "id"
+    | "name"
+    | "short"
+    | "race"
+    | "profession"
+    | "guild"
+    | "level"
+    | "weapon"
+    | "comment"
+  > {
+  name?: string;
+  short?: string;
+  race?: Race;
+  profession?: Profession;
+  guild?: Guild;
+  level?: Level;
+  weapon?: Weapon;
+  comment?: string;
+}

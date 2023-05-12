@@ -1,5 +1,6 @@
 import { messages, Status } from "../../types/responseMessages";
 import { Request } from "../../types/Request";
+import dayjs from "dayjs";
 import { Response } from "express";
 import { Enemy } from "../../db/models/Enemy";
 import { enemyNameValidator } from "../../db/validators/enemyValidators";
@@ -18,6 +19,7 @@ export const addEnemy = async (req: Request, res: Response) => {
       );
     else if (enemy && enemy.isActiveEnemy === false) {
       enemy.isActiveEnemy = true;
+      enemy.addDates.push(dayjs().unix());
       await enemy.save();
     } else {
       await new Enemy({ name }).save();
