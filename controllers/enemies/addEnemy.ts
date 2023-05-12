@@ -10,15 +10,20 @@ export const addEnemy = async (req: Request, res: Response) => {
   try {
     const name = enemyNameValidator(req.body.name);
     const enemy = await Enemy.findOne({ name });
-    if (enemy)
+    if (enemy && enemy.isActiveEnemy)
       throw new CustomError(
         messages[req.lang].enemies.enemyExists(name) as string,
         400,
         Status.error
       );
-    await new Enemy({ name }).save();
-    const enemies = await Enemy.find({});
-    await saveEnemiesToFile(enemies);
+    else if (enemy && enemy.isActiveEnemy === false) {
+      enemy.isActiveEnemy = true;
+      await enemy.save();
+    } else {
+      await new Enemy({ name }).save();
+    }
+    // const enemies = await Enemy.find({});
+    // await saveEnemiesToFile(enemies);
     return res.status(200).json({
       status: Status.success,
       message: messages[req.lang].enemies.enemyAdded(name),

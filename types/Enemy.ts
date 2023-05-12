@@ -19,4 +19,6 @@ export interface Enemy {
 }
 
 export interface EnemyResponse
-  extends Omit<Enemy, "addDates" | "removeDates" | "isActiveEnemy"> {}
+  extends Omit<Enemy, "addDates" | "removeDates" | "isActiveEnemy"> {
+  id: string;
+}
