@@ -9,6 +9,7 @@ import { CustomError } from "../../utils/customError";
 export const login = async (req: Request, res: Response) => {
   try {
     const { role, password } = req.body as IUser;
+
     const user = await User.findOne({ role });
     if (!user)
       throw new CustomError(
@@ -16,12 +17,13 @@ export const login = async (req: Request, res: Response) => {
         401,
         Status.error
       );
-    if (!(await user.comparePassword(password)))
+    if (!(await user.comparePassword(password))) {
       throw new CustomError(
         messages[req.lang].auth.wrongPassword,
         401,
         Status.error
       );
+    }
     const token = createToken(role, "1d");
     res
       .cookie("auth_token", token, {

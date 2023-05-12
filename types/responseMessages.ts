@@ -8,5 +8,6 @@ export enum Status {
 
 export const messages = {
   en: messagesEn,
-  // pl: messagesPl,
+  // INFO: change it later to messagesPL back
+  pl: messagesEn,
 };

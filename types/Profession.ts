@@ -1,4 +1,4 @@
-export enum Class {
+export enum Profession {
   barbarian = "barbarzynca",
   fanatic = "fanatyk",
   gladiator = "gladiator",

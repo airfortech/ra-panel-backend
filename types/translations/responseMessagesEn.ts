@@ -23,7 +23,7 @@ export const messagesEn = {
     shortTooLong: "Short should have maximum 50 characters.",
     commentTooLong: "Comment should have maximum 4000 characters.",
     wrongRace: "Wrong race provided.",
-    wrongClass: "Wrong class provided.",
+    wrongProfession: "Wrong profession provided.",
     wrongGuild: "Wrong guild provided.",
     wrongLevel: "Wrong level provided.",
     wrongWeapon: "Wrong weapon provided.",

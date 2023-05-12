@@ -52,7 +52,7 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "name": "Dfdf"
+    "name": "Bilbo"
 }
 
 ### delete enemy

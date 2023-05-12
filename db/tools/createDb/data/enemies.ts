@@ -1,4 +1,4 @@
-import { Class } from "../../../../types/Class";
+import { Profession } from "../../../../types/Profession";
 import { Enemy } from "../../../../types/Enemy";
 import { Guild } from "../../../../types/Guild";
 import { Level } from "../../../../types/Level";
@@ -20,11 +20,11 @@ export const enemies: Enemy[] = randomNames(9).map(name => {
       null,
       80
     ) as Race,
-    class: randomFromOptions(
-      randomFromArray(Object.values(Class)),
+    profession: randomFromOptions(
+      randomFromArray(Object.values(Profession)),
       null,
       80
-    ) as Class,
+    ) as Profession,
     guild: randomFromOptions(
       randomFromArray(Object.values(Guild)),
       null,
@@ -42,6 +42,7 @@ export const enemies: Enemy[] = randomNames(9).map(name => {
     ) as Weapon,
     comment: randomFromOptions(generateText(0, 8), null, 40),
     addDates: [createRandomDate(24)],
+    removeDates: [],
     isActiveEnemy: true,
   };
 });
