@@ -5,4 +5,5 @@ export enum Weapon {
   hammer = "mlot",
   club = "maczuga",
   poleArms = "drzewiec",
+  unknown = "nieznana",
 }

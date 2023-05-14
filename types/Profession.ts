@@ -11,4 +11,5 @@ export enum Profession {
   merchant = "kupiec",
   hunter = "mysliwy",
   explorer = "odkrywca",
+  unknown = "nieznany",
 }

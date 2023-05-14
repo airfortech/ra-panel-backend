@@ -27,42 +27,42 @@ const enemySchema = new Schema<IEnemy>({
     type: String,
     // INFO: add to notes, validating when type is from enum. Need providind null to table if default value is null
     enum: {
-      values: [...Object.values(Race), null],
+      values: [...Object.values(Race)],
       message: messages[config.lang].enemies.wrongRace,
     },
-    default: null,
+    default: Race.unknown,
   },
   profession: {
     type: String,
     enum: {
-      values: [...Object.values(Profession), null],
+      values: [...Object.values(Profession)],
       message: messages[config.lang].enemies.wrongProfession,
     },
-    default: null,
+    default: Profession.unknown,
   },
   guild: {
     type: String,
     enum: {
-      values: [...Object.values(Guild), null],
+      values: [...Object.values(Guild)],
       message: messages[config.lang].enemies.wrongGuild,
     },
-    default: null,
+    default: Guild.gp,
   },
   level: {
     type: String,
     enum: {
-      values: [...Object.values(Level), null],
+      values: [...Object.values(Level)],
       message: messages[config.lang].enemies.wrongLevel,
     },
-    default: null,
+    default: Level.unknown,
   },
   weapon: {
     type: String,
     enum: {
-      values: [...Object.values(Weapon), null],
+      values: [...Object.values(Weapon)],
       message: messages[config.lang].enemies.wrongWeapon,
     },
-    default: null,
+    default: Weapon.unknown,
   },
   comment: {
     type: String,

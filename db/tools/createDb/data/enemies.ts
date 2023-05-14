@@ -10,37 +10,46 @@ import { randomFromOptions } from "./generatorUtils/randomFromOptions";
 import { generateText } from "./generatorUtils/randomText";
 import { createRandomDate } from "./generatorUtils/createRandomDate";
 import { shorts } from "./generatorData/shorts";
+import { config } from "../../../../config/config";
 
-export const enemies: Enemy[] = randomNames(9).map(name => {
+export const enemies: Enemy[] = randomNames(config.tests.enemies).map(name => {
   return {
     name: name,
-    short: randomFromOptions(randomFromArray(shorts), null, 80),
-    race: randomFromOptions(
-      randomFromArray(Object.values(Race)),
+    short: randomFromOptions(
       null,
-      80
+      randomFromArray(shorts),
+      config.tests.enemiesDefaultPercentage
+    ),
+    race: randomFromOptions(
+      Race.unknown,
+      randomFromArray(Object.values(Race)),
+      config.tests.enemiesDefaultPercentage
     ) as Race,
     profession: randomFromOptions(
+      Profession.unknown,
       randomFromArray(Object.values(Profession)),
-      null,
-      80
+      config.tests.enemiesDefaultPercentage
     ) as Profession,
     guild: randomFromOptions(
+      Guild.gp,
       randomFromArray(Object.values(Guild)),
-      null,
-      80
+      config.tests.enemiesDefaultPercentage
     ) as Guild,
     level: randomFromOptions(
+      Level.unknown,
       randomFromArray(Object.values(Level)),
-      null,
-      80
+      config.tests.enemiesDefaultPercentage
     ) as Level,
     weapon: randomFromOptions(
+      Weapon.unknown,
       randomFromArray(Object.values(Weapon)),
-      null,
-      80
+      config.tests.enemiesDefaultPercentage
     ) as Weapon,
-    comment: randomFromOptions(generateText(0, 8), null, 40),
+    comment: randomFromOptions(
+      null,
+      generateText(0, 8),
+      config.tests.enemiesDefaultPercentage
+    ),
     addDates: [createRandomDate(24)],
     removeDates: [],
     isActiveEnemy: true,

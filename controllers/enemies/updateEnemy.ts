@@ -44,8 +44,6 @@ export const updateEnemy = async (req: Request, res: Response) => {
         runValidators: true,
       }
     );
-    console.log(_id, name);
-
     return res.status(200).json({
       status: Status.success,
       message: messages[req.lang].enemies.enemyUpdated(name),

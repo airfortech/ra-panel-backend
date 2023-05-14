@@ -12,4 +12,5 @@ export enum Level {
   level11 = "wielce doswiadczony",
   level12 = "widzial i doswiadczyl wszystkiego",
   level13 = "osoba owiana legenda",
+  unknown = "nieznany",
 }

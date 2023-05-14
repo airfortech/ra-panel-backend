@@ -34,4 +34,8 @@ export const config: Config = {
     { role: UserRole.caporegime, password: CAPOREGIME_PASSWORD },
     { role: UserRole.soldato, password: SOLDATO_PASSWORD },
   ],
+  tests: {
+    enemies: 4,
+    enemiesDefaultPercentage: 20,
+  },
 };

@@ -6,4 +6,5 @@ export enum Race {
   halfling = "halfling",
   gnome = "gnom",
   halfelf = "polelf",
+  unknown = "nieznana",
 }

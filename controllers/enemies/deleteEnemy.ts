@@ -8,8 +8,9 @@ import { CustomError } from "../../utils/customError";
 export const deleteEnemy = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
+    // INFO: if id is not valid (string of 12 bytes or a string of 24 hex characters or an integer) it throw error and next command are not executed
     const enemy = await Enemy.findById(id);
-    console.log(enemy);
+
     if (!enemy)
       throw new CustomError(
         messages[req.lang].enemies.enemyNotExists,
