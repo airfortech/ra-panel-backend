@@ -25,6 +25,6 @@ enemiesRouter.delete(
 );
 enemiesRouter.patch(
   "/:id",
-  auth(UserRole.consigliore, UserRole.caporegime),
+  auth(UserRole.soldato, UserRole.consigliore, UserRole.caporegime),
   updateEnemy
 );

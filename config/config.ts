@@ -35,7 +35,7 @@ export const config: Config = {
     { role: UserRole.soldato, password: SOLDATO_PASSWORD },
   ],
   tests: {
-    enemies: 4,
+    enemies: 9,
     enemiesDefaultPercentage: 20,
   },
 };

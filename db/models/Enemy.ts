@@ -21,7 +21,7 @@ const enemySchema = new Schema<IEnemy>({
   short: {
     type: String,
     maxLength: [50, messages[config.lang].enemies.shortTooLong],
-    default: null,
+    default: "",
   },
   race: {
     type: String,
@@ -67,7 +67,7 @@ const enemySchema = new Schema<IEnemy>({
   comment: {
     type: String,
     maxLength: [4000, messages[config.lang].enemies.commentTooLong],
-    default: null,
+    default: "",
   },
   addDates: {
     type: [Number],
