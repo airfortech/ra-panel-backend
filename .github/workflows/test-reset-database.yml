@@ -1,6 +1,7 @@
 name: "[Test] Reset database"
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
 
 jobs:
   create-users:

@@ -1,6 +1,10 @@
 name: "[Test] Deploy"
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - testing
 
 jobs:
   deploy:
