@@ -9,7 +9,11 @@
     "start:watch": "tsnd app.ts",
     "db:create-users": "ts-node ./db/tools/createDb/createUsersDb.ts",
     "db:create-db": "ts-node ./db/tools/createDb/createDb.ts",
-    "build": "tsc && rsync -avm --exclude-from='.build-rsync-exclude' ./ dist"
+    "build": "tsc && rsync -avm --exclude-from='.build-rsync-exclude' ./ dist",
+    "testing:list-tasks": "gh run list",
+    "testing:deploy": "gh workflow run '[Test] Deploy' --ref testing",
+    "testing:reset-database": "gh workflow run '[Test] Reset database' --ref testing",
+    "testing:create-users": "gh workflow run '[Test] Create Users' --ref testing"
   },
   "author": "",
   "license": "ISC",
