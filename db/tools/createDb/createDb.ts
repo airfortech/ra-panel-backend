@@ -12,11 +12,12 @@ const createDb = async () => {
     await createEnemies();
     await createKeys();
     await createKeyGivers();
+    console.log("Done. ✔");
   } catch (e) {
     console.log(e.message);
+    console.log("Something went wrong!");
   } finally {
     connection.close();
-    console.log("Done. ✔");
   }
 };
 

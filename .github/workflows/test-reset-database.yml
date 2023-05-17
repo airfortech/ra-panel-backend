@@ -1,0 +1,23 @@
+name: "[Test] Reset database"
+
+on: workflow_dispatch
+
+jobs:
+  create-users:
+    runs-on: ubuntu-latest
+    env:
+      SSH_USERNAME: ${{secrets.SSH_USERNAME_TEST}}
+      SSH_SERVER: ${{secrets.SSH_SERVER_TEST}}
+      SSH_KEY: ${{secrets.SSH_KEY_TEST}}
+      SSH_SERVER_DIR: ${{secrets.SSH_SERVER_DIR_TEST}}
+
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Reseting database
+        uses: ./.github/actions/reset-database
+        with:
+          username: ${{ env.SSH_USERNAME}}
+          server: ${{ env.SSH_SERVER}}
+          ssh-key: ${{ env.SSH_KEY}}
+          server-dir: ${{ env.SSH_SERVER_DIR}}

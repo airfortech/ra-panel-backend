@@ -1,0 +1,27 @@
+name: Restart App
+
+description: Restart app via ssh
+
+inputs:
+  username:
+    required: true
+  server:
+    required: true
+  ssh-key:
+    required: true
+  domain:
+    description: "Domain name on server (without https://)"
+    required: true
+
+runs:
+  using: composite
+
+  steps:
+    - name: restart app via ssh
+      run: |
+        echo "${{ inputs.ssh-key }}" > ~/.ssh.private-key
+        chmod 600 ~/.ssh.private-key
+        ssh -T -o StrictHostKeyChecking=no -i ~/.ssh.private-key ${{ inputs.username }}@${{ inputs.server }} << EOL
+        devil www restart ${{ inputs.domain }}
+        EOL
+      shell: bash

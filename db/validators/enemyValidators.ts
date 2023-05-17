@@ -11,16 +11,17 @@ export const enemyNameValidator = (name: string): string => {
         400,
         Status.error
       );
-    if (validatedName.split(" ").length > 1) {
-      return validatedName
-        .split(" ")
-        .filter(word => word.trim() !== "")
-        .map(word => word.toLowerCase())
-        .join(" ");
-    } else
+    const isLettersOnly = /^[a-zA-Z]+$/.test(validatedName);
+    const isOneWord = /^\S+$/.test(validatedName);
+    if (isLettersOnly && isOneWord)
       return (
         validatedName[0].toUpperCase() + validatedName.slice(1).toLowerCase()
       );
+    throw new CustomError(
+      messages[config.lang].enemies.wrongNameProvided,
+      400,
+      Status.error
+    );
   } catch (e) {
     throw e;
   }

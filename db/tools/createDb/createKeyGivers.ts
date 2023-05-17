@@ -1,11 +1,8 @@
 import { KeyGiver as IKeyGiver } from "../../../types/KeyGiver";
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
 import { KeyGiver } from "../../models/KeyGiver";
 import { keygivers } from "./data/keygivers";
 import { keys } from "./data/keys";
-
-dayjs.extend(utc);
 
 export const createKeyGivers = async () => {
   try {
@@ -29,11 +26,7 @@ export const createKeyGivers = async () => {
             ? keys[Math.floor(Math.random() * keys.length)].name
             : null;
         timeOffset += respawnTime + Math.floor(Math.random() * 90);
-        const date = dayjs
-          .utc()
-          .subtract(1000, "h")
-          .add(timeOffset, "h")
-          .format();
+        const date = dayjs().subtract(1000, "h").add(timeOffset, "h").valueOf();
         respawns.push({ keyName, date });
       }
       return { name, respawnTime, description, respawns } as IKeyGiver;

@@ -2,20 +2,18 @@ import { messages, Status } from "../../types/responseMessages";
 import { Request } from "../../types/Request";
 import { Response } from "express";
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
 import { Key } from "../../db/models/Key";
 import { CustomError } from "../../utils/customError";
 import { isIdValid } from "../../db/validators/universalValidators";
-
-dayjs.extend(utc);
 
 export const addKeyTimestamp = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
     isIdValid(id, messages[req.lang].keys.keyNotExists, 404);
-    const { date, npcName }: { date: string; npcName: string } = req.body;
+    const { date, npcName }: { date: number; npcName: string } = req.body;
 
-    const newDate = dayjs.utc(date);
+    const newDate = dayjs(date);
+    // WARN: it takes "Tue, 30 May 2023 23:00:00 GMT" format too, but it is fine for now
     if (!newDate.isValid())
       throw new CustomError(
         messages[req.lang].date.invalidDate,
@@ -34,16 +32,16 @@ export const addKeyTimestamp = async (req: Request, res: Response) => {
     const lastFoundTimestamps =
       key.foundTimestamps[key.foundTimestamps.length - 1];
     if (key.foundTimestamps.length < 1)
-      key.foundTimestamps.push({ date: newDate.format(), npcName });
+      key.foundTimestamps.push({ date: newDate.valueOf(), npcName });
     else {
-      const previousDate = dayjs.utc(lastFoundTimestamps.date);
+      const previousDate = dayjs(lastFoundTimestamps.date);
       if (newDate.diff(previousDate) <= 0)
         throw new CustomError(
           messages[req.lang].date.dateNotNever,
           400,
           Status.error
         );
-      key.foundTimestamps.push({ date: newDate.format(), npcName });
+      key.foundTimestamps.push({ date: newDate.valueOf(), npcName });
     }
 
     await key.save();

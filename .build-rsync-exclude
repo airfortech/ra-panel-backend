@@ -1,0 +1,9 @@
+/node_modules
+*.ts
+/.*
+/config/.env*
+/tsconfig.json
+/tests
+/dist
+/data/enemies.txt
+/.build-rsync-exclude

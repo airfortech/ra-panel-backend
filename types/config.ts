@@ -17,4 +17,8 @@ export interface Config {
   };
   users?: User[];
   lang: Language;
+  tests: {
+    enemies: number;
+    enemiesDefaultPercentage: number;
+  };
 }

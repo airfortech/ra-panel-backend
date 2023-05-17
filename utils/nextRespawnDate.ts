@@ -1,14 +1,11 @@
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-
-dayjs.extend(utc);
 
 export const nextRespawnDate = (
-  lastRespawn: string,
+  lastRespawn: number,
   respawnTime: number
-): string => {
+): number => {
   if (!respawnTime || !lastRespawn) return null;
-  const date = dayjs.utc(lastRespawn);
+  const date = dayjs(lastRespawn);
   if (!date.isValid()) return null;
-  return date.add(respawnTime, "h").format();
+  return date.add(respawnTime, "h").valueOf();
 };

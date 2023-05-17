@@ -1,7 +1,6 @@
 ### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
 
 ### Global variables
-@url = http://localhost:3001
 @token = {{login.response.body.data.token}}
 @enemyId = {{enemies.response.body.data.enemies[0].id}}
 
@@ -53,9 +52,24 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "name": "Dfdf"
+    "name": "Sylvanas",
+    "guild": "sc"
 }
 
 ### delete enemy
 DELETE {{url}}/api/enemies/{{enemyId}}
 Authorization: Bearer {{token}}
+
+### delete enemy - bad id
+DELETE {{url}}/api/enemies/6460d2823d836966cbf60f84
+Authorization: Bearer {{token}}
+
+### update enemy
+PATCH {{url}}/api/enemies/{{enemyId}}
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "name": "Bilbo",
+    "guild": "wks"
+}

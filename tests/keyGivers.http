@@ -1,7 +1,6 @@
 ### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
 
 ### Global variables
-@url = http://localhost:3001
 @token = {{login.response.body.data.token}}
 @keyGiverId = {{keyGivers.response.body.data.keyGivers[0].id}}
 
@@ -90,7 +89,7 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "date": "Tue, 30 Apr 2023 23:00:00 GMT",
+    "date": "Tue, 30 May 2023 23:00:00 GMT",
     "keyName": "duzy ciezki klucz"
 }
 

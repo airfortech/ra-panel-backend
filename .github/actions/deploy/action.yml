@@ -1,0 +1,66 @@
+name: Deploy
+
+description: Build app and deploy via ftp
+
+inputs:
+  node-version:
+    description: "providing node version"
+    required: false
+  username:
+    required: true
+  server:
+    required: true
+  server-dir:
+    description: "must end with trailing slash / and must exist"
+    required: false
+    default: ~/
+  ssh-key:
+    required: true
+  file:
+    required: true
+
+runs:
+  using: composite
+
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version }}
+      if: inputs.node-version != ''
+    - name: cache dependencies
+      id: cache
+      uses: actions/cache@v3
+      with:
+        path: node_modules
+        key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+    - name: Install dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm ci
+      shell: bash
+    - name: build app
+      run: npm run build
+      shell: bash
+    - name: archive dist folder
+      run: |
+        mkdir -p dist/config
+        cp config/.env dist/config
+        cd dist
+        zip -r ${{ inputs.file }} .
+        mv ${{ inputs.file }} ../
+      shell: bash
+    - name: send app via ssh
+      run: |
+        echo "${{ inputs.ssh-key }}" > ~/.ssh.private-key
+        chmod 600 ~/.ssh.private-key
+        scp -o StrictHostKeyChecking=no -i ~/.ssh.private-key ${{ inputs.file }} ${{ inputs.username }}@${{ inputs.server }}:${{ inputs.server-dir }}
+      shell: bash
+    - name: unpack files, delete archive file and install packages
+      run: |
+        ssh -T -o StrictHostKeyChecking=no -i ~/.ssh.private-key ${{ inputs.username }}@${{ inputs.server }} << EOL
+        cd ${{ inputs.server-dir}}
+        unzip -o ${{ inputs.file }}
+        rm ${{ inputs.file }}
+        node -v
+        npm install --production
+        EOL
+      shell: bash
