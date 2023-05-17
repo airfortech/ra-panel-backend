@@ -25,7 +25,7 @@ export const config: Config = {
   db: {
     url: DB_URL,
   },
-  lang: "en",
+  lang: "pl",
   secret: {
     jwt: SECRET_JWT,
   },

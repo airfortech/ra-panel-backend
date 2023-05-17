@@ -19,7 +19,17 @@ export const messagesPl = {
     enemyAdded: (name: string) => `Wróg ${name} został dodany.`,
     nameIsRequired: "Podaj imię wroga.",
     enemyDeleted: (name: string) => `Wróg ${name} został usunięty.`,
-    nameTooLong: "Name should have maximum 30 characters.",
+    enemyUpdated: (name: string) =>
+      `Wróg ${name ? name + " " : name}został uaktualniony.`,
+    wrongNameProvided: "Błędne imię.",
+    nameTooLong: "Imię powinno mieć maksymalnie 30 znaków.",
+    shortTooLong: "Opis powinien mieć maksymalnie 50 znaków.",
+    commentTooLong: "Komentarz powinien mieć maksymalnie 4000 znaków.",
+    wrongRace: "Niepoprawna rasa.",
+    wrongProfession: "Niepoprawny zawód.",
+    wrongGuild: "Niepoprawne stowarzyszenie.",
+    wrongLevel: "Niepoprawny poziom.",
+    wrongWeapon: "Niepoprawna broń.",
   },
   keyGivers: {
     keyGiverExists: "Such keygiver exists.",
