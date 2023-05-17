@@ -1,6 +1,11 @@
 name: "[Test] Reset database"
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Branch reference"
+        required: true
 
 jobs:
   create-users:
@@ -14,6 +19,8 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.ref }}
       - name: Reseting database
         uses: ./.github/actions/reset-database
         with:
