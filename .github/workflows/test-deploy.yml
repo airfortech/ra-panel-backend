@@ -19,6 +19,7 @@ jobs:
       CONSIGLIORE_PASSWORD: ${{ secrets.CONSIGLIORE_PASSWORD_TEST }}
       CAPOREGIME_PASSWORD: ${{ secrets.CAPOREGIME_PASSWORD_TEST }}
       SOLDATO_PASSWORD: ${{ secrets.SOLDATO_PASSWORD_TEST }}
+      MUDLET_PASSWORD: ${{ secrets.MUDLET_PASSWORD_TEST }}
       SSH_USERNAME: ${{secrets.SSH_USERNAME_TEST}}
       SSH_SERVER: ${{secrets.SSH_SERVER_TEST}}
       SSH_KEY: ${{secrets.SSH_KEY_TEST}}
@@ -39,6 +40,7 @@ jobs:
           consigliore_password: ${{ env.CONSIGLIORE_PASSWORD }}
           caporegime_password: ${{ env.CAPOREGIME_PASSWORD }}
           soldato_password: ${{ env.SOLDATO_PASSWORD }}
+          mudlet_password: ${{ env.MUDLET_PASSWORD }}
       - name: deploy
         uses: ./.github/actions/deploy
         with:

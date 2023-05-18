@@ -10,7 +10,12 @@ export const enemiesRouter = Router();
 
 enemiesRouter.get(
   "/",
-  auth(UserRole.consigliore, UserRole.caporegime, UserRole.soldato),
+  auth(
+    UserRole.consigliore,
+    UserRole.caporegime,
+    UserRole.soldato,
+    UserRole.mudlet
+  ),
   getEnemies
 );
 enemiesRouter.post(

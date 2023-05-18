@@ -12,12 +12,22 @@ export const keysRouter = Router();
 
 keysRouter.get(
   "/",
-  auth(UserRole.consigliore, UserRole.caporegime, UserRole.soldato),
+  auth(
+    UserRole.consigliore,
+    UserRole.caporegime,
+    UserRole.soldato,
+    UserRole.mudlet
+  ),
   getKeys
 );
 keysRouter.get(
   "/:id",
-  auth(UserRole.consigliore, UserRole.caporegime, UserRole.soldato),
+  auth(
+    UserRole.consigliore,
+    UserRole.caporegime,
+    UserRole.soldato,
+    UserRole.mudlet
+  ),
   getKeyDetails
 );
 keysRouter.post("/", auth(UserRole.consigliore, UserRole.caporegime), addKey);
