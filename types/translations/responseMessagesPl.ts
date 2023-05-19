@@ -55,4 +55,17 @@ export const messagesPl = {
     invalidDate: "Invalid date format.",
     dateNotNever: "Date must newer than previous one.",
   },
+  privileges: {
+    enemies: {
+      category: "wrogowie",
+      getEnemies: "pobierać listę wrogów",
+      addEnemies: "dodawać nowych wrogów",
+      editEnemies: "edytować informacje o wrogach",
+      deleteEnemies: "usuwać wrogów",
+    },
+    users: {
+      category: "użytkownicy",
+      changePassword: "zmieniać hasło",
+    },
+  },
 };

@@ -13,6 +13,7 @@ import { handleError } from "./utils/customError";
 import { connectToDB } from "./db/mongoose";
 import { languageDetector } from "./utils/languageDetector";
 import { config } from "./config/config";
+import { privilegesRouter } from "./routes/privileges";
 
 connectToDB();
 
@@ -30,10 +31,11 @@ app.use(languageDetector());
 
 app.use("/data", dataRouter);
 app.use("/api/auth", authRouter);
-app.use("/api/users", usersRouter);
 app.use("/api/enemies", enemiesRouter);
 app.use("/api/keygivers", keyGiversRouter);
 app.use("/api/keys", keysRouter);
+app.use("/api/privileges", privilegesRouter);
+app.use("/api/users", usersRouter);
 
 app.get("/*", function (req, res) {
   res.sendFile(join(__dirname, "./public", "index.html"));

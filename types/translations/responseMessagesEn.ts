@@ -55,4 +55,17 @@ export const messagesEn = {
     invalidDate: "Invalid date format.",
     dateNotNever: "Date must newer than previous one.",
   },
+  privileges: {
+    enemies: {
+      category: "enemies",
+      getEnemies: "get enemies list",
+      addEnemies: "add new enemies",
+      editEnemies: "edit enemies",
+      deleteEnemies: "delete enemies",
+    },
+    users: {
+      category: "users",
+      changePassword: "change password",
+    },
+  },
 };
