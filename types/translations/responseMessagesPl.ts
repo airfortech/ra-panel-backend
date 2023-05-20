@@ -57,14 +57,14 @@ export const messagesPl = {
   },
   privileges: {
     enemies: {
-      category: "wrogowie",
+      category: "Wrogowie",
       getEnemies: "pobierać listę wrogów",
       addEnemies: "dodawać nowych wrogów",
       editEnemies: "edytować informacje o wrogach",
       deleteEnemies: "usuwać wrogów",
     },
     users: {
-      category: "użytkownicy",
+      category: "Użytkownicy",
       changePassword: "zmieniać hasło",
     },
   },

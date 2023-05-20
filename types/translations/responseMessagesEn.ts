@@ -57,14 +57,14 @@ export const messagesEn = {
   },
   privileges: {
     enemies: {
-      category: "enemies",
+      category: "Enemies",
       getEnemies: "get enemies list",
       addEnemies: "add new enemies",
       editEnemies: "edit enemies",
       deleteEnemies: "delete enemies",
     },
     users: {
-      category: "users",
+      category: "Users",
       changePassword: "change password",
     },
   },
