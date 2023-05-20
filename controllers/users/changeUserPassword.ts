@@ -1,3 +1,4 @@
+import { ChangeUserPasswordRequest } from "../../types/User";
 import { messages, Status } from "../../types/responseMessages";
 import { Request } from "../../types/Request";
 import { Response } from "express";
@@ -7,9 +8,8 @@ import { getErrorsMessages } from "../../utils/getErrorsMessages";
 
 export const changeUserPassword = async (req: Request, res: Response) => {
   try {
-    const id = req.params.id;
-    const password: string = req.body.password;
-    const user = await User.findOne({ id });
+    const { role, password }: ChangeUserPasswordRequest = req.body;
+    const user = await User.findOne({ role });
     if (!user)
       throw new CustomError(
         messages[req.lang].auth.wrongRole,

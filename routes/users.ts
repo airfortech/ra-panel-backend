@@ -7,4 +7,4 @@ import { changeUserPassword } from "../controllers/users/changeUserPassword";
 export const usersRouter = Router();
 
 usersRouter.get("/", auth(UserRole.consigliore), getUsers);
-usersRouter.patch("/:id", auth(UserRole.consigliore), changeUserPassword);
+usersRouter.patch("/", auth(UserRole.consigliore), changeUserPassword);

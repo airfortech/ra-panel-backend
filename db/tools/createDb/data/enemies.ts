@@ -16,7 +16,7 @@ export const enemies: Enemy[] = randomNames(config.tests.enemies).map(name => {
   return {
     name: name,
     short: randomFromOptions(
-      null,
+      "",
       randomFromArray(shorts),
       config.tests.enemiesDefaultPercentage
     ),
@@ -46,7 +46,7 @@ export const enemies: Enemy[] = randomNames(config.tests.enemies).map(name => {
       config.tests.enemiesDefaultPercentage
     ) as Weapon,
     comment: randomFromOptions(
-      null,
+      "",
       generateText(0, 8),
       config.tests.enemiesDefaultPercentage
     ),

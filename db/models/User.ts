@@ -1,5 +1,6 @@
-import { User as IUser } from "../../types/User";
 import { messages } from "../../types/responseMessages";
+import { User as IUser } from "../../types/User";
+import { UserRole } from "../../types/UserRole";
 import { compare, genSalt, hash } from "bcrypt";
 import { Schema, model, Document } from "mongoose";
 import { config } from "../../config/config";
@@ -12,6 +13,10 @@ export interface IUserSchema extends Document, IUser {
 const userSchema = new Schema<IUser>({
   role: {
     type: String,
+    enum: {
+      values: [...Object.values(UserRole)],
+      message: messages[config.lang].auth.wrongRole,
+    },
     required: true,
     unique: true,
   },
