@@ -5,10 +5,7 @@ export const createEnemies = async () => {
   try {
     console.log("Creating enemies...");
     await Enemy.deleteMany({});
-    const newEnemies = enemies.map(name => {
-      return { name };
-    });
-    await Enemy.insertMany(newEnemies);
+    await Enemy.insertMany(enemies);
     console.log("Enemies created. ✔");
   } catch (e) {
     throw e;

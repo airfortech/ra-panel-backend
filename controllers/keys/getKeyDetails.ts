@@ -34,7 +34,6 @@ export const getKeyDetails = async (req: Request, res: Response) => {
       },
     });
   } catch (e) {
-    console.log(e.message);
     throw e;
   }
 };

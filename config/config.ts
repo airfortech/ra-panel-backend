@@ -12,6 +12,7 @@ const {
   CONSIGLIORE_PASSWORD,
   CAPOREGIME_PASSWORD,
   SOLDATO_PASSWORD,
+  MUDLET_PASSWORD,
 } = process.env;
 
 export const config: Config = {
@@ -33,5 +34,10 @@ export const config: Config = {
     { role: UserRole.consigliore, password: CONSIGLIORE_PASSWORD },
     { role: UserRole.caporegime, password: CAPOREGIME_PASSWORD },
     { role: UserRole.soldato, password: SOLDATO_PASSWORD },
+    { role: UserRole.mudlet, password: MUDLET_PASSWORD },
   ],
+  tests: {
+    enemies: 9,
+    enemiesDefaultPercentage: 20,
+  },
 };

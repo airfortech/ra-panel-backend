@@ -52,9 +52,24 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "name": "Dfdf"
+    "name": "Sylvanas",
+    "guild": "sc"
 }
 
 ### delete enemy
 DELETE {{url}}/api/enemies/{{enemyId}}
 Authorization: Bearer {{token}}
+
+### delete enemy - bad id
+DELETE {{url}}/api/enemies/6460d2823d836966cbf60f84
+Authorization: Bearer {{token}}
+
+### update enemy
+PATCH {{url}}/api/enemies/{{enemyId}}
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "name": "Bilbo",
+    "guild": "wks"
+}

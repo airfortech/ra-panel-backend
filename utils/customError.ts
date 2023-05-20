@@ -1,6 +1,7 @@
 import { messages, Status } from "../types/responseMessages";
 import { Request } from "../types/Request";
 import { NextFunction, Response } from "express";
+import mongoose from "mongoose";
 
 export class CustomError extends Error {
   statusCode: number;
@@ -28,6 +29,12 @@ export const handleError = (
     res
       .status(err.statusCode)
       .json({ status: err.status, message: err.message });
+  } else if (err instanceof mongoose.Error.ValidationError) {
+    const firstErrorKey = Object.keys(err.errors)[0];
+    res.status(400).json({
+      status: Status.error,
+      message: err.errors[firstErrorKey].message,
+    });
   } else {
     res
       .status(500)

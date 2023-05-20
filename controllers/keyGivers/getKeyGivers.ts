@@ -12,7 +12,7 @@ export const getKeyGivers = async (req: Request, res: Response) => {
       status: Status.success,
       data: {
         keyGivers: keyGivers.map(({ id, name, respawnTime, respawns }) => {
-          const lastRespawn: string = lastRespawnDate(respawns);
+          const lastRespawn = lastRespawnDate(respawns);
           return {
             id,
             name,

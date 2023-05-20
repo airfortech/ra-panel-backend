@@ -6,10 +6,14 @@
   "scripts": {
     "start": "node app.js",
     "start:dev": "ts-node app.ts",
-    "start:watch": "tsnd app.ts",
+    "start:watch": "tsnd --poll --ignore-watch node_modules app.ts",
     "db:create-users": "ts-node ./db/tools/createDb/createUsersDb.ts",
     "db:create-db": "ts-node ./db/tools/createDb/createDb.ts",
-    "build": "tsc && rsync -avm --exclude-from='.build-rsync-exclude' ./ dist"
+    "build": "tsc && rsync -avm --exclude-from='.build-rsync-exclude' ./ dist",
+    "testing:list-tasks": "gh run list",
+    "testing:deploy": "gh workflow run '[Test] Deploy' --ref testing",
+    "testing:reset-database": "gh workflow run '[Test] Reset database' --ref testing",
+    "testing:create-users": "gh workflow run '[Test] Create Users' --ref testing"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +26,7 @@
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
+    "lorem-ipsum": "^2.0.8",
     "mongoose": "^6.6.5",
     "uuid": "^9.0.0"
   },

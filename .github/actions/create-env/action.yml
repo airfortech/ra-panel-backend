@@ -23,6 +23,8 @@ inputs:
     required: true
   soldato_password:
     required: true
+  mudlet_password:
+    required: true
 
 runs:
   using: composite
@@ -40,4 +42,5 @@ runs:
         echo 'CONSIGLIORE_PASSWORD="${{ inputs.consigliore_password }}"' >> ${{ inputs.file-name }}
         echo 'CAPOREGIME_PASSWORD="${{ inputs.caporegime_password }}"' >> ${{ inputs.file-name }}
         echo 'SOLDATO_PASSWORD="${{ inputs.soldato_password }}"' >> ${{ inputs.file-name }}
+        echo 'MUDLET_PASSWORD="${{ inputs.mudlet_password }}"' >> ${{ inputs.file-name }}
       shell: bash

@@ -19,6 +19,17 @@ export const messagesEn = {
     enemyAdded: (name: string) => `Enemy ${name} has been added.`,
     nameIsRequired: "Enemy name is required.",
     enemyDeleted: (name: string) => `Enemy ${name} has been deleted.`,
+    enemyUpdated: (name: string) =>
+      `Enemy ${name ? name + " " : name}has been updated.`,
+    wrongNameProvided: "Wrong name provided.",
+    nameTooLong: "Name should have maximum 30 characters.",
+    shortTooLong: "Short should have maximum 50 characters.",
+    commentTooLong: "Comment should have maximum 4000 characters.",
+    wrongRace: "Wrong race provided.",
+    wrongProfession: "Wrong profession provided.",
+    wrongGuild: "Wrong guild provided.",
+    wrongLevel: "Wrong level provided.",
+    wrongWeapon: "Wrong weapon provided.",
   },
   keyGivers: {
     keyGiverExists: "Such keygiver exists.",
@@ -43,5 +54,18 @@ export const messagesEn = {
   date: {
     invalidDate: "Invalid date format.",
     dateNotNever: "Date must newer than previous one.",
+  },
+  privileges: {
+    enemies: {
+      category: "Enemies",
+      getEnemies: "get enemies list",
+      addEnemies: "add new enemies",
+      editEnemies: "edit enemies",
+      deleteEnemies: "delete enemies",
+    },
+    users: {
+      category: "Users",
+      changePassword: "change password",
+    },
   },
 };
