@@ -6,7 +6,6 @@ import { getKeyGiverDetails } from "../controllers/keyGivers/getKeyGiverDetails"
 import { addKeyGiver } from "../controllers/keyGivers/addKeyGiver";
 import { deleteKeyGiver } from "../controllers/keyGivers/deleteKeyGiver";
 import { updateKeyGiver } from "../controllers/keyGivers/updateKeyGiver";
-import { addKeyGiverTimestamp } from "../controllers/keyGivers/addKeyGiverTimestamp";
 
 export const keyGiversRouter = Router();
 
@@ -20,16 +19,16 @@ keyGiversRouter.get(
   ),
   getKeyGivers
 );
-keyGiversRouter.get(
-  "/:id",
-  auth(
-    UserRole.consigliore,
-    UserRole.caporegime,
-    UserRole.soldato,
-    UserRole.mudlet
-  ),
-  getKeyGiverDetails
-);
+// keyGiversRouter.get(
+//   "/:id",
+//   auth(
+//     UserRole.consigliore,
+//     UserRole.caporegime,
+//     UserRole.soldato,
+//     UserRole.mudlet
+//   ),
+//   getKeyGiverDetails
+// );
 keyGiversRouter.post(
   "/",
   auth(UserRole.consigliore, UserRole.caporegime),
@@ -40,9 +39,4 @@ keyGiversRouter.patch(
   "/:id",
   auth(UserRole.consigliore, UserRole.caporegime),
   updateKeyGiver
-);
-keyGiversRouter.patch(
-  "/addtimestamp/:id",
-  auth(UserRole.consigliore, UserRole.caporegime),
-  addKeyGiverTimestamp
 );

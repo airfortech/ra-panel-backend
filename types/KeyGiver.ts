@@ -19,7 +19,7 @@ export interface KeyGiver {
   description: string;
   respawnTime: number;
   domain: Domain;
-  playersToComplete: number;
+  playersToComplete: number | null;
   comment: string;
   locations: Location[];
   isActive: boolean;
@@ -27,4 +27,29 @@ export interface KeyGiver {
 
 export interface KeyGiverResponse extends Omit<KeyGiver, "isActive"> {
   id: string;
+}
+
+export interface KeyGiverAddRequest
+  extends Omit<
+    KeyGiver,
+    | "description"
+    | "respawnTime"
+    | "domain"
+    | "playersToComplete"
+    | "comment"
+    | "locations"
+    | "isActive"
+  > {
+  description?: string;
+  respawnTime?: number;
+  domain?: Domain;
+  playersToComplete?: number | null;
+  comment?: string;
+  locations?: Location[];
+}
+
+export interface KeyGiverUpdateRequest
+  extends Omit<KeyGiverAddRequest, "name" | "short"> {
+  name?: string;
+  short?: string;
 }

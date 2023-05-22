@@ -20,5 +20,6 @@ export interface Config {
   tests: {
     enemies: number;
     enemiesDefaultPercentage: number;
+    keyGiversDefaultPercentage: number;
   };
 }

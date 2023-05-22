@@ -22,29 +22,29 @@ export const enemies: Enemy[] = randomNames(config.tests.enemies).map(name => {
     ),
     race: randomFromOptions(
       Race.unknown,
-      randomFromArray(Object.values(Race)),
+      randomFromArray(Object.values(Race)) as Race,
       config.tests.enemiesDefaultPercentage
-    ) as Race,
+    ),
     profession: randomFromOptions(
       Profession.unknown,
-      randomFromArray(Object.values(Profession)),
+      randomFromArray(Object.values(Profession)) as Profession,
       config.tests.enemiesDefaultPercentage
-    ) as Profession,
+    ),
     guild: randomFromOptions(
       Guild.gp,
-      randomFromArray(Object.values(Guild)),
+      randomFromArray(Object.values(Guild)) as Guild,
       config.tests.enemiesDefaultPercentage
-    ) as Guild,
+    ),
     level: randomFromOptions(
       Level.unknown,
-      randomFromArray(Object.values(Level)),
+      randomFromArray(Object.values(Level)) as Level,
       config.tests.enemiesDefaultPercentage
-    ) as Level,
+    ),
     weapon: randomFromOptions(
       Weapon.unknown,
-      randomFromArray(Object.values(Weapon)),
+      randomFromArray(Object.values(Weapon)) as Weapon,
       config.tests.enemiesDefaultPercentage
-    ) as Weapon,
+    ),
     comment: randomFromOptions(
       "",
       generateText(0, 8),

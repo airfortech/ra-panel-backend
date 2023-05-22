@@ -5,7 +5,7 @@ export const domainValidate = (domain: string): Domain => {
     const validatedDomain = domain.trim();
     if (
       validatedDomain === Domain.Ishtar ||
-      validatedDomain === Domain.OldWorld
+      validatedDomain === Domain.Imperium
     )
       return validatedDomain;
     return null;

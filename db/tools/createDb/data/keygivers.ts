@@ -1,27 +1,45 @@
-export const keygivers = [
-  "bystry zakapturzony skaven",
-  "rosly brazowooki mezczyzna",
-  "wysoki bezwzgledny czarny ork",
-  "zylasty zimnooki mezczyzna",
-  "niespokojny blady gnom",
-  "wysoki zarosniety mezczyzna",
-  "surowy szpakowaty mezczyzna",
-  "sniady wystrojony mezczyzna",
-  "szmaragdowooka wychudzona kobieta",
-  "solidna rybacka lodz",
-  "migdalowooka wiotka polelfka",
-  "potezny zarosniety mezczyzna",
-  "zakapturzony zgarbiony mezczyzna",
-  "czarnowlosy wyniosly mezczyzna",
-  "szkaradny przygarbiony mezczyzna",
-  "czujny mlody mezczyzna",
-  "mloda jasnowlosa dziewczyna",
-  "zwrotna nieduza fusta",
-  "ponury stary szkuner",
-  "wysoki zakrwawiony halfling",
-  "nietoperzowy plaskonosy potwor",
-  "krzepki opalony mezczyzna",
-  "czarnowlosy grozny mezczyzna",
-  "niebieskooki potezny mezczyzna",
-  "wszawy jednooki mezczyzna",
-];
+import { Domain } from "../../../../types/Domain";
+import { KeyGiver } from "../../../../types/KeyGiver";
+import { randomFromArray } from "./generatorUtils/randomFromArray";
+import { randomFromOptions } from "./generatorUtils/randomFromOptions";
+import { generateText } from "./generatorUtils/randomText";
+import { shorts } from "./generatorData/shorts";
+import { keyGiversShorts } from "./generatorData/keygiversShorts";
+import { randomNames } from "./generatorUtils/randomNames";
+import { config } from "../../../../config/config";
+
+export const keyGivers: KeyGiver[] = randomNames(keyGiversShorts.length).map(
+  (name, i) => {
+    return {
+      name: name,
+      short: shorts[i],
+      description: randomFromOptions(
+        "",
+        generateText(0, 8),
+        config.tests.keyGiversDefaultPercentage
+      ),
+      respawnTime: randomFromOptions(
+        0,
+        Math.floor(Math.random() * 24),
+        config.tests.keyGiversDefaultPercentage
+      ),
+      domain: randomFromOptions(
+        Domain.unknown,
+        randomFromArray(Object.values(Domain)) as Domain,
+        config.tests.keyGiversDefaultPercentage
+      ),
+      playersToComplete: randomFromOptions(
+        null,
+        Math.floor(Math.random() * 4),
+        config.tests.keyGiversDefaultPercentage
+      ),
+      comment: randomFromOptions(
+        "",
+        generateText(0, 8),
+        config.tests.keyGiversDefaultPercentage
+      ),
+      locations: [],
+      isActive: true,
+    };
+  }
+);

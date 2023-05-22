@@ -2,17 +2,22 @@ import { KeyGiver as IKeyGiver } from "../../types/KeyGiver";
 import { messages } from "../../types/responseMessages";
 import { Schema, model, Document } from "mongoose";
 import { config } from "../../config/config";
+import { Domain } from "../../types/Domain";
 
-export interface IKeyGiverSchema extends Document, IKeyGiver {
-  comparePassword: (password: string) => Promise<boolean>;
-  changePassword: (password: string) => Promise<void>;
-}
+export interface IKeyGiverSchema extends Document, IKeyGiver {}
 
 const keyGiverSchema = new Schema<IKeyGiver>({
   name: {
     type: String,
+    unique: true,
     required: [true, messages[config.lang].keyGivers.nameIsRequired],
-    maxLength: [80, messages[config.lang].keyGivers.nameTooLong],
+    maxLength: [30, messages[config.lang].keyGivers.nameTooLong],
+  },
+  short: {
+    type: String,
+    unique: true,
+    required: [true, messages[config.lang].keyGivers.nameIsRequired],
+    maxLength: [50, messages[config.lang].keyGivers.nameTooLong],
   },
   description: {
     type: String,
@@ -26,8 +31,28 @@ const keyGiverSchema = new Schema<IKeyGiver>({
     min: [0, messages[config.lang].keyGivers.respawnTimeNotANumber],
     cast: messages[config.lang].keyGivers.respawnTimeNotANumber,
   },
-  respawns: {
-    type: [{ date: Number, keyName: String }],
+  domain: {
+    type: String,
+    enum: {
+      values: [...Object.values(Domain)],
+      message: messages[config.lang].enemies.wrongRace,
+    },
+    default: Domain.unknown,
+  },
+  playersToComplete: {
+    type: Number,
+    default: null,
+    integer: [true, messages[config.lang].keyGivers.respawnTimeNotANumber],
+    min: [0, messages[config.lang].keyGivers.respawnTimeNotANumber],
+    cast: messages[config.lang].keyGivers.respawnTimeNotANumber,
+  },
+  comment: {
+    type: String,
+    maxLength: [4000, messages[config.lang].keyGivers.descriptionTooLong],
+    default: "",
+  },
+  locations: {
+    type: [String],
     default: [],
   },
   isActive: {
