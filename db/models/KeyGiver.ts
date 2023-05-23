@@ -17,7 +17,7 @@ const keyGiverSchema = new Schema<IKeyGiver>({
     type: String,
     unique: true,
     required: [true, messages[config.lang].keyGivers.nameIsRequired],
-    maxLength: [50, messages[config.lang].keyGivers.nameTooLong],
+    maxLength: [50, messages[config.lang].keyGivers.shortTooLong],
   },
   description: {
     type: String,
@@ -35,20 +35,24 @@ const keyGiverSchema = new Schema<IKeyGiver>({
     type: String,
     enum: {
       values: [...Object.values(Domain)],
-      message: messages[config.lang].enemies.wrongRace,
+      message: messages[config.lang].keyGivers.wrongDomain,
     },
     default: Domain.unknown,
   },
   playersToComplete: {
     type: Number,
     default: null,
-    integer: [true, messages[config.lang].keyGivers.respawnTimeNotANumber],
-    min: [0, messages[config.lang].keyGivers.respawnTimeNotANumber],
-    cast: messages[config.lang].keyGivers.respawnTimeNotANumber,
+    integer: [
+      true,
+      messages[config.lang].keyGivers.playersToCompleteNotInRange,
+    ],
+    min: [0, messages[config.lang].keyGivers.playersToCompleteNotInRange],
+    max: [20, messages[config.lang].keyGivers.playersToCompleteNotInRange],
+    cast: messages[config.lang].keyGivers.playersToCompleteNotInRange,
   },
   comment: {
     type: String,
-    maxLength: [4000, messages[config.lang].keyGivers.descriptionTooLong],
+    maxLength: [4000, messages[config.lang].keyGivers.commentTooLong],
     default: "",
   },
   locations: {
