@@ -1,17 +1,6 @@
-// export interface KeyGiver {
-//   name: string;
-//   description?: string;
-//   respawnTime: number;
-//   respawns: {
-//     date: number;
-//     keyName: string;
-//   }[];
-//   lastRespawn?: number;
-//   nextRespawn?: number;
-//   isActive: boolean;
-// }
-
 import { Domain } from "./Domain";
+import { ShortLocationResponse } from "./Location";
+import { Types } from "mongoose";
 
 export interface KeyGiver {
   name: string;
@@ -21,12 +10,14 @@ export interface KeyGiver {
   domain: Domain;
   playersToComplete: number | null;
   comment: string;
-  locations: Location[];
+  locations: Types.ObjectId[];
   isActive: boolean;
 }
 
-export interface KeyGiverResponse extends Omit<KeyGiver, "isActive"> {
+export interface KeyGiverResponse
+  extends Omit<KeyGiver, "isActive" | "locations"> {
   id: string;
+  locations: ShortLocationResponse[];
 }
 
 export interface KeyGiverAddRequest
@@ -45,7 +36,7 @@ export interface KeyGiverAddRequest
   domain?: Domain;
   playersToComplete?: number | null;
   comment?: string;
-  locations?: Location[];
+  locations?: string[];
 }
 
 export interface KeyGiverUpdateRequest

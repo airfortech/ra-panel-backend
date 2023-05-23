@@ -12,8 +12,8 @@ const createDb = async () => {
     await createUsers();
     await createEnemies();
     await createKeys();
-    await createLocations();
-    await createKeyGivers();
+    const locations = await createLocations();
+    await createKeyGivers(locations);
     console.log("Done. ✔");
   } catch (e) {
     console.log(e.message);

@@ -13,6 +13,12 @@ export interface LocationResponse extends Omit<Location, "isActive"> {
   id: string;
 }
 
+export interface ShortLocationResponse
+  extends Omit<
+    LocationResponse,
+    "isActive" | "description" | "comment" | "binds"
+  > {}
+
 export interface LocationAddRequest
   extends Omit<
     Location,

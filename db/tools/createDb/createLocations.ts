@@ -1,13 +1,13 @@
 import { Location } from "../../models/Location";
-import { keyGivers } from "./data/keyGivers";
 import { locations } from "./data/locations";
 
 export const createLocations = async () => {
   try {
     console.log("Creating locations...");
     await Location.deleteMany({});
-    await Location.insertMany(locations);
+    const newLocations = await Location.insertMany(locations);
     console.log("Locations created. ✔");
+    return newLocations.map(({ id }) => id as string);
   } catch (e) {
     throw e;
   }

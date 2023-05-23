@@ -1,8 +1,8 @@
+import { Domain } from "../../types/Domain";
 import { KeyGiver as IKeyGiver } from "../../types/KeyGiver";
 import { messages } from "../../types/responseMessages";
 import { Schema, model, Document } from "mongoose";
 import { config } from "../../config/config";
-import { Domain } from "../../types/Domain";
 
 export interface IKeyGiverSchema extends Document, IKeyGiver {}
 
@@ -56,7 +56,12 @@ const keyGiverSchema = new Schema<IKeyGiver>({
     default: "",
   },
   locations: {
-    type: [String],
+    type: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Location",
+      },
+    ],
     default: [],
   },
   isActive: {
