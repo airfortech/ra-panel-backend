@@ -4,6 +4,7 @@ import { createEnemies } from "./createEnemies";
 import { createKeyGivers } from "./createKeyGivers";
 import { createKeys } from "./createKeys";
 import { createUsers } from "./createUsers";
+import { createLocations } from "./createLocations";
 
 const createDb = async () => {
   try {
@@ -11,6 +12,7 @@ const createDb = async () => {
     await createUsers();
     await createEnemies();
     await createKeys();
+    await createLocations();
     await createKeyGivers();
     console.log("Done. ✔");
   } catch (e) {

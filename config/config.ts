@@ -40,5 +40,7 @@ export const config: Config = {
     enemies: 9,
     enemiesDefaultPercentage: 20,
     keyGiversDefaultPercentage: 20,
+    locations: 20,
+    locationsDefaultPercentage: 20,
   },
 };

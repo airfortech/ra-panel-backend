@@ -21,5 +21,7 @@ export interface Config {
     enemies: number;
     enemiesDefaultPercentage: number;
     keyGiversDefaultPercentage: number;
+    locations: number;
+    locationsDefaultPercentage: number;
   };
 }
