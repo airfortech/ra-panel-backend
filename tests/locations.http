@@ -2,7 +2,7 @@
 
 ### Global variables
 @token = {{login.response.body.data.token}}
-@enemyId = {{enemies.response.body.data.enemies[0].id}}
+@locationId = {{locations.response.body.data.locations[0].id}}
 
 ### Auth Api
 ### Login - Soldato
@@ -40,36 +40,35 @@ content-type: application/json
 GET {{url}}/api/auth/logout
 Authorization: Bearer {{token}}
 
-### Enemies Api
-### get all enemies
-# @name enemies
-GET {{url}}/api/enemies
+### Locations Api
+### get all locations
+# @name locations
+GET {{url}}/api/locations
 Authorization: Bearer {{token}}
 
-### add enemy
-POST {{url}}/api/enemies
+### add location
+POST {{url}}/api/locations
 Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "name": "Sylvanas",
-    "guild": "SC"
+    "locationId": 3897,
+    "domain": "Imperium"
 }
 
-### delete enemy
-DELETE {{url}}/api/enemies/{{enemyId}}
+### delete location
+DELETE {{url}}/api/locations/{{locationId}}
 Authorization: Bearer {{token}}
 
-### delete enemy - bad id
-DELETE {{url}}/api/enemies/6460d2823d836966cbf60f84
+### delete location - bad id
+DELETE {{url}}/api/locations/6460d2823d836966cbf60f84
 Authorization: Bearer {{token}}
 
-### update enemy
-PATCH {{url}}/api/enemies/{{enemyId}}
+### update location
+PATCH {{url}}/api/locations/{{locationId}}
 Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "name": "Bilbo",
-    "guild": "wks"
+    "name": "Karczma"
 }

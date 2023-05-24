@@ -32,6 +32,13 @@ export const messagesEn = {
     wrongWeapon: "Wrong weapon provided.",
   },
   location: {
+    locationAdded: (locationId: number) =>
+      `Location ${locationId} has been added.`,
+    locationNotExists: "Such location not exists.",
+    locationDeleted: (locationId: number) =>
+      `Location ${locationId} has been deleted.`,
+    locationUpdated: (locationId: number) =>
+      `Location ${locationId} has been updated.`,
     locationIdIsRequired: "Location id is required.",
     locationNotANumber: "Location id must be an integer number.",
     locationNumberNotInRange: "Location id number must be in range 0-99999",
