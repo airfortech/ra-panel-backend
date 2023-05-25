@@ -65,7 +65,7 @@ export const messagesEn = {
     commentTooLong: "Comment should have maximum 4000 characters.",
     keyGiverAdded: "Keygiver has been added.",
     keyGiverUpdated: "Keygiver has been updated.",
-    keyGiverDeleted: (name: string) => `Keygiver has been deleted.`,
+    keyGiverDeleted: (name: string) => `Keygiver ${name} has been deleted.`,
   },
   keys: {
     nameExists: "Such key name exists. Choose other one.",
@@ -76,7 +76,7 @@ export const messagesEn = {
     commentTooLong: "Comment should have maximum 4000 characters.",
     descriptionTooLong: "Description should have maximum 4000 characters.",
     keyAdded: "Key has been added.",
-    keyDeleted: "Key has been deleted.",
+    keyDeleted: (name: string) => `Key: ${name} has been deleted.`,
   },
   date: {
     invalidDate: "Invalid date format.",

@@ -14,6 +14,7 @@ const keySchema = new Schema<IKey>({
     required: [true, messages[config.lang].keys.nameIsRequired],
   },
   treasury: {
+    // TODO: add validation for existing Treasury id when Treasury is ready
     type: Schema.Types.ObjectId,
     ref: "Treasury",
     default: null,

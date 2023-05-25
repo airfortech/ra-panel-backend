@@ -9,7 +9,10 @@ export const deleteKey = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
     isIdValid(id, messages[req.lang].keys.keyNotExists, 404);
-    const key = await Key.findByIdAndUpdate(id, { isActive: false });
+    const key = await Key.findOneAndUpdate(
+      { _id: id, isActive: true },
+      { isActive: false }
+    );
     if (!key)
       throw new CustomError(
         messages[req.lang].keys.keyNotExists,
@@ -18,7 +21,7 @@ export const deleteKey = async (req: Request, res: Response) => {
       );
     return res.status(200).json({
       status: Status.success,
-      message: messages[req.lang].keys.keyDeleted,
+      message: messages[req.lang].keys.keyDeleted(key.name),
     });
   } catch (e) {
     throw e;
