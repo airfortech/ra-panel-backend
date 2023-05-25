@@ -53,8 +53,8 @@ content-type: application/json
 
 {
     "name": "duzy ciezki klucz25",
-    "treasuryName": "Edalbert",
-    "domain": "Ishtar"
+    "treasury": "646f98b43d66d9ab2c60511e",
+    "domain": "Imperium"
 }
 
 ### update key
@@ -64,7 +64,7 @@ content-type: application/json
 
 {
     "name": "duzy ciezki klucz",
-    "treasuryName": "Edalbert"
+    "treasury": "646f98b43d66d9ab2c60511e"
 }
 
 ### delete key

@@ -68,14 +68,16 @@ export const messagesEn = {
     keyGiverDeleted: (name: string) => `Keygiver ${name} has been deleted.`,
   },
   keys: {
-    nameExists: "Such key name exists. Choose other one.",
+    keyExists: (name: string) => `Key: ${name} exists. Choose other one.`,
     keyNotExists: "Such key not exists.",
     nameTooLong: "Name should have maximum 50 characters.",
     nameIsRequired: "Name is required.",
+    wrongTreasuryIdProvided: "Treasury id is not valid.",
     wrongDomain: "Wrong domain provided.",
     commentTooLong: "Comment should have maximum 4000 characters.",
     descriptionTooLong: "Description should have maximum 4000 characters.",
-    keyAdded: "Key has been added.",
+    keyAdded: (name: string) => `Key: ${name} has been added.`,
+    keyUpdated: (name: string) => `Key: ${name} has been updated.`,
     keyDeleted: (name: string) => `Key: ${name} has been deleted.`,
   },
   date: {
