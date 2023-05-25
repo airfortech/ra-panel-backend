@@ -26,19 +26,6 @@ export interface TreasuryResponse extends Omit<Treasury, "isActive"> {
   id: string;
 }
 
-export interface Key {
-  name: string;
-  treasury: string | null;
-  description: string;
-  domain: Domain;
-  comment: string;
-  isActive: boolean;
-}
-
-export interface KeyResponse extends Omit<Key, "isActive"> {
-  id: string;
-}
-
 export interface KeyGiverDrop {
   // ref to KeyGiver or name
   keyGiver: string;

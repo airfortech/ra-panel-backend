@@ -4,7 +4,6 @@ import { ShortLocationResponse } from "../../types/Location";
 import { Status } from "../../types/responseMessages";
 import { Response } from "express";
 import { KeyGiver } from "../../db/models/KeyGiver";
-// import { Location } from "../../db/models/Location";
 import { Location } from "../../db/models/Location";
 
 export const getKeyGivers = async (req: Request, res: Response) => {
@@ -12,11 +11,12 @@ export const getKeyGivers = async (req: Request, res: Response) => {
     const keyGivers = await KeyGiver.find({
       isActive: true,
     })
-      // INFO: populate(key where is ref, list of keys from ref model or "" for all, model), if id in ref items not found, it doesnt populate, no throwing error
+      // INFO: populate(key where is ref, list of keys from ref model or "" for all, model, match?), if id in ref items not found, it doesnt populate, no throwing error
       .populate<{ locations: ShortLocationResponse[] }>(
         "locations",
         "locationId name domain",
-        Location
+        Location,
+        { isActive: true }
       );
     return res.status(200).json({
       status: Status.success,

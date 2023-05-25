@@ -46,25 +46,18 @@ Authorization: Bearer {{token}}
 GET {{url}}/api/keygivers
 Authorization: Bearer {{token}}
 
-### get keyGiver details
-GET {{url}}/api/keygivers/{{keyGiverId}}
-Authorization: Bearer {{token}}
-
-### get keyGiver details - bad id
-GET {{url}}/api/keygivers/6345d568ae474b461be9581c
-Authorization: Bearer {{token}}
-
 ### add new keyGiver
 POST {{url}}/api/keygivers
 Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "name": "kluczek1",
-    "short": "bystry zakapturzony skaven",
+    "name": "Lyris8",
+    "short": "potezny niesmialy czlowiek7",
     "respawnTime": 20,
     "domain": "Imperium",
     "playersToComplete": 2,
+    "locations": ["646ea9fde3d45938d99602ee"]
 }
 
 ### update keyGiver
@@ -73,11 +66,11 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "name": "kluczek1",
-    "short": "bystry zakapturzony skaven",
+    "name": "Lyris9",
+    "short": "niski przewrotny halfling",
     "respawnTime": 20,
     "domain": "Imperium",
-    "playersToComplete": 2,
+    "playersToComplete": 2
 }
 
 ### delete keyGiver

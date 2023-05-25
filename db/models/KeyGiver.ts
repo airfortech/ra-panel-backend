@@ -1,7 +1,7 @@
 import { Domain } from "../../types/Domain";
 import { KeyGiver as IKeyGiver } from "../../types/KeyGiver";
 import { messages } from "../../types/responseMessages";
-import { Schema, model, Document } from "mongoose";
+import mongoose, { Schema, model, Document, Types } from "mongoose";
 import { config } from "../../config/config";
 
 export interface IKeyGiverSchema extends Document, IKeyGiver {}
@@ -10,14 +10,37 @@ const keyGiverSchema = new Schema<IKeyGiver>({
   name: {
     type: String,
     unique: true,
+    trim: true,
     required: [true, messages[config.lang].keyGivers.nameIsRequired],
     maxLength: [30, messages[config.lang].keyGivers.nameTooLong],
+    // INFO: validating for duplicate value, when try findOneAndUpdate() you have to pass undefined value for each validating key if is say as found one
+    validate: {
+      validator: async (name: string) => {
+        const existingKeyGiver = await mongoose
+          .model("KeyGiver")
+          .findOne({ name });
+        return !existingKeyGiver;
+      },
+      message: ({ value }) =>
+        messages[config.lang].keyGivers.keyGiverExists(value),
+    },
   },
   short: {
     type: String,
     unique: true,
+    trim: true,
     required: [true, messages[config.lang].keyGivers.nameIsRequired],
     maxLength: [50, messages[config.lang].keyGivers.shortTooLong],
+    validate: {
+      validator: async (short: string) => {
+        const existingKeyGiver = await mongoose
+          .model("KeyGiver")
+          .findOne({ short });
+        return !existingKeyGiver;
+      },
+      message: ({ value }) =>
+        messages[config.lang].keyGivers.keyGiverExists(value),
+    },
   },
   description: {
     type: String,
@@ -62,6 +85,20 @@ const keyGiverSchema = new Schema<IKeyGiver>({
         ref: "Location",
       },
     ],
+    validate: {
+      // INFO: validate if ids exists in db
+      validator: async (value: Types.ObjectId[]) => {
+        if (value.length === 0) return true;
+        const existingLocations = await mongoose
+          .model("Location")
+          .countDocuments({
+            _id: { $in: value },
+          });
+
+        return existingLocations === value.length;
+      },
+      message: messages[config.lang].keyGivers.locationNotExist,
+    },
     default: [],
   },
   isActive: {

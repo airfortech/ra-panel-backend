@@ -8,19 +8,6 @@ import { getErrorsMessages } from "../../utils/getErrorsMessages";
 
 export const addKey = async (req: Request, res: Response) => {
   try {
-    const { name, treasuryName, domain } = req.body as IKey;
-    const key = await Key.findOne({ name, isActive: true });
-    if (key)
-      throw new CustomError(
-        messages[req.lang].keys.nameExists,
-        400,
-        Status.error
-      );
-    await new Key({ name, treasuryName, domain }).save();
-    return res.status(200).json({
-      status: Status.success,
-      message: messages[req.lang].keys.keyAdded,
-    });
   } catch (e) {
     if (e.errors)
       throw new CustomError(getErrorsMessages(e.errors)[0], 400, Status.error);

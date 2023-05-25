@@ -14,6 +14,7 @@ export interface IEnemySchema extends Document, IEnemy {}
 const enemySchema = new Schema<IEnemy>({
   name: {
     type: String,
+    trim: true,
     required: [true, messages[config.lang].enemies.nameIsRequired],
     maxLength: [30, messages[config.lang].enemies.nameTooLong],
     unique: true,
