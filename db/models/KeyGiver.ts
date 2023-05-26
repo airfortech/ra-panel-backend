@@ -89,13 +89,15 @@ const keyGiverSchema = new Schema<IKeyGiver>({
       // INFO: validate if ids exists in db
       validator: async (value: Types.ObjectId[]) => {
         if (value.length === 0) return true;
+        const locationIds = value.filter(
+          (id, index) => value.indexOf(id) === index
+        );
         const existingLocations = await mongoose
           .model("Location")
           .countDocuments({
-            _id: { $in: value },
+            _id: { $in: locationIds },
           });
-
-        return existingLocations === value.length;
+        return existingLocations === locationIds.length;
       },
       message: messages[config.lang].keyGivers.locationNotExist,
     },

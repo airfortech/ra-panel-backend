@@ -1,8 +1,8 @@
+import { Domain } from "../../types/Domain";
 import { Key as IKey } from "../../types/Key";
 import { messages } from "../../types/responseMessages";
 import { Schema, model, Document } from "mongoose";
 import { config } from "../../config/config";
-import { Domain } from "../../types/Domain";
 
 export interface IKeySchema extends Document, IKey {}
 

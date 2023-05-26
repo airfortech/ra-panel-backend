@@ -20,7 +20,7 @@ export const keyGivers = (locations?: string[]): KeyGiverAddRequest[] =>
         config.tests.keyGiversDefaultPercentage
       ),
       respawnTime: randomFromOptions(
-        0,
+        null,
         Math.floor(Math.random() * 24),
         config.tests.keyGiversDefaultPercentage
       ),

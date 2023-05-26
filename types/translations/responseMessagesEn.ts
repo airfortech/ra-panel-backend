@@ -80,6 +80,11 @@ export const messagesEn = {
     keyUpdated: (name: string) => `Key: ${name} has been updated.`,
     keyDeleted: (name: string) => `Key: ${name} has been deleted.`,
   },
+  keyGiverDrops: {
+    keyGiverIsRequired: "KeyGiver is required.",
+    keyGiverNotExists: "Provided keyGiver not exists",
+    keyNotExists: "Provided key not exists",
+  },
   date: {
     invalidDate: "Invalid date format.",
     dateNotNever: "Date must newer than previous one.",

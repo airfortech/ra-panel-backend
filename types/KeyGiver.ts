@@ -6,7 +6,7 @@ export interface KeyGiver {
   name: string;
   short: string;
   description: string;
-  respawnTime: number;
+  respawnTime: number | null;
   domain: Domain;
   playersToComplete: number | null;
   comment: string;
