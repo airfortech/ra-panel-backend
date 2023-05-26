@@ -14,10 +14,7 @@ export interface LocationResponse extends Omit<Location, "isActive"> {
 }
 
 export interface ShortLocationResponse
-  extends Omit<
-    LocationResponse,
-    "isActive" | "description" | "comment" | "binds"
-  > {}
+  extends Omit<LocationResponse, "description" | "comment" | "binds"> {}
 
 export interface LocationAddRequest
   extends Omit<

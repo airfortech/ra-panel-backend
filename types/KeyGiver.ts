@@ -20,6 +20,14 @@ export interface KeyGiverResponse
   locations: ShortLocationResponse[];
 }
 
+export interface ShortKeyGiverResponse
+  extends Omit<
+    KeyGiverResponse,
+    "isActive" | "description" | "respawnTime" | "playersToComplete" | "comment"
+  > {
+  id: string;
+}
+
 export interface KeyGiverAddRequest
   extends Omit<
     KeyGiver,

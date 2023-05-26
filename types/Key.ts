@@ -15,6 +15,12 @@ export interface KeyResponse extends Omit<Key, "isActive" | "treasury"> {
   treasury: string | null;
 }
 
+export interface ShortKeyResponse
+  extends Omit<
+    KeyResponse,
+    "description" | "treasury" | "domain" | "comment"
+  > {}
+
 export interface KeyAddRequest
   extends Omit<Key, "isActive" | "treasury" | "description" | "comment"> {
   treasury: string | null;
