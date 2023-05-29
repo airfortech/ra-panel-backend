@@ -5,8 +5,9 @@ export const createKeys = async () => {
   try {
     console.log("Creating keys...");
     await Key.deleteMany({});
-    await Key.insertMany(keys);
+    const newKeys = await Key.insertMany(keys);
     console.log("Keys created. ✔");
+    return newKeys.map(({ id }) => id as string);
   } catch (e) {
     throw e;
   }

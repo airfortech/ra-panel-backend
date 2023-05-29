@@ -6,7 +6,7 @@ import { Key } from "../../db/models/Key";
 
 export const getKeys = async (req: Request, res: Response) => {
   try {
-    // TODO: add poppulate when Treasury is ready
+    // TODO: add populate when Treasury is ready
     const keys = await Key.find({ isActive: true });
     return res.status(200).json({
       status: Status.success,

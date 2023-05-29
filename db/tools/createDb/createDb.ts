@@ -5,15 +5,17 @@ import { createKeyGivers } from "./createKeyGivers";
 import { createKeys } from "./createKeys";
 import { createUsers } from "./createUsers";
 import { createLocations } from "./createLocations";
+import { createKeyGiverDrops } from "./createKeyGiverDrops";
 
 const createDb = async () => {
   try {
     await connectToDB();
     await createUsers();
     await createEnemies();
-    await createKeys();
+    const keys = await createKeys();
     const locations = await createLocations();
-    await createKeyGivers(locations);
+    const keyGivers = await createKeyGivers(locations);
+    await createKeyGiverDrops(keys, keyGivers);
     console.log("Done. ✔");
   } catch (e) {
     console.log(e.message);

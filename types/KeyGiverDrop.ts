@@ -6,7 +6,7 @@ export interface KeyGiverDrop {
   keyGiver: Types.ObjectId;
   drop: Types.ObjectId | null;
   dropDate: number;
-  nextRespawnDate: number;
+  nextRespawnDate: number | null;
   createdAt: number;
   isActive: boolean;
 }
@@ -18,7 +18,7 @@ export interface KeyGiverDropResponse
   drop: ShortKeyResponse | null;
 }
 
-export interface KeyGiverAddRequest
+export interface KeyGiverDropAddRequest
   extends Omit<
     KeyGiverDrop,
     "isActive" | "keyGiver" | "drop" | "nextRespawnDate" | "createdAt"
@@ -27,9 +27,9 @@ export interface KeyGiverAddRequest
   drop: string | null;
 }
 
-export interface KeyGiverUpdateRequest
+export interface KeyGiverDropUpdateRequest
   extends Omit<
-    KeyGiverAddRequest,
+    KeyGiverDropAddRequest,
     "keyGiver" | "drop" | "dropDate" | "nextRespawnDate"
   > {
   keyGiver?: string;

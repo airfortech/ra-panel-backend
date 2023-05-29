@@ -1,12 +1,12 @@
-import { KeyGiverDrop } from "../../types/KeyGiverDrop";
+import { KeyGiverDrop as IKeyGiverDrop } from "../../types/KeyGiverDrop";
 import { messages } from "../../types/responseMessages";
 import mongoose, { Schema, model, Document, Types } from "mongoose";
 import dayjs from "dayjs";
 import { config } from "../../config/config";
 
-export interface IKeyGiverDropSchema extends Document, KeyGiverDrop {}
+export interface IKeyGiverDropSchema extends Document, IKeyGiverDrop {}
 
-const keyGiverDropSchema = new Schema<KeyGiverDrop>({
+const keyGiverDropSchema = new Schema<IKeyGiverDrop>({
   keyGiver: {
     type: Schema.Types.ObjectId,
     ref: "KeyGiver",
@@ -49,13 +49,17 @@ const keyGiverDropSchema = new Schema<KeyGiverDrop>({
     type: Number,
     default: null,
   },
+  createdAt: {
+    type: Number,
+    default: dayjs().unix(),
+  },
   isActive: {
     type: Boolean,
     default: true,
   },
 });
 
-export const Key = model<IKeyGiverDropSchema>(
+export const KeyGiverDrop = model<IKeyGiverDropSchema>(
   "KeyGiverDrop",
   keyGiverDropSchema
 );
