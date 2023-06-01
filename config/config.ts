@@ -36,6 +36,9 @@ export const config: Config = {
     { role: UserRole.soldato, password: SOLDATO_PASSWORD },
     { role: UserRole.mudlet, password: MUDLET_PASSWORD },
   ],
+  keyGiverDrops: {
+    maxEditTime: 48,
+  },
   tests: {
     enemies: 9,
     enemiesDefaultPercentage: 20,

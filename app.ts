@@ -15,6 +15,7 @@ import { languageDetector } from "./utils/languageDetector";
 import { config } from "./config/config";
 import { privilegesRouter } from "./routes/privileges";
 import { locationsRouter } from "./routes/locations";
+import { keyGiverDropsRouter } from "./routes/keyGiverDrops";
 
 connectToDB();
 
@@ -35,6 +36,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/enemies", enemiesRouter);
 app.use("/api/locations", locationsRouter);
 app.use("/api/keygivers", keyGiversRouter);
+app.use("/api/keygivers/drops", keyGiverDropsRouter);
 app.use("/api/keys", keysRouter);
 app.use("/api/privileges", privilegesRouter);
 app.use("/api/users", usersRouter);

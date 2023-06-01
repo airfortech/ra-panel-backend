@@ -17,6 +17,9 @@ export interface Config {
   };
   users?: User[];
   lang: Language;
+  keyGiverDrops: {
+    maxEditTime: number;
+  };
   tests: {
     enemies: number;
     enemiesDefaultPercentage: number;
