@@ -20,6 +20,7 @@ const keyGiverDropSchema = new Schema<IKeyGiverDrop>({
           .model("KeyGiver")
           .countDocuments({
             _id: { $in: value },
+            isActive: true,
           });
 
         return existingKeyGivers > 0;
@@ -28,7 +29,6 @@ const keyGiverDropSchema = new Schema<IKeyGiverDrop>({
     },
   },
   drop: {
-    // TODO: add validation for existing Key id
     type: Schema.Types.ObjectId,
     ref: "Key",
     default: null,
@@ -37,6 +37,7 @@ const keyGiverDropSchema = new Schema<IKeyGiverDrop>({
         if (value === null) return true;
         const existingKeys = await mongoose.model("Key").countDocuments({
           _id: { $in: value },
+          isActive: true,
         });
 
         return existingKeys > 0;

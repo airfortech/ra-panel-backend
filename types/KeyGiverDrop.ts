@@ -32,7 +32,7 @@ export interface KeyGiverDropUpdateRequest
     KeyGiverDropAddRequest,
     "keyGiver" | "drop" | "dropDate" | "nextRespawnDate"
   > {
-  keyGiver?: string;
+  keyGiver: string;
   drop?: string | null;
   dropDate?: number;
 }

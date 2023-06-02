@@ -58,7 +58,7 @@ content-type: application/json
 
 {
     "keyGiver": "64746f4181a11c063272bd2d",
-    # "drop": "646f98b43d66d9ab2c60511e",
+    "drop": "646f98b43d66d9ab2c60511e",
     "dropDate": 1685661860
 }
 
@@ -68,9 +68,9 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "keyGiver": "646f98b43d66d9ab2c60511e",
-    "drop": "646f98b43d66d9ab2c60511e",
-    "dropDate": 1685352257
+    "keyGiver": "64746f4181a11c063272bd2d",
+    # "drop": "646f98b43d66d9ab2c60511e",
+    "dropDate": 1685661860
 }
 
 ### delete keyGiverDrop

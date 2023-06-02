@@ -22,7 +22,7 @@ export const getEditableKeyGiverDrops = async (req: Request, res: Response) => {
               $lt: dayjs().unix(),
             }
           : {
-              $gt: dayjs().subtract(maxEditTime, "hours").unix(),
+              $gt: dayjs().subtract(maxEditTime, "h").unix(),
             },
     })
       .populate<{

@@ -86,9 +86,12 @@ export const messagesEn = {
     keyGiverDropTooOldToDelete: "KeyGiver drop is too old to delete it.",
     dropTooOldToAdd: (time: number) =>
       `You can add only ${time} hours long drop.`,
+    dropTooOldToEdit: (time: number) =>
+      `You can edit only ${time} hours long drop.`,
     keyNotExists: "Provided key not exists.",
     keyGiverNotExists: "Provided keygiver not exists.",
     keyGiverDropAdded: "KeyGiver drop has been added.",
+    keyGiverDropUpdated: "KeyGiver drop has been updated.",
     keyGiverDropDeleted: "KeyGiver drop has been deleted.",
   },
   date: {

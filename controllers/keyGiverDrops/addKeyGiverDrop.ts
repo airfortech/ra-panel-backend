@@ -24,7 +24,10 @@ export const addKeyGiverDrop = async (req: Request, res: Response) => {
     );
     if (drop)
       isIdValid(drop, messages[req.lang].keyGiverDrops.keyNotExists, 400);
-    if (dropDate && dropDate < dayjs().subtract(48, "h").unix())
+    if (
+      dropDate &&
+      dropDate < dayjs().subtract(config.keyGiverDrops.maxAddTime, "h").unix()
+    )
       throw new CustomError(
         messages[req.lang].keyGiverDrops.dropTooOldToAdd(
           config.keyGiverDrops.maxAddTime
