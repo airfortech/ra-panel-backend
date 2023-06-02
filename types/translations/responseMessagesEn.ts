@@ -81,9 +81,15 @@ export const messagesEn = {
     keyDeleted: (name: string) => `Key: ${name} has been deleted.`,
   },
   keyGiverDrops: {
-    keyGiverIsRequired: "KeyGiver is required.",
-    keyGiverNotExists: "Provided keyGiver not exists",
-    keyNotExists: "Provided key not exists",
+    keyGiverDropIsRequired: "KeyGiver drop is required.",
+    keyGiverDropNotExists: "Provided keyGiver drop not exists.",
+    keyGiverDropTooOldToDelete: "KeyGiver drop is too old to delete it.",
+    dropTooOldToAdd: (time: number) =>
+      `You can add only ${time} hours long drop.`,
+    keyNotExists: "Provided key not exists.",
+    keyGiverNotExists: "Provided keygiver not exists.",
+    keyGiverDropAdded: "KeyGiver drop has been added.",
+    keyGiverDropDeleted: "KeyGiver drop has been deleted.",
   },
   date: {
     invalidDate: "Invalid date format.",

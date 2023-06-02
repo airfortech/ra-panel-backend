@@ -21,12 +21,7 @@ keyGiverDropsRouter.get(
 );
 keyGiverDropsRouter.get(
   "/edit",
-  auth(
-    UserRole.consigliore,
-    UserRole.caporegime,
-    UserRole.soldato,
-    UserRole.mudlet
-  ),
+  auth(UserRole.consigliore, UserRole.caporegime, UserRole.soldato),
   getEditableKeyGiverDrops
 );
 keyGiverDropsRouter.post(
@@ -41,6 +36,6 @@ keyGiverDropsRouter.patch(
 );
 keyGiverDropsRouter.delete(
   "/:id",
-  auth(UserRole.consigliore),
+  auth(UserRole.consigliore, UserRole.caporegime, UserRole.soldato),
   deleteKeyGiverDrop
 );

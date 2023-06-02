@@ -50,6 +50,11 @@ export const getKeyGiverDrops = async (req: Request, res: Response) => {
           newRoot: { $arrayElemAt: ["$newestKeyGivers", 0] },
         },
       },
+      {
+        $sort: {
+          nextRespawnDate: -1,
+        },
+      },
     ]);
     // INFO: populate(key where is ref, list of keys from ref model or "" for all, model, match?), if id in ref items not found, it doesnt populate, no throwing error
     const keyGiverDrops = await KeyGiverDrop.populate<{
@@ -77,15 +82,14 @@ export const getKeyGiverDrops = async (req: Request, res: Response) => {
         match: { isActive: true },
       },
     ]);
-    console.log(keyGiverDrops.length);
     return res.status(200).json({
       status: Status.success,
       data: {
         keyGiverDrops: keyGiverDrops.map(
-          ({ id, keyGiver, drop, dropDate, nextRespawnDate }) => {
+          ({ _id, keyGiver, drop, dropDate, nextRespawnDate }) => {
             const { id: keyGiverId, name, short, domain, locations } = keyGiver;
             const data: KeyGiverDropResponse = {
-              id,
+              id: _id,
               keyGiver: {
                 id: keyGiverId,
                 name,

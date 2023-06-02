@@ -19,6 +19,7 @@ export interface Config {
   lang: Language;
   keyGiverDrops: {
     maxEditTime: number;
+    maxAddTime: number;
   };
   tests: {
     enemies: number;

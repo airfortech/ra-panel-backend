@@ -20,7 +20,6 @@ export const addKeyGiver = async (req: Request, res: Response) => {
       isActive: false,
     });
     if (keyGiver) {
-      console.log("name:", keyGiver.name, "short:", keyGiver.short);
       await KeyGiver.findOneAndUpdate(
         { _id: keyGiver.id },
         {

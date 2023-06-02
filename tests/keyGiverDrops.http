@@ -2,7 +2,7 @@
 
 ### Global variables
 @token = {{login.response.body.data.token}}
-@keyId = {{keys.response.body.data.keys[0].id}}
+@keyGiverDropId = {{keyGiverDrops.response.body.data.keyGiverDrops[0].id}}
 
 ### Auth Api
 ### Login - Soldato
@@ -42,12 +42,12 @@ Authorization: Bearer {{token}}
 
 ### keyGiverDrops Api
 ### get all keyGiverDrops
-# @name keys
+# @name keyGiverDrops
 GET {{url}}/api/keygivers/drops/
 Authorization: Bearer {{token}}
 
 ### get all keyGiverDrops - edit
-# @name keys
+# @name keyGiverDrops
 GET {{url}}/api/keygivers/drops/edit
 Authorization: Bearer {{token}}
 
@@ -57,13 +57,13 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "keyGiver": "646f98b43d66d9ab2c60511e",
-    "drop": "646f98b43d66d9ab2c60511e",
-    "dropDate": 1685352257
+    "keyGiver": "64746f4181a11c063272bd2d",
+    # "drop": "646f98b43d66d9ab2c60511e",
+    "dropDate": 1685661860
 }
 
 ### update keyGiverDrop
-PATCH {{url}}/api/keygivers/drops/{{keyId}}
+PATCH {{url}}/api/keygivers/drops/{{keyGiverDropId}}
 Authorization: Bearer {{token}}
 content-type: application/json
 
@@ -74,13 +74,9 @@ content-type: application/json
 }
 
 ### delete keyGiverDrop
-DELETE {{url}}/api/keygivers/drops/{{keyId}}
+DELETE {{url}}/api/keygivers/drops/{{keyGiverDropId}}
 Authorization: Bearer {{token}}
 
 ### delete keyGiverDrop - bad id
 DELETE {{url}}/api/keygivers/drops/6345d568ae474b
-Authorization: Bearer {{token}}
-
-### delete keyGiverDrop - too old date
-DELETE {{url}}/api/keygivers/drops/{{keyId}}
 Authorization: Bearer {{token}}

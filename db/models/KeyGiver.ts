@@ -49,7 +49,7 @@ const keyGiverSchema = new Schema<IKeyGiver>({
   },
   respawnTime: {
     type: Number,
-    default: 0,
+    default: null,
     integer: [true, messages[config.lang].keyGivers.respawnTimeNotANumber],
     min: [0, messages[config.lang].keyGivers.respawnTimeNotANumber],
     cast: messages[config.lang].keyGivers.respawnTimeNotANumber,

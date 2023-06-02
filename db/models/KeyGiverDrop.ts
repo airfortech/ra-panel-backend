@@ -10,7 +10,10 @@ const keyGiverDropSchema = new Schema<IKeyGiverDrop>({
   keyGiver: {
     type: Schema.Types.ObjectId,
     ref: "KeyGiver",
-    required: [true, messages[config.lang].keyGiverDrops.keyGiverIsRequired],
+    required: [
+      true,
+      messages[config.lang].keyGiverDrops.keyGiverDropIsRequired,
+    ],
     validate: {
       validator: async (value: Types.ObjectId) => {
         const existingKeyGivers = await mongoose

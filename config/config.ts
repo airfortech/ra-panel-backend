@@ -38,6 +38,7 @@ export const config: Config = {
   ],
   keyGiverDrops: {
     maxEditTime: 48,
+    maxAddTime: 48,
   },
   tests: {
     enemies: 9,
