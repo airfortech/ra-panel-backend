@@ -81,7 +81,7 @@ export const messagesEn = {
     keyDeleted: (name: string) => `Key: ${name} has been deleted.`,
   },
   keyGiverDrops: {
-    keyGiverDropIsRequired: "KeyGiver drop is required.",
+    keyGiverDropIdIsRequired: "KeyGiver drop id is required.",
     keyGiverDropNotExists: "Provided keyGiver drop not exists.",
     keyGiverDropTooOldToDelete: "KeyGiver drop is too old to delete it.",
     dropTooOldToAdd: (time: number) =>
@@ -96,7 +96,6 @@ export const messagesEn = {
   },
   date: {
     invalidDate: "Invalid date format.",
-    dateNotNever: "Date must newer than previous one.",
   },
   privileges: {
     enemies: {
@@ -105,6 +104,34 @@ export const messagesEn = {
       addEnemies: "add new enemies",
       editEnemies: "edit enemies",
       deleteEnemies: "delete enemies",
+    },
+    keyGiverDrops: {
+      category: "Keygiver drops",
+      getKeyGiverDrops: "get keygiver drops list",
+      addKeyGiverDrops: "add new keygiver drops",
+      editKeyGiverDrops: "edit keygiver drops",
+      deleteKeyGiverDrops: "delete keygiver drops",
+    },
+    keyGivers: {
+      category: "Keygivers",
+      getKeyGivers: "get keygivers list",
+      addKeyGivers: "add new keygivers",
+      editKeyGivers: "edit keygivers",
+      deleteKeyGivers: "delete keygivers",
+    },
+    keys: {
+      category: "Keys",
+      getKeys: "get keys list",
+      addKeys: "add new keys",
+      editKeys: "edit keys",
+      deleteKeys: "delete keys",
+    },
+    locations: {
+      category: "Locations",
+      getLocations: "get locations list",
+      addLocations: "add new locations",
+      editLocations: "edit locations",
+      deleteLocations: "delete locations",
     },
     users: {
       category: "Users",

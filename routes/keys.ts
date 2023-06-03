@@ -19,9 +19,9 @@ keysRouter.get(
   getKeys
 );
 keysRouter.post("/", auth(UserRole.consigliore, UserRole.caporegime), addKey);
-keysRouter.delete("/:id", auth(UserRole.consigliore), deleteKey);
 keysRouter.patch(
   "/:id",
   auth(UserRole.consigliore, UserRole.caporegime),
   updateKey
 );
+keysRouter.delete("/:id", auth(UserRole.consigliore), deleteKey);

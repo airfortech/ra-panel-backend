@@ -12,7 +12,7 @@ const keyGiverDropSchema = new Schema<IKeyGiverDrop>({
     ref: "KeyGiver",
     required: [
       true,
-      messages[config.lang].keyGiverDrops.keyGiverDropIsRequired,
+      messages[config.lang].keyGiverDrops.keyGiverDropIdIsRequired,
     ],
     validate: {
       validator: async (value: Types.ObjectId) => {

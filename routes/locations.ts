@@ -23,9 +23,9 @@ locationsRouter.post(
   auth(UserRole.consigliore, UserRole.caporegime),
   addLocation
 );
-locationsRouter.delete("/:id", auth(UserRole.consigliore), deleteLocation);
 locationsRouter.patch(
   "/:id",
   auth(UserRole.consigliore, UserRole.caporegime),
   updateLocation
 );
+locationsRouter.delete("/:id", auth(UserRole.consigliore), deleteLocation);
