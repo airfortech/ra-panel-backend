@@ -11,6 +11,15 @@ export interface UserPrivileges {
   }[];
 }
 
+export interface UserPrivilegesResponse {
+  privileges: UserPrivileges[];
+  config: {
+    keyGiverDrops: {
+      maxAddTime: number;
+    };
+  };
+}
+
 export const userPrivileges = (
   lang: Language,
   userRole: UserRole

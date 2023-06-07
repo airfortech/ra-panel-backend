@@ -46,7 +46,7 @@ export const config: Config = {
     keyGiversDefaultPercentage: 20,
     locations: 20,
     locationsDefaultPercentage: 20,
-    keyGiverDrops: 40,
+    keyGiverDrops: 10,
     keyGiverDropsNoDropPercentage: 50,
     keyGiverDropsNoNextDatePercentage: 20,
   },

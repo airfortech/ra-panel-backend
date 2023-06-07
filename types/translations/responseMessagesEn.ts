@@ -1,3 +1,5 @@
+import { config } from "../../config/config";
+
 export const messagesEn = {
   default: "Something went wrong.",
   auth: {
@@ -42,7 +44,7 @@ export const messagesEn = {
     locationIdIsRequired: "Location id is required.",
     locationNotANumber: "Location id must be an integer number.",
     locationNumberNotInRange: "Location id number must be in range 0-99999",
-    nameTooLong: "Location name should have maximum 30 characters.",
+    nameTooLong: "Location name should have maximum 50 characters.",
     wrongDomain: "Wrong domain provided.",
     descriptionTooLong: "Description should have maximum 4000 characters.",
     commentTooLong: "Comment should have maximum 4000 characters.",
@@ -108,15 +110,15 @@ export const messagesEn = {
     keyGiverDrops: {
       category: "Keygiver drops",
       getKeyGiverDrops: "get keygiver drops list",
-      addKeyGiverDrops: "add new keygiver drops",
-      editKeyGiverDrops: "edit keygiver drops",
-      deleteKeyGiverDrops: "delete keygiver drops",
+      addKeyGiverDrops: `add new keygiver drops from last ${config.keyGiverDrops.maxAddTime} hours`,
+      editKeyGiverDrops: `edit keygiver drops from last ${config.keyGiverDrops.maxEditTime} hours`,
+      deleteKeyGiverDrops: `delete keygiver drops from last ${config.keyGiverDrops.maxEditTime} hours`,
     },
     keyGivers: {
       category: "Keygivers",
       getKeyGivers: "get keygivers list",
       addKeyGivers: "add new keygivers",
-      editKeyGivers: "edit keygivers",
+      editKeyGivers: `edit keygivers from last ${config.keyGiverDrops.maxEditTime} hours`,
       deleteKeyGivers: "delete keygivers",
     },
     keys: {
@@ -134,8 +136,8 @@ export const messagesEn = {
       deleteLocations: "delete locations",
     },
     users: {
-      category: "Users",
-      changePassword: "change password",
+      category: "Settings",
+      changePassword: "change roles password",
     },
   },
 };

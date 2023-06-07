@@ -41,11 +41,16 @@ export const keyGivers = (locations?: string[]): KeyGiverAddRequest[] =>
       ),
       locations:
         locations?.length > 0
-          ? new Array(Math.floor(Math.random() * 4))
-              .fill(null)
-              .map(
-                item => locations[Math.floor(Math.random() * locations.length)]
+          ? Array.from(
+              new Set(
+                new Array(Math.floor(Math.random() * 4))
+                  .fill(null)
+                  .map(
+                    () =>
+                      locations[Math.floor(Math.random() * locations.length)]
+                  )
               )
+            )
           : [],
     };
   });

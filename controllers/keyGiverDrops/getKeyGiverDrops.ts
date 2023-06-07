@@ -64,7 +64,7 @@ export const getKeyGiverDrops = async (req: Request, res: Response) => {
     }>(keyGiverDrops2, [
       {
         path: "keyGiver",
-        select: "name short domain locations",
+        select: "name short domain respawnTime locations",
         model: KeyGiver,
         match: { isActive: true },
         // INFO: nesting populate
@@ -86,8 +86,15 @@ export const getKeyGiverDrops = async (req: Request, res: Response) => {
       status: Status.success,
       data: {
         keyGiverDrops: keyGiverDrops.map(
-          ({ _id, keyGiver, drop, dropDate, nextRespawnDate }) => {
-            const { id: keyGiverId, name, short, domain, locations } = keyGiver;
+          ({ _id, keyGiver, drop, dropDate, nextRespawnDate, createdAt }) => {
+            const {
+              id: keyGiverId,
+              name,
+              short,
+              domain,
+              respawnTime,
+              locations,
+            } = keyGiver;
             const data: KeyGiverDropResponse = {
               id: _id,
               keyGiver: {
@@ -95,6 +102,7 @@ export const getKeyGiverDrops = async (req: Request, res: Response) => {
                 name,
                 short,
                 domain,
+                respawnTime,
                 locations: locations.map(({ id, locationId, name, domain }) => {
                   return {
                     id,
@@ -107,6 +115,7 @@ export const getKeyGiverDrops = async (req: Request, res: Response) => {
               drop: drop ? { id: drop.id, name: drop.name } : null,
               dropDate,
               nextRespawnDate,
+              createdAt,
             };
             return data;
           }
@@ -114,7 +123,6 @@ export const getKeyGiverDrops = async (req: Request, res: Response) => {
       },
     });
   } catch (e) {
-    console.log(e);
     throw e;
   }
 };

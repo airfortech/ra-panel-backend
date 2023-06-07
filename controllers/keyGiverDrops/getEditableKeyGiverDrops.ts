@@ -29,7 +29,7 @@ export const getEditableKeyGiverDrops = async (req: Request, res: Response) => {
         keyGiver: ShortKeyGiverResponse;
       }>({
         path: "keyGiver",
-        select: "name short domain locations",
+        select: "name short domain respawnTime locations",
         model: KeyGiver,
         match: { isActive: true },
         populate: {
@@ -45,13 +45,19 @@ export const getEditableKeyGiverDrops = async (req: Request, res: Response) => {
         model: Key,
         match: { isActive: true },
       });
-    console.log(keyGiverDrops.length);
     return res.status(200).json({
       status: Status.success,
       data: {
         keyGiverDrops: keyGiverDrops.map(
-          ({ id, keyGiver, drop, dropDate, nextRespawnDate }) => {
-            const { id: keyGiverId, name, short, domain, locations } = keyGiver;
+          ({ id, keyGiver, drop, dropDate, nextRespawnDate, createdAt }) => {
+            const {
+              id: keyGiverId,
+              name,
+              short,
+              domain,
+              respawnTime,
+              locations,
+            } = keyGiver;
             const data: KeyGiverDropResponse = {
               id,
               keyGiver: {
@@ -59,6 +65,7 @@ export const getEditableKeyGiverDrops = async (req: Request, res: Response) => {
                 name,
                 short,
                 domain,
+                respawnTime,
                 locations: locations.map(({ id, locationId, name, domain }) => {
                   return {
                     id,
@@ -71,6 +78,7 @@ export const getEditableKeyGiverDrops = async (req: Request, res: Response) => {
               drop: drop ? { id: drop.id, name: drop.name } : null,
               dropDate,
               nextRespawnDate,
+              createdAt,
             };
             return data;
           }
@@ -78,7 +86,6 @@ export const getEditableKeyGiverDrops = async (req: Request, res: Response) => {
       },
     });
   } catch (e) {
-    console.log(e);
     throw e;
   }
 };

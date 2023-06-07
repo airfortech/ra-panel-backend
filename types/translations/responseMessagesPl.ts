@@ -1,3 +1,5 @@
+import { config } from "../../config/config";
+
 export const messagesPl = {
   default: "Coś poszło nie tak.",
   auth: {
@@ -42,7 +44,7 @@ export const messagesPl = {
     locationIdIsRequired: "Id lokacji jest wymagany.",
     locationNotANumber: "Id lokacji musi być liczbą całkowitą.",
     locationNumberNotInRange: "Id lokacji musi być liczbą w przedziale 0-99999",
-    nameTooLong: "Nazwa lokacji musi mieć maksymalnie 30 znaków.",
+    nameTooLong: "Nazwa lokacji może mieć maksymalnie 50 znaków.",
     wrongDomain: "Zła domena.",
     descriptionTooLong: "Opis musi mieć maksymalnie 4000 znaków.",
     commentTooLong: "Komentarz musi mieć maksymalnie 4000 znaków.",
@@ -108,9 +110,9 @@ export const messagesPl = {
     keyGiverDrops: {
       category: "Dropy",
       getKeyGiverDrops: "pobierać listę dropów",
-      addKeyGiverDrops: "dodawać nowe dropy",
-      editKeyGiverDrops: "edytować dropy",
-      deleteKeyGiverDrops: "usuwać dropy",
+      addKeyGiverDrops: `dodawać nowe dropy z ostatnich ${config.keyGiverDrops.maxAddTime} godzin`,
+      editKeyGiverDrops: `edytować dropy z ostatnich ${config.keyGiverDrops.maxEditTime} godzin`,
+      deleteKeyGiverDrops: `usuwać dropy z ostatnich ${config.keyGiverDrops.maxEditTime} godzin`,
     },
     keyGivers: {
       category: "Klucznicy",
@@ -134,8 +136,8 @@ export const messagesPl = {
       deleteLocations: "usuwać lokacje",
     },
     users: {
-      category: "Użytkownicy",
-      changePassword: "zmieniać hasło",
+      category: "Ustawienia",
+      changePassword: "zmieniać hasło ról",
     },
   },
 };

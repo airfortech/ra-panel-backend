@@ -17,7 +17,7 @@ const locationSchema = new Schema<ILocation>({
   },
   name: {
     type: String,
-    maxLength: [30, messages[config.lang].location.nameTooLong],
+    maxLength: [50, messages[config.lang].location.nameTooLong],
   },
   domain: {
     type: String,

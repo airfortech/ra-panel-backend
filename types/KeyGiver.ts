@@ -23,7 +23,7 @@ export interface KeyGiverResponse
 export interface ShortKeyGiverResponse
   extends Omit<
     KeyGiverResponse,
-    "isActive" | "description" | "respawnTime" | "playersToComplete" | "comment"
+    "isActive" | "description" | "playersToComplete" | "comment"
   > {
   id: string;
 }

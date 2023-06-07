@@ -47,7 +47,7 @@ const keyGiverDropSchema = new Schema<IKeyGiverDrop>({
   },
   dropDate: {
     type: Number,
-    default: dayjs().unix(),
+    default: () => dayjs().unix(),
   },
   nextRespawnDate: {
     type: Number,
@@ -55,7 +55,8 @@ const keyGiverDropSchema = new Schema<IKeyGiverDrop>({
   },
   createdAt: {
     type: Number,
-    default: dayjs().unix(),
+    // INFO: dayjs().unix() in model can create not current time, use () => dayjs().unix()
+    default: () => dayjs().unix(),
   },
   isActive: {
     type: Boolean,

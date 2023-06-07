@@ -12,7 +12,7 @@ export interface KeyGiverDrop {
 }
 
 export interface KeyGiverDropResponse
-  extends Omit<KeyGiverDrop, "isActive" | "keyGiver" | "drop" | "createdAt"> {
+  extends Omit<KeyGiverDrop, "isActive" | "keyGiver" | "drop"> {
   id: string;
   keyGiver: ShortKeyGiverResponse;
   drop: ShortKeyResponse | null;

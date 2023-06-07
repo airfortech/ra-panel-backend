@@ -72,7 +72,8 @@ const enemySchema = new Schema<IEnemy>({
   },
   addDates: {
     type: [Number],
-    default: [dayjs().unix()],
+    // INFO: [dayjs().unix()] in model can create not current time, use () => [dayjs().unix()]
+    default: () => [dayjs().unix()],
   },
   removeDates: {
     type: [Number],
