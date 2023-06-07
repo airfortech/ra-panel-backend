@@ -22,7 +22,6 @@ export const deleteEnemy = async (req: Request, res: Response) => {
       enemy.isActiveEnemy = false;
       await enemy.save();
     }
-    // await saveEnemiesToFile(enemies);
     return res.status(200).json({
       status: Status.success,
       message: messages[req.lang].enemies.enemyDeleted(enemy.name),

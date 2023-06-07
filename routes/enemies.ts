@@ -23,13 +23,13 @@ enemiesRouter.post(
   auth(UserRole.consigliore, UserRole.caporegime),
   addEnemy
 );
-enemiesRouter.delete(
-  "/:id",
-  auth(UserRole.consigliore, UserRole.caporegime),
-  deleteEnemy
-);
 enemiesRouter.patch(
   "/:id",
   auth(UserRole.soldato, UserRole.consigliore, UserRole.caporegime),
   updateEnemy
+);
+enemiesRouter.delete(
+  "/:id",
+  auth(UserRole.consigliore, UserRole.caporegime),
+  deleteEnemy
 );

@@ -1,0 +1,74 @@
+### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
+
+### Global variables
+@token = {{login.response.body.data.token}}
+@locationId = {{locations.response.body.data.locations[0].id}}
+
+### Auth Api
+### Login - Soldato
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Soldato",
+    "password": "test1234"
+}
+
+### Login - Caporegime
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Caporegime",
+    "password": "test1234"
+}
+
+### Login - Consigliore
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Consigliore",
+    "password": "test1234"
+}
+
+### Logout
+# @name login
+GET {{url}}/api/auth/logout
+Authorization: Bearer {{token}}
+
+### Locations Api
+### get all locations
+# @name locations
+GET {{url}}/api/locations
+Authorization: Bearer {{token}}
+
+### add location
+POST {{url}}/api/locations
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "locationId": 3897,
+    "domain": "Imperium"
+}
+
+### delete location
+DELETE {{url}}/api/locations/{{locationId}}
+Authorization: Bearer {{token}}
+
+### delete location - bad id
+DELETE {{url}}/api/locations/6460d2823d836966cbf60f84
+Authorization: Bearer {{token}}
+
+### update location
+PATCH {{url}}/api/locations/{{locationId}}
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "name": "Karczma"
+}

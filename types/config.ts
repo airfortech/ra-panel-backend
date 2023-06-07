@@ -17,8 +17,18 @@ export interface Config {
   };
   users?: User[];
   lang: Language;
+  keyGiverDrops: {
+    maxEditTime: number;
+    maxAddTime: number;
+  };
   tests: {
     enemies: number;
     enemiesDefaultPercentage: number;
+    keyGiversDefaultPercentage: number;
+    locations: number;
+    locationsDefaultPercentage: number;
+    keyGiverDrops: number;
+    keyGiverDropsNoDropPercentage: number;
+    keyGiverDropsNoNextDatePercentage: number;
   };
 }

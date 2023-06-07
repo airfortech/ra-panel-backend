@@ -2,6 +2,7 @@ import { messages, Status } from "../types/responseMessages";
 import { Request } from "../types/Request";
 import { NextFunction, Response } from "express";
 import mongoose from "mongoose";
+import { config } from "../config/config";
 
 export class CustomError extends Error {
   statusCode: number;
@@ -36,8 +37,9 @@ export const handleError = (
       message: err.errors[firstErrorKey].message,
     });
   } else {
+    const lang = req.lang || config.lang;
     res
       .status(500)
-      .json({ status: Status.error, message: messages[req.lang].default });
+      .json({ status: Status.error, message: messages[lang].default });
   }
 };

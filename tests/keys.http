@@ -46,14 +46,6 @@ Authorization: Bearer {{token}}
 GET {{url}}/api/keys
 Authorization: Bearer {{token}}
 
-### get key details
-GET {{url}}/api/keys/{{keyId}}
-Authorization: Bearer {{token}}
-
-### get key details - bad id
-GET {{url}}/api/keys/6345d568ae474b461be9581c
-Authorization: Bearer {{token}}
-
 ### add new key
 POST {{url}}/api/keys
 Authorization: Bearer {{token}}
@@ -61,8 +53,8 @@ content-type: application/json
 
 {
     "name": "duzy ciezki klucz25",
-    "treasuryName": "Edalbert",
-    "domain": "Ishtar"
+    "treasury": "646f98b43d66d9ab2c60511e",
+    "domain": "Imperium"
 }
 
 ### update key
@@ -72,7 +64,7 @@ content-type: application/json
 
 {
     "name": "duzy ciezki klucz",
-    "treasuryName": "Edalbert"
+    "treasury": "646f98b43d66d9ab2c60511e"
 }
 
 ### delete key
@@ -82,23 +74,3 @@ Authorization: Bearer {{token}}
 ### delete key - bad id
 DELETE {{url}}/api/keys/6345d568ae474b
 Authorization: Bearer {{token}}
-
-### add new timestamp
-PATCH {{url}}/api/keys/addtimestamp/{{keyId}}
-Authorization: Bearer {{token}}
-content-type: application/json
-
-{
-    "date": "Tue, 30 May 2022 23:00:00 GMT",
-    "npcName": "Rivannon"
-}
-
-### add new timestamp - bad date format
-PATCH {{url}}/api/keys/addtimestamp/{{keyId}}
-Authorization: Bearer {{token}}
-content-type: application/json
-
-{
-    "date": "invalid date",
-    "npcName": true
-}
