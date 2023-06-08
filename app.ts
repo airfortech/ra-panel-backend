@@ -2,6 +2,7 @@ import express from "express";
 import { join } from "path";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import { ScheduledTask } from "node-cron";
 import "express-async-errors";
 import { enemiesRouter } from "./routes/enemies";
 import { authRouter } from "./routes/auth";
@@ -11,13 +12,24 @@ import { keyGiversRouter } from "./routes/keyGivers";
 import { keysRouter } from "./routes/keys";
 import { handleError } from "./utils/customError";
 import { connectToDB } from "./db/mongoose";
+import { createShedule } from "./db/tools/backupDb/createShedule";
 import { languageDetector } from "./utils/languageDetector";
-import { config } from "./config/config";
 import { privilegesRouter } from "./routes/privileges";
 import { locationsRouter } from "./routes/locations";
 import { keyGiverDropsRouter } from "./routes/keyGiverDrops";
+import { config } from "./config/config";
 
-connectToDB();
+export const shedules: {
+  backupSchedule: ScheduledTask | null;
+} = {
+  backupSchedule: null,
+};
+
+(async () => {
+  console.log(shedules.backupSchedule);
+  await connectToDB();
+  await createShedule([1, 10, 20, 30, 40, 50]);
+})();
 
 const app = express();
 
