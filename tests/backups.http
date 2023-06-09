@@ -1,0 +1,76 @@
+### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
+
+### Global variables
+@token = {{login.response.body.data.token}}
+@fileName = {{backups.response.body.data.backups[0]}}
+
+### Auth Api
+### Login - Soldato
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Soldato",
+    "password": "test1234"
+}
+
+### Login - Caporegime
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Caporegime",
+    "password": "test1234"
+}
+
+### Login - Consigliore
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Consigliore",
+    "password": "test1234"
+}
+
+### Logout
+# @name login
+GET {{url}}/api/auth/logout
+Authorization: Bearer {{token}}
+
+### backups Api
+### get backups list
+# @name backups
+GET {{url}}/api/backups
+Authorization: Bearer {{token}}
+
+### create backup
+POST {{url}}/api/backups
+Authorization: Bearer {{token}}
+
+### restore backup
+# @name keys
+POST {{url}}/api/backups/{{fileName}}
+Authorization: Bearer {{token}}
+
+### restore backup - bad file name
+# @name keys
+POST {{url}}/api/backups/asdasfasfasdasd
+Authorization: Bearer {{token}}
+
+### change backup settings
+PATCH {{url}}/api/backups
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "autoDeleteBackup": true,
+    "backupKeepMonths": 2,
+    "backupDays": [1,3,5]
+}
+
+### delete backups
+DELETE {{url}}/api/backups
+Authorization: Bearer {{token}}

@@ -9,6 +9,10 @@ export const messagesEn = {
     logout: "You have logged out.",
     login: "You have logged in.",
   },
+  settings: {
+    backupKeepMonthsTooLowNumber: "Minimum number of months is 1.",
+    backupKeepMonthsNotANumber: "Value of months must be an integer number.",
+  },
   users: {
     noRolesInDb: "No roles found in database. Contact with admin.",
     passwordChanged: "Password has been changed.",

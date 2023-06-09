@@ -6,11 +6,13 @@ import { createKeys } from "./createKeys";
 import { createUsers } from "./createUsers";
 import { createLocations } from "./createLocations";
 import { createKeyGiverDrops } from "./createKeyGiverDrops";
+import { createSettings } from "./createSettings";
 
 const createDb = async () => {
   try {
     await connectToDB();
     await createUsers();
+    await createSettings();
     await createEnemies();
     const keys = await createKeys();
     const locations = await createLocations();

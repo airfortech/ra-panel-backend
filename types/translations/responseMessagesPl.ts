@@ -9,6 +9,10 @@ export const messagesPl = {
     logout: "Wylogowałeś się.",
     login: "Zalogowałeś się.",
   },
+  settings: {
+    backupKeepMonthsTooLowNumber: "Minimalma liczba miesięcy to 1.",
+    backupKeepMonthsNotANumber: "Wartość miesięcy musi być liczbą całkowitą.",
+  },
   users: {
     noRolesInDb: "No roles found in database. Contact with admin.",
     passwordChanged: "Password has been changed.",

@@ -6,17 +6,18 @@ import { ScheduledTask } from "node-cron";
 import "express-async-errors";
 import { enemiesRouter } from "./routes/enemies";
 import { authRouter } from "./routes/auth";
-import { usersRouter } from "./routes/users";
+import { backupsRouter } from "./routes/backups";
 import { dataRouter } from "./routes/data";
+import { keyGiverDropsRouter } from "./routes/keyGiverDrops";
 import { keyGiversRouter } from "./routes/keyGivers";
 import { keysRouter } from "./routes/keys";
+import { locationsRouter } from "./routes/locations";
+import { privilegesRouter } from "./routes/privileges";
+import { usersRouter } from "./routes/users";
 import { handleError } from "./utils/customError";
 import { connectToDB } from "./db/mongoose";
-import { createShedule } from "./db/tools/backupDb/createShedule";
+import { createInitialSettings } from "./db/tools/createInitialSettings";
 import { languageDetector } from "./utils/languageDetector";
-import { privilegesRouter } from "./routes/privileges";
-import { locationsRouter } from "./routes/locations";
-import { keyGiverDropsRouter } from "./routes/keyGiverDrops";
 import { config } from "./config/config";
 
 export const shedules: {
@@ -26,9 +27,8 @@ export const shedules: {
 };
 
 (async () => {
-  console.log(shedules.backupSchedule);
   await connectToDB();
-  await createShedule([1, 10, 20, 30, 40, 50]);
+  await createInitialSettings();
 })();
 
 const app = express();
@@ -51,6 +51,7 @@ app.use("/api/keygivers", keyGiversRouter);
 app.use("/api/keygivers/drops", keyGiverDropsRouter);
 app.use("/api/keys", keysRouter);
 app.use("/api/privileges", privilegesRouter);
+app.use("/api/backups", backupsRouter);
 app.use("/api/users", usersRouter);
 
 app.get("/*", function (req, res) {
