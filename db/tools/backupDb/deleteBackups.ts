@@ -6,10 +6,13 @@ export const deleteBackups = async (list: string[], months: number) => {
     return { fileName: file, time: dayjs(file.split(".")[0]).unix() };
   });
   // TODO: change it to months
-  const deletionTime = dayjs().subtract(months, "minutes").unix();
+  const deletionTime = dayjs().subtract(months, "months").unix();
+  const deletedBackups: string[] = [];
   files.forEach(({ fileName, time }) => {
     if (time < deletionTime) {
       rm("./backups/" + fileName);
+      deletedBackups.push(fileName);
     }
   });
+  return deletedBackups;
 };

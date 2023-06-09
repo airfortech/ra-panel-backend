@@ -12,7 +12,7 @@ const settingsSchema = new Schema<ISettings>({
   },
   backupKeepMonths: {
     type: Number,
-    min: [1, messages[config.lang].settings.backupKeepMonthsTooLowNumber],
+    min: [2, messages[config.lang].settings.backupKeepMonthsTooLowNumber],
     integer: [true, messages[config.lang].settings.backupKeepMonthsNotANumber],
     cast: messages[config.lang].settings.backupKeepMonthsNotANumber,
     default: 35,

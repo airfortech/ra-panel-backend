@@ -10,8 +10,19 @@ export const messagesPl = {
     login: "Zalogowałeś się.",
   },
   settings: {
-    backupKeepMonthsTooLowNumber: "Minimalma liczba miesięcy to 1.",
+    backupKeepMonthsTooLowNumber: "Minimalma liczba miesięcy to 2.",
     backupKeepMonthsNotANumber: "Wartość miesięcy musi być liczbą całkowitą.",
+    settingsChanged: "Ustawienia zostały zmienione",
+    settingsNotExists: "Ustawienia nie istnieją. Utwórz je.",
+  },
+  backups: {
+    saved: (fileName: string) => `Backup został zapisany do pliku: ${fileName}`,
+    noBackupsToDelete: "brak plików backupu do usunięcia.",
+    backupsDeleted: (count: number) => `Usunięto plików backupu: ${count}`,
+    fileNotExists: (fileName: string) =>
+      `Plik backupu: ${fileName} nie istnieje`,
+    backupRestored: (fileName: string) =>
+      `Plik backupu: ${fileName} został wczytany`,
   },
   users: {
     noRolesInDb: "No roles found in database. Contact with admin.",

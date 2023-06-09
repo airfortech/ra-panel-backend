@@ -9,5 +9,3 @@ export const restoreBackupFromFile = async (file: string) => {
   const backupCommand = `mongorestore --uri=${uri} --archive="./backups/${file}" --drop`;
   await exec(backupCommand);
 };
-
-restoreBackupFromFile("2023-06-08 15:50:00.db");

@@ -13,7 +13,7 @@ export const createShedule = async (
   const sheduledDays = days.join(",");
   // TODO: change it to days of week
   if (shedules.backupSchedule) shedules.backupSchedule.stop();
-  shedules.backupSchedule = schedule(`${sheduledDays} * * * *`, async () => {
+  shedules.backupSchedule = schedule(`0 0 * * ${sheduledDays}`, async () => {
     if (autoDeleteBackup) {
       const list = await getFilesList();
       await deleteBackups(list, backupKeepMonths);
