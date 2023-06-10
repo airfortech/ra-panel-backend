@@ -27,7 +27,7 @@ export const userPrivileges = (
   const isAllowed = (...allowedRoles: UserRole[]) => {
     return allowedRoles.includes(userRole);
   };
-  const { enemies, keyGiverDrops, keyGivers, keys, locations, users } =
+  const { enemies, keyGiverDrops, keyGivers, keys, locations, settings } =
     messages[lang].privileges;
   return [
     {
@@ -177,10 +177,22 @@ export const userPrivileges = (
       ],
     },
     {
-      category: users.category,
+      category: settings.category,
       actions: [
         {
-          action: users.changePassword,
+          action: settings.changePassword,
+          isAllowed: isAllowed(UserRole.consigliore),
+        },
+        {
+          action: settings.createBackup,
+          isAllowed: isAllowed(UserRole.consigliore),
+        },
+        {
+          action: settings.restoreBackup,
+          isAllowed: isAllowed(UserRole.consigliore),
+        },
+        {
+          action: settings.changeSettings,
           isAllowed: isAllowed(UserRole.consigliore),
         },
       ],

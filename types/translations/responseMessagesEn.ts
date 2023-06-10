@@ -150,9 +150,12 @@ export const messagesEn = {
       editLocations: "edit locations",
       deleteLocations: "delete locations",
     },
-    users: {
+    settings: {
       category: "Settings",
       changePassword: "change roles password",
+      createBackup: "create backup",
+      restoreBackup: "restore backup",
+      changeSettings: "change settings",
     },
   },
 };

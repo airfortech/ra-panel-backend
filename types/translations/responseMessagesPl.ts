@@ -18,7 +18,7 @@ export const messagesPl = {
   },
   backups: {
     saved: (fileName: string) => `Backup został zapisany do pliku: ${fileName}`,
-    noBackupsToDelete: "brak plików backupu do usunięcia.",
+    noBackupsToDelete: "Brak plików backupu do usunięcia.",
     backupsDeleted: (count: number) => `Usunięto plików backupu: ${count}`,
     fileNotExists: (fileName: string) =>
       `Plik backupu: ${fileName} nie istnieje`,
@@ -151,9 +151,12 @@ export const messagesPl = {
       editLocations: "edytować informacje o lokacjach",
       deleteLocations: "usuwać lokacje",
     },
-    users: {
+    settings: {
       category: "Ustawienia",
       changePassword: "zmieniać hasło ról",
+      createBackup: "tworzyć backup",
+      restoreBackup: "przywracać backup",
+      changeSettings: "zmieniać ustawienia",
     },
   },
 };

@@ -19,7 +19,7 @@ const settingsSchema = new Schema<ISettings>({
   },
   backupDays: {
     type: [Number],
-    default: [0, 10, 20, 30, 40, 50],
+    default: [0, 2, 5],
   },
 });
 
