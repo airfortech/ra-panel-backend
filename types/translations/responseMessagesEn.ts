@@ -10,7 +10,8 @@ export const messagesEn = {
     login: "You have logged in.",
   },
   settings: {
-    backupKeepMonthsTooLowNumber: "Minimum number of months is 2.",
+    backupKeepMonthsTooLowNumber:
+      "Minimum months number of backup to keep is 2.",
     backupKeepMonthsNotANumber: "Value of months must be an integer number.",
     settingsChanged: "Settings has been changed.",
     settingsNotExists: "Settings doesn't exist. Create one.",

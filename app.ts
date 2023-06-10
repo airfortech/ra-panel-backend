@@ -19,6 +19,7 @@ import { connectToDB } from "./db/mongoose";
 import { createInitialSettings } from "./db/tools/createInitialSettings";
 import { languageDetector } from "./utils/languageDetector";
 import { config } from "./config/config";
+import { settingsRouter } from "./routes/settings";
 
 export const shedules: {
   backupSchedule: ScheduledTask | null;
@@ -53,6 +54,7 @@ app.use("/api/keys", keysRouter);
 app.use("/api/privileges", privilegesRouter);
 app.use("/api/backups", backupsRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/settings", settingsRouter);
 
 app.get("/*", function (req, res) {
   res.sendFile(join(__dirname, "./public", "index.html"));

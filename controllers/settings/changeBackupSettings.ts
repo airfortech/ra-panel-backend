@@ -13,7 +13,7 @@ export const changeBackupSettings = async (req: Request, res: Response) => {
       ? daysOfWeekValidator(data.backupDays)
       : undefined;
     const settings = await Settings.findOne({});
-    if (!settings) Settings.create({ ...data, backupDays: daysOfWeek });
+    if (!settings) await Settings.create({ ...data, backupDays: daysOfWeek });
     else
       await Settings.findOneAndUpdate(
         {},

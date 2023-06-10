@@ -10,7 +10,8 @@ export const messagesPl = {
     login: "Zalogowałeś się.",
   },
   settings: {
-    backupKeepMonthsTooLowNumber: "Minimalma liczba miesięcy to 2.",
+    backupKeepMonthsTooLowNumber:
+      "Minimalma liczba miesięcy przechowywania backupu to 2.",
     backupKeepMonthsNotANumber: "Wartość miesięcy musi być liczbą całkowitą.",
     settingsChanged: "Ustawienia zostały zmienione",
     settingsNotExists: "Ustawienia nie istnieją. Utwórz je.",
