@@ -9,6 +9,22 @@ export const messagesPl = {
     logout: "Wylogowałeś się.",
     login: "Zalogowałeś się.",
   },
+  settings: {
+    backupKeepMonthsTooLowNumber:
+      "Minimalma liczba miesięcy przechowywania backupu to 2.",
+    backupKeepMonthsNotANumber: "Wartość miesięcy musi być liczbą całkowitą.",
+    settingsChanged: "Ustawienia zostały zmienione",
+    settingsNotExists: "Ustawienia nie istnieją. Utwórz je.",
+  },
+  backups: {
+    saved: (fileName: string) => `Backup został zapisany do pliku: ${fileName}`,
+    noBackupsToDelete: "Brak plików backupu do usunięcia.",
+    backupsDeleted: (count: number) => `Usunięto plików backupu: ${count}`,
+    fileNotExists: (fileName: string) =>
+      `Plik backupu: ${fileName} nie istnieje`,
+    backupRestored: (fileName: string) =>
+      `Plik backupu: ${fileName} został wczytany`,
+  },
   users: {
     noRolesInDb: "No roles found in database. Contact with admin.",
     passwordChanged: "Password has been changed.",
@@ -135,9 +151,12 @@ export const messagesPl = {
       editLocations: "edytować informacje o lokacjach",
       deleteLocations: "usuwać lokacje",
     },
-    users: {
+    settings: {
       category: "Ustawienia",
       changePassword: "zmieniać hasło ról",
+      createBackup: "tworzyć backup",
+      restoreBackup: "przywracać backup",
+      changeSettings: "zmieniać ustawienia",
     },
   },
 };
