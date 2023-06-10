@@ -11,7 +11,7 @@ export const backupToFile = async () => {
   const time = dayjs().format("YYYY-MM-DD HH:mm:ss");
   await mkdir("./backups", { recursive: true });
   const fileName = time + ".db";
-  const backupCommand = `mongodump --uri=${uri} --archive="./backups/${fileName}"`;
+  const backupCommand = `mongodump --uri="${uri}" --archive="./backups/${fileName}"`;
   await exec(backupCommand);
   return fileName;
 };
