@@ -1,31 +1,28 @@
 import { messages, Status } from "../../types/responseMessages";
-import { KeyGiver as IKeyGiver } from "../../types/KeyGiver";
+import { KeyGiverUpdateRequest } from "../../types/KeyGiver";
 import { Request } from "../../types/Request";
 import { Response } from "express";
 import { KeyGiver } from "../../db/models/KeyGiver";
 import { CustomError } from "../../utils/customError";
-import { isIdValid } from "../../db/validators/universalValidators";
+import {
+  areIdsValid,
+  isIdValid,
+} from "../../db/validators/universalValidators";
 
 export const updateKeyGiver = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
+    const { name, short, locations, ...data } =
+      req.body as KeyGiverUpdateRequest;
     isIdValid(id, messages[req.lang].keyGivers.keyGiverNotExists, 404);
-    const { name, description, respawnTime } = req.body as IKeyGiver;
-    const keyGiverWithSameName = await KeyGiver.findOne({
-      name,
-      _id: { $ne: id },
+    areIdsValid(
+      locations,
+      messages[req.lang].keyGivers.wrongLocationIdProvided,
+      400
+    );
+    const keyGiver = await KeyGiver.findOne({
+      _id: id,
       isActive: true,
-    });
-    if (keyGiverWithSameName)
-      throw new CustomError(
-        messages[req.lang].keyGivers.nameExists,
-        400,
-        Status.error
-      );
-    const keyGiver = await KeyGiver.findByIdAndUpdate(id, {
-      name,
-      description,
-      respawnTime,
     });
     if (!keyGiver)
       throw new CustomError(
@@ -33,8 +30,19 @@ export const updateKeyGiver = async (req: Request, res: Response) => {
         404,
         Status.error
       );
+    await KeyGiver.findOneAndUpdate(
+      { _id: id, isActive: true },
+      {
+        ...data,
+        name: name.trim() === keyGiver.name ? undefined : name,
+        short: short.trim() === keyGiver.short ? undefined : short,
+        locations,
+      },
+      { runValidators: true }
+    );
     return res.status(200).json({
       status: Status.success,
+      message: messages[req.lang].keyGivers.keyGiverUpdated,
     });
   } catch (e) {
     throw e;

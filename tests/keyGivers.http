@@ -46,22 +46,18 @@ Authorization: Bearer {{token}}
 GET {{url}}/api/keygivers
 Authorization: Bearer {{token}}
 
-### get keyGiver details
-GET {{url}}/api/keygivers/{{keyGiverId}}
-Authorization: Bearer {{token}}
-
-### get keyGiver details - bad id
-GET {{url}}/api/keygivers/6345d568ae474b461be9581c
-Authorization: Bearer {{token}}
-
 ### add new keyGiver
 POST {{url}}/api/keygivers
 Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "name": "kluczek1",
-    "respawnTime": 20
+    "name": "Lyris8",
+    "short": "potezny niesmialy czlowiek7",
+    "respawnTime": 20,
+    "domain": "Imperium",
+    "playersToComplete": 2,
+    "locations": ["646ea9fde3d45938d99602ee"]
 }
 
 ### update keyGiver
@@ -70,9 +66,11 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "name": "kluczek3",
-    "respawnTime": 24,
-    "description": "Some description2"
+    "name": "Lyris9",
+    "short": "niski przewrotny halfling",
+    "respawnTime": 20,
+    "domain": "Imperium",
+    "playersToComplete": 2
 }
 
 ### delete keyGiver
@@ -82,23 +80,3 @@ Authorization: Bearer {{token}}
 ### delete keyGiver - bad id
 DELETE {{url}}/api/keygivers/6345d568ae474b
 Authorization: Bearer {{token}}
-
-### add new timestamp
-PATCH {{url}}/api/keygivers/addtimestamp/{{keyGiverId}}
-Authorization: Bearer {{token}}
-content-type: application/json
-
-{
-    "date": "Tue, 30 May 2023 23:00:00 GMT",
-    "keyName": "duzy ciezki klucz"
-}
-
-### add new timestamp - bad date format
-PATCH {{url}}/api/keygivers/addtimestamp/{{keyGiverId}}
-Authorization: Bearer {{token}}
-content-type: application/json
-
-{
-    "date": "invalid date",
-    "keyName": "duzy ciezki klucz"
-}

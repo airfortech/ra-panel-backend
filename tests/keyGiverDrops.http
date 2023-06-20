@@ -1,0 +1,82 @@
+### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
+
+### Global variables
+@token = {{login.response.body.data.token}}
+@keyGiverDropId = {{keyGiverDrops.response.body.data.keyGiverDrops[0].id}}
+
+### Auth Api
+### Login - Soldato
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Soldato",
+    "password": "test1234"
+}
+
+### Login - Caporegime
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Caporegime",
+    "password": "test1234"
+}
+
+### Login - Consigliore
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Consigliore",
+    "password": "test1234"
+}
+
+### Logout
+# @name login
+GET {{url}}/api/auth/logout
+Authorization: Bearer {{token}}
+
+### keyGiverDrops Api
+### get all keyGiverDrops
+# @name keyGiverDrops
+GET {{url}}/api/keygivers/drops/
+Authorization: Bearer {{token}}
+
+### get all keyGiverDrops - edit
+# @name keyGiverDrops
+GET {{url}}/api/keygivers/drops/edit
+Authorization: Bearer {{token}}
+
+### add new keyGiverDrop
+POST {{url}}/api/keygivers/drops/
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "keyGiver": "64746f4181a11c063272bd2d",
+    "drop": "646f98b43d66d9ab2c60511e",
+    "dropDate": 1685661860
+}
+
+### update keyGiverDrop
+PATCH {{url}}/api/keygivers/drops/{{keyGiverDropId}}
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "keyGiver": "64746f4181a11c063272bd2d",
+    # "drop": "646f98b43d66d9ab2c60511e",
+    "dropDate": 1685661860
+}
+
+### delete keyGiverDrop
+DELETE {{url}}/api/keygivers/drops/{{keyGiverDropId}}
+Authorization: Bearer {{token}}
+
+### delete keyGiverDrop - bad id
+DELETE {{url}}/api/keygivers/drops/6345d568ae474b
+Authorization: Bearer {{token}}

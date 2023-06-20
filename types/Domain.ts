@@ -1,4 +1,6 @@
 export enum Domain {
-  OldWorld = "Old World",
+  Imperium = "Imperium",
   Ishtar = "Ishtar",
+  both = "Obie",
+  unknown = "Nieznana",
 }

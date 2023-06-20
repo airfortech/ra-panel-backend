@@ -1,3 +1,5 @@
+import { config } from "../../config/config";
+
 export const messagesEn = {
   default: "Something went wrong.",
   auth: {
@@ -6,6 +8,21 @@ export const messagesEn = {
     unauthorized: "You have no permission.",
     logout: "You have logged out.",
     login: "You have logged in.",
+  },
+  settings: {
+    backupKeepMonthsTooLowNumber:
+      "Minimum months number of backup to keep is 2.",
+    backupKeepMonthsNotANumber: "Value of months must be an integer number.",
+    settingsChanged: "Settings has been changed.",
+    settingsNotExists: "Settings doesn't exist. Create one.",
+  },
+  backups: {
+    saved: (fileName: string) => `Backup has been saved to file: ${fileName}`,
+    noBackupsToDelete: "No backup files to delete.",
+    backupsDeleted: (count: number) => `Backup files deleted: ${count}`,
+    fileNotExists: (fileName: string) =>
+      `Backup file: ${fileName} doesn't exist.`,
+    backupRestored: (fileName: string) => `Backup file: ${fileName} restored.`,
   },
   users: {
     noRolesInDb: "No roles found in database. Contact with admin.",
@@ -31,29 +48,71 @@ export const messagesEn = {
     wrongLevel: "Wrong level provided.",
     wrongWeapon: "Wrong weapon provided.",
   },
+  location: {
+    locationAdded: (locationId: number) =>
+      `Location ${locationId} has been added.`,
+    locationNotExists: "Such location not exists.",
+    locationDeleted: (locationId: number) =>
+      `Location ${locationId} has been deleted.`,
+    locationUpdated: (locationId: number) =>
+      `Location ${locationId} has been updated.`,
+    locationIdIsRequired: "Location id is required.",
+    locationNotANumber: "Location id must be an integer number.",
+    locationNumberNotInRange: "Location id number must be in range 0-99999",
+    nameTooLong: "Location name should have maximum 50 characters.",
+    wrongDomain: "Wrong domain provided.",
+    descriptionTooLong: "Description should have maximum 4000 characters.",
+    commentTooLong: "Comment should have maximum 4000 characters.",
+    bindsTooLong: "Each bind should have maximum 100 characters.",
+  },
   keyGivers: {
-    keyGiverExists: "Such keygiver exists.",
+    keyGiverExists: (name: string) => `Keygiver ${name} exists.`,
     keyGiverNotExists: "Such keygiver not exists.",
     nameIsRequired: "Name is required.",
     nameExists: "Such keygiver name exists. Choose other one.",
-    nameTooLong: "Name should have maximum 80 characters.",
+    nameTooLong: "Name should have maximum 30 characters.",
+    shortTooLong: "Name should have maximum 50 characters.",
     descriptionTooLong: "Description should have maximum 4000 characters.",
-    respawnTimeNotANumber: "Respawn time must be a number of hours.",
+    respawnTimeNotANumber: "Respawn time must be an integer number of hours.",
+    wrongDomain: "Wrong domain provided.",
+    wrongLocationIdProvided: "One or more location id are not valid.",
+    locationNotExist: "One or more locations do not exist.",
+    playersToCompleteNotInRange:
+      "Players to complete number must be in range 0-20",
+    commentTooLong: "Comment should have maximum 4000 characters.",
     keyGiverAdded: "Keygiver has been added.",
-    keyGiverDeleted: "Keygiver has been deleted.",
+    keyGiverUpdated: "Keygiver has been updated.",
+    keyGiverDeleted: (name: string) => `Keygiver ${name} has been deleted.`,
   },
   keys: {
-    nameExists: "Such key name exists. Choose other one.",
+    keyExists: (name: string) => `Key: ${name} exists. Choose other one.`,
     keyNotExists: "Such key not exists.",
-    nameTooLong: "Name should have maximum 80 characters.",
+    nameTooLong: "Name should have maximum 50 characters.",
     nameIsRequired: "Name is required.",
-    treasuryNameTooLong: "Treasury name should have maximum 80 characters.",
-    keyAdded: "Key has been added.",
-    keyDeleted: "Key has been deleted.",
+    wrongTreasuryIdProvided: "Treasury id is not valid.",
+    wrongDomain: "Wrong domain provided.",
+    commentTooLong: "Comment should have maximum 4000 characters.",
+    descriptionTooLong: "Description should have maximum 4000 characters.",
+    keyAdded: (name: string) => `Key: ${name} has been added.`,
+    keyUpdated: (name: string) => `Key: ${name} has been updated.`,
+    keyDeleted: (name: string) => `Key: ${name} has been deleted.`,
+  },
+  keyGiverDrops: {
+    keyGiverDropIdIsRequired: "KeyGiver drop id is required.",
+    keyGiverDropNotExists: "Provided keyGiver drop not exists.",
+    keyGiverDropTooOldToDelete: "KeyGiver drop is too old to delete it.",
+    dropTooOldToAdd: (time: number) =>
+      `You can add only ${time} hours long drop.`,
+    dropTooOldToEdit: (time: number) =>
+      `You can edit only ${time} hours long drop.`,
+    keyNotExists: "Provided key not exists.",
+    keyGiverNotExists: "Provided keygiver not exists.",
+    keyGiverDropAdded: "KeyGiver drop has been added.",
+    keyGiverDropUpdated: "KeyGiver drop has been updated.",
+    keyGiverDropDeleted: "KeyGiver drop has been deleted.",
   },
   date: {
     invalidDate: "Invalid date format.",
-    dateNotNever: "Date must newer than previous one.",
   },
   privileges: {
     enemies: {
@@ -63,9 +122,40 @@ export const messagesEn = {
       editEnemies: "edit enemies",
       deleteEnemies: "delete enemies",
     },
-    users: {
-      category: "Users",
-      changePassword: "change password",
+    keyGiverDrops: {
+      category: "Keygiver drops",
+      getKeyGiverDrops: "get keygiver drops list",
+      addKeyGiverDrops: `add new keygiver drops from last ${config.keyGiverDrops.maxAddTime} hours`,
+      editKeyGiverDrops: `edit keygiver drops from last ${config.keyGiverDrops.maxEditTime} hours`,
+      deleteKeyGiverDrops: `delete keygiver drops from last ${config.keyGiverDrops.maxEditTime} hours`,
+    },
+    keyGivers: {
+      category: "Keygivers",
+      getKeyGivers: "get keygivers list",
+      addKeyGivers: "add new keygivers",
+      editKeyGivers: `edit keygivers from last ${config.keyGiverDrops.maxEditTime} hours`,
+      deleteKeyGivers: "delete keygivers",
+    },
+    keys: {
+      category: "Keys",
+      getKeys: "get keys list",
+      addKeys: "add new keys",
+      editKeys: "edit keys",
+      deleteKeys: "delete keys",
+    },
+    locations: {
+      category: "Locations",
+      getLocations: "get locations list",
+      addLocations: "add new locations",
+      editLocations: "edit locations",
+      deleteLocations: "delete locations",
+    },
+    settings: {
+      category: "Settings",
+      changePassword: "change roles password",
+      createBackup: "create backup",
+      restoreBackup: "restore backup",
+      changeSettings: "change settings",
     },
   },
 };

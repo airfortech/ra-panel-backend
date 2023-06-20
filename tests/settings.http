@@ -1,0 +1,57 @@
+### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
+
+### Global variables
+@token = {{login.response.body.data.token}}
+
+### Auth Api
+### Login - Soldato
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Soldato",
+    "password": "test1234"
+}
+
+### Login - Caporegime
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Caporegime",
+    "password": "test1234"
+}
+
+### Login - Consigliore
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Consigliore",
+    "password": "test1234"
+}
+
+### Logout
+# @name login
+GET {{url}}/api/auth/logout
+Authorization: Bearer {{token}}
+
+### settings Api
+### get settings
+# @name backups
+GET {{url}}/api/settings
+Authorization: Bearer {{token}}
+
+### change backup settings
+PATCH {{url}}/api/settings/backup
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "autoDeleteBackup": true,
+    "backupKeepMonths": 2,
+    "backupDays": [0,1,2,3,4,5,6]
+}

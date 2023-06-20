@@ -53,7 +53,7 @@ content-type: application/json
 
 {
     "name": "Sylvanas",
-    "guild": "sc"
+    "guild": "SC"
 }
 
 ### delete enemy

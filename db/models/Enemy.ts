@@ -14,6 +14,7 @@ export interface IEnemySchema extends Document, IEnemy {}
 const enemySchema = new Schema<IEnemy>({
   name: {
     type: String,
+    trim: true,
     required: [true, messages[config.lang].enemies.nameIsRequired],
     maxLength: [30, messages[config.lang].enemies.nameTooLong],
     unique: true,
@@ -71,7 +72,8 @@ const enemySchema = new Schema<IEnemy>({
   },
   addDates: {
     type: [Number],
-    default: [dayjs().unix()],
+    // INFO: [dayjs().unix()] in model can create not current time, use () => [dayjs().unix()]
+    default: () => [dayjs().unix()],
   },
   removeDates: {
     type: [Number],

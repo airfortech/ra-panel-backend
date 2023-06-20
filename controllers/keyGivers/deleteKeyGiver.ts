@@ -9,7 +9,10 @@ export const deleteKeyGiver = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
     isIdValid(id, messages[req.lang].keyGivers.keyGiverNotExists, 404);
-    const keyGiver = await KeyGiver.findByIdAndUpdate(id, { isActive: false });
+    const keyGiver = await KeyGiver.findOneAndUpdate(
+      { _id: id, isActive: true },
+      { isActive: false }
+    );
     if (!keyGiver)
       throw new CustomError(
         messages[req.lang].keyGivers.keyGiverNotExists,
@@ -18,7 +21,7 @@ export const deleteKeyGiver = async (req: Request, res: Response) => {
       );
     return res.status(200).json({
       status: Status.success,
-      message: messages[req.lang].keyGivers.keyGiverDeleted,
+      message: messages[req.lang].keyGivers.keyGiverDeleted(keyGiver.name),
     });
   } catch (e) {
     throw e;

@@ -1,4 +1,4 @@
-export const keygivers = [
+export const keyGiversShorts = [
   "bystry zakapturzony skaven",
   "rosly brazowooki mezczyzna",
   "wysoki bezwzgledny czarny ork",

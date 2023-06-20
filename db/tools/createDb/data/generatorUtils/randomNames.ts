@@ -1,6 +1,4 @@
-import { names } from "../generatorData/names";
-
-export const randomNames = (count: number): string[] => {
+export const randomNames = (count: number, names: string[]): string[] => {
   const namesCount = count > names.length ? names.length : count;
   const newNames: string[] = [];
   for (let i = 0; newNames.length < namesCount; i++) {
