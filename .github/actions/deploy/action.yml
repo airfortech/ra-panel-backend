@@ -61,6 +61,6 @@ runs:
         unzip -o ${{ inputs.file }}
         rm ${{ inputs.file }}
         node -v
-        npm install --production
+        ~/bin/npm install --production
         EOL
       shell: bash

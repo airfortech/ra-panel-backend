@@ -1,7 +1,7 @@
 import { messages } from "../../types/responseMessages";
 import { User as IUser } from "../../types/User";
 import { UserRole } from "../../types/UserRole";
-import { compare, genSalt, hash } from "bcrypt";
+import { compare, genSalt, hash } from "bcryptjs";
 import { Schema, model, Document } from "mongoose";
 import { config } from "../../config/config";
 

@@ -1,6 +1,10 @@
 name: "[Production] Deploy"
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -15,6 +19,7 @@ jobs:
       CONSIGLIORE_PASSWORD: ${{ secrets.CONSIGLIORE_PASSWORD_PRODUCTION }}
       CAPOREGIME_PASSWORD: ${{ secrets.CAPOREGIME_PASSWORD_PRODUCTION }}
       SOLDATO_PASSWORD: ${{ secrets.SOLDATO_PASSWORD_PRODUCTION }}
+      MUDLET_PASSWORD: ${{ secrets.MUDLET_PASSWORD_PRODUCTION }}
       SSH_USERNAME: ${{secrets.SSH_USERNAME_PRODUCTION}}
       SSH_SERVER: ${{secrets.SSH_SERVER_PRODUCTION}}
       SSH_KEY: ${{secrets.SSH_KEY_PRODUCTION}}
@@ -35,6 +40,7 @@ jobs:
           consigliore_password: ${{ env.CONSIGLIORE_PASSWORD }}
           caporegime_password: ${{ env.CAPOREGIME_PASSWORD }}
           soldato_password: ${{ env.SOLDATO_PASSWORD }}
+          mudlet_password: ${{ env.MUDLET_PASSWORD }}
       - name: deploy
         uses: ./.github/actions/deploy
         with:
