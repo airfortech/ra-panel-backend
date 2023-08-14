@@ -3,9 +3,9 @@ import { Router } from "express";
 import { auth } from "../utils/auth";
 import { addKeyGiverDrop } from "../controllers/keyGiverDrops/addKeyGiverDrop";
 import { deleteKeyGiverDrop } from "../controllers/keyGiverDrops/deleteKeyGiverDrop";
-import { getKeyGiverDrops } from "../controllers/keyGiverDrops/getKeyGiverDrops";
 import { updateKeyGiverDrop } from "../controllers/keyGiverDrops/updateKeyGiverDrop";
 import { getEditableKeyGiverDrops } from "../controllers/keyGiverDrops/getEditableKeyGiverDrops";
+import { getNewestKeyGiverDrops } from "../controllers/keyGiverDrops/getNewestKeyGiverDrops";
 
 export const keyGiverDropsRouter = Router();
 
@@ -17,7 +17,7 @@ keyGiverDropsRouter.get(
     UserRole.soldato,
     UserRole.mudlet
   ),
-  getKeyGiverDrops
+  getNewestKeyGiverDrops
 );
 keyGiverDropsRouter.get(
   "/edit",

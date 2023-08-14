@@ -34,6 +34,16 @@ content-type: application/json
     "password": "test1234"
 }
 
+### Login - Mudlet
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Mudlet",
+    "password": "test1234"
+}
+
 ### Login - wrong role
 # @name login
 POST {{url}}/api/auth/login

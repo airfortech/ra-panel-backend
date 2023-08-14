@@ -46,6 +46,11 @@ Authorization: Bearer {{token}}
 GET {{url}}/api/keygivers/drops/
 Authorization: Bearer {{token}}
 
+### get keyGivers from last x days
+# @name keyGiverDrops
+GET {{url}}/api/keygivers/drops/?days=7
+Authorization: Bearer {{token}}
+
 ### get all keyGiverDrops - edit
 # @name keyGiverDrops
 GET {{url}}/api/keygivers/drops/edit
