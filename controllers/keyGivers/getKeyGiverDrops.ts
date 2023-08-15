@@ -10,19 +10,19 @@ import { isIdValid } from "../../db/validators/universalValidators";
 import { CustomError } from "../../utils/customError";
 
 export const getKeyGiverDrops = async (req: Request, res: Response) => {
-  const id = req.params.id;
-  isIdValid(id, messages[req.lang].keyGivers.keyGiverNotExists, 404);
-  const keyGiver = await KeyGiver.findOne({
-    isActive: true,
-    _id: id,
-  });
-  if (!keyGiver)
-    throw new CustomError(
-      messages[req.lang].keyGivers.keyGiverNotExists,
-      404,
-      Status.error
-    );
   try {
+    const id = req.params.id;
+    isIdValid(id, messages[req.lang].keyGivers.keyGiverNotExists, 404);
+    const keyGiver = await KeyGiver.findOne({
+      isActive: true,
+      _id: id,
+    });
+    if (!keyGiver)
+      throw new CustomError(
+        messages[req.lang].keyGivers.keyGiverNotExists,
+        404,
+        Status.error
+      );
     const keyGiverDrops = await KeyGiverDrop.find({
       isActive: true,
       keyGiver: id,
