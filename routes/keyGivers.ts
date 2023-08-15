@@ -5,6 +5,7 @@ import { getKeyGivers } from "../controllers/keyGivers/getKeyGivers";
 import { addKeyGiver } from "../controllers/keyGivers/addKeyGiver";
 import { deleteKeyGiver } from "../controllers/keyGivers/deleteKeyGiver";
 import { updateKeyGiver } from "../controllers/keyGivers/updateKeyGiver";
+import { getKeyGiverDrops } from "../controllers/keyGivers/getKeyGiverDrops";
 
 export const keyGiversRouter = Router();
 
@@ -17,6 +18,16 @@ keyGiversRouter.get(
     UserRole.mudlet
   ),
   getKeyGivers
+);
+keyGiversRouter.get(
+  "/:id/drops",
+  auth(
+    UserRole.consigliore,
+    UserRole.caporegime,
+    UserRole.soldato,
+    UserRole.mudlet
+  ),
+  getKeyGiverDrops
 );
 keyGiversRouter.post(
   "/",

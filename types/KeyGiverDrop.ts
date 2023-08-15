@@ -18,6 +18,12 @@ export interface KeyGiverDropResponse
   drop: ShortKeyResponse | null;
 }
 
+export interface KeyGiverDropShortResponse
+  extends Omit<KeyGiverDrop, "isActive" | "keyGiver" | "drop" | "createdAt"> {
+  id: string;
+  drop: ShortKeyResponse | null;
+}
+
 export interface KeyGiverDropAddRequest
   extends Omit<
     KeyGiverDrop,

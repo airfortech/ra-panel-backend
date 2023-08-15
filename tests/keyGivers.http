@@ -46,6 +46,10 @@ Authorization: Bearer {{token}}
 GET {{url}}/api/keygivers
 Authorization: Bearer {{token}}
 
+### get keyGiver drops
+GET {{url}}/api/keygivers/{{keyGiverId}}/drops
+Authorization: Bearer {{token}}
+
 ### add new keyGiver
 POST {{url}}/api/keygivers
 Authorization: Bearer {{token}}
