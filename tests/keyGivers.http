@@ -47,7 +47,6 @@ GET {{url}}/api/keygivers
 Authorization: Bearer {{token}}
 
 ### get keyGiver details
-# @name keyGivers
 GET {{url}}/api/keygivers/{{keyGiverId}}
 Authorization: Bearer {{token}}
 
