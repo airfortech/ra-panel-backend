@@ -43,7 +43,7 @@ Authorization: Bearer {{token}}
 ### keyGiverDrops Api
 ### get all keyGiverDrops
 # @name keyGiverDrops
-GET {{url}}/api/keygivers/drops/
+GET {{url}}/api/keygivers/drops
 Authorization: Bearer {{token}}
 
 ### get keyGivers from last x days
