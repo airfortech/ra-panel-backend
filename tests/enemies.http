@@ -44,7 +44,7 @@ Authorization: Bearer {{token}}
 ### get all enemies
 # @name enemies
 GET {{url}}/api/enemies
-Authorization: Bearer {{token}}
+# Authorization: Bearer {{token}}
 
 ### add enemy
 POST {{url}}/api/enemies
