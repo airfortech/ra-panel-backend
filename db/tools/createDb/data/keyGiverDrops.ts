@@ -5,7 +5,7 @@ import { createRandomDate } from "./generatorUtils/createRandomDate";
 export const keyGiverDrops = (keys?: string[], keyGivers?: string[]) =>
   new Array(config.tests.keyGiverDrops).fill(null).map(item => {
     const data = {
-      dropDate: createRandomDate(2),
+      dropDate: createRandomDate(1),
       keyGiver: keyGivers[Math.floor(Math.random() * keyGivers.length)],
       drop: randomFromOptions(
         null,

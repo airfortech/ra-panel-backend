@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 import { ShortKeyResponse } from "./Key";
-import { ShortKeyGiverResponse } from "./KeyGiver";
+import { ShortKeyGiverResponse, ShortestKeyGiverResponse } from "./KeyGiver";
 
 export interface KeyGiverDrop {
   keyGiver: Types.ObjectId;
@@ -16,6 +16,17 @@ export interface KeyGiverDropResponse
   id: string;
   keyGiver: ShortKeyGiverResponse;
   drop: ShortKeyResponse | null;
+}
+
+export interface KeyGiverDropShortResponse
+  extends Omit<KeyGiverDrop, "isActive" | "keyGiver" | "drop" | "createdAt"> {
+  id: string;
+  drop: ShortKeyResponse | null;
+}
+
+export interface KeyDropShortResponse
+  extends Omit<KeyGiverDropShortResponse, "drop"> {
+  keyGiver: ShortestKeyGiverResponse;
 }
 
 export interface KeyGiverDropAddRequest

@@ -28,6 +28,9 @@ export interface ShortKeyGiverResponse
   id: string;
 }
 
+export interface ShortestKeyGiverResponse
+  extends Omit<ShortKeyGiverResponse, "locations" | "respawnTime"> {}
+
 export interface KeyGiverAddRequest
   extends Omit<
     KeyGiver,

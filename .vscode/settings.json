@@ -7,10 +7,10 @@
       "url": "http://192.168.145.85:3001"
     },
     "test": {
-      "url": "https://ra-test.trycodeit.com"
+      "url": "https://ra-test.airm.ct8.pl"
     },
     "production": {
-      "host": "https://ra.trycodeit.com:3001"
+      "url": "https://ra.trycodeit.com"
     }
   }
 }
