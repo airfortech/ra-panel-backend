@@ -47,3 +47,9 @@ export interface KeyGiverDropUpdateRequest
   drop?: string | null;
   dropDate?: number;
 }
+
+export interface KeyGiverDropsStats {
+  keyGiversDone: number;
+  drops: number;
+  date: number;
+}

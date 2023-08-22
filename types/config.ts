@@ -28,6 +28,7 @@ export interface Config {
     locations: number;
     locationsDefaultPercentage: number;
     keyGiverDrops: number;
+    keyGiverDropsMonthsBack: number;
     keyGiverDropsNoDropPercentage: number;
     keyGiverDropsNoNextDatePercentage: number;
   };
