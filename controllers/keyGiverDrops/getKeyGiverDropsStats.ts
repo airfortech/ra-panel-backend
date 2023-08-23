@@ -1,4 +1,7 @@
-import { KeyGiverDropsStats } from "../../types/KeyGiverDrop";
+import {
+  KeyGiverDropsStats,
+  KeyGiverDropsStatsTimeOptions,
+} from "../../types/KeyGiverDrop";
 import { Request } from "../../types/Request";
 import { Status } from "../../types/responseMessages";
 import { Response } from "express";
@@ -16,34 +19,34 @@ export const getKeyGiverDropsStats = async (req: Request, res: Response) => {
     let keyGiverDropsStats: KeyGiverDropsStats[] = [];
 
     switch (time) {
-      case "current_week":
+      case KeyGiverDropsStatsTimeOptions.currentWeek:
         keyGiverDropsStats = await byDayQuery(1, defaultTimezone, "week");
         break;
-      case "last5days":
+      case KeyGiverDropsStatsTimeOptions.last5days:
         keyGiverDropsStats = await byDayQuery(5, defaultTimezone, "day");
         break;
-      case "last10days":
+      case KeyGiverDropsStatsTimeOptions.last10days:
         keyGiverDropsStats = await byDayQuery(10, defaultTimezone, "day");
         break;
-      case "last30days":
+      case KeyGiverDropsStatsTimeOptions.last30days:
         keyGiverDropsStats = await byDayQuery(30, defaultTimezone, "day");
         break;
-      case "current_month":
+      case KeyGiverDropsStatsTimeOptions.currentMonth:
         keyGiverDropsStats = await byDayQuery(1, defaultTimezone, "month");
         break;
-      case "last2months":
+      case KeyGiverDropsStatsTimeOptions.last2months:
         keyGiverDropsStats = await byWeekQuery(2, defaultTimezone);
         break;
-      case "last6months":
+      case KeyGiverDropsStatsTimeOptions.last6months:
         keyGiverDropsStats = await byWeekQuery(6, defaultTimezone);
         break;
-      case "current_year":
+      case KeyGiverDropsStatsTimeOptions.currentYear:
         keyGiverDropsStats = await byMonthQuery(1, defaultTimezone, "year");
         break;
-      case "last12months":
+      case KeyGiverDropsStatsTimeOptions.last12months:
         keyGiverDropsStats = await byMonthQuery(1, defaultTimezone, "month");
         break;
-      case "alltime":
+      case KeyGiverDropsStatsTimeOptions.alltime:
         keyGiverDropsStats = await byMonthQuery(100, defaultTimezone, "year");
         break;
       default:

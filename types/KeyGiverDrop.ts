@@ -51,5 +51,18 @@ export interface KeyGiverDropUpdateRequest
 export interface KeyGiverDropsStats {
   keyGiversDone: number;
   drops: number;
-  date: number;
+  date: string;
+}
+
+export enum KeyGiverDropsStatsTimeOptions {
+  currentWeek = "current_week",
+  last5days = "last5days",
+  last10days = "last10days",
+  last30days = "last30days",
+  currentMonth = "current_month",
+  last2months = "last2months",
+  last6months = "last6months",
+  currentYear = "current_year",
+  last12months = "last12months",
+  alltime = "alltime",
 }
