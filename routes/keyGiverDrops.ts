@@ -6,6 +6,7 @@ import { deleteKeyGiverDrop } from "../controllers/keyGiverDrops/deleteKeyGiverD
 import { updateKeyGiverDrop } from "../controllers/keyGiverDrops/updateKeyGiverDrop";
 import { getEditableKeyGiverDrops } from "../controllers/keyGiverDrops/getEditableKeyGiverDrops";
 import { getNewestKeyGiverDrops } from "../controllers/keyGiverDrops/getNewestKeyGiverDrops";
+import { getKeyGiverDropsStats } from "../controllers/keyGiverDrops/getKeyGiverDropsStats";
 
 export const keyGiverDropsRouter = Router();
 
@@ -23,6 +24,16 @@ keyGiverDropsRouter.get(
   "/edit",
   auth(UserRole.consigliore, UserRole.caporegime, UserRole.soldato),
   getEditableKeyGiverDrops
+);
+keyGiverDropsRouter.get(
+  "/stats",
+  auth(
+    UserRole.consigliore,
+    UserRole.caporegime,
+    UserRole.soldato,
+    UserRole.mudlet
+  ),
+  getKeyGiverDropsStats
 );
 keyGiverDropsRouter.post(
   "/",
