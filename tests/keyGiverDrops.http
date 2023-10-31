@@ -56,6 +56,42 @@ Authorization: Bearer {{token}}
 GET {{url}}/api/keygivers/drops/edit
 Authorization: Bearer {{token}}
 
+### get keyGiverDrops stats
+GET {{url}}/api/keygivers/drops/stats/?time=current_week&timezone=Europe/Warsaw
+Authorization: Bearer {{token}}
+
+### get keyGiverDrops stats
+GET {{url}}/api/keygivers/drops/stats/?time=last5days&timezone=Europe/Warsaw
+Authorization: Bearer {{token}}
+
+### get keyGiverDrops stats
+GET {{url}}/api/keygivers/drops/stats/?time=last10days&timezone=Europe/Warsaw
+Authorization: Bearer {{token}}
+
+### get keyGiverDrops stats
+GET {{url}}/api/keygivers/drops/stats/?time=current_month
+Authorization: Bearer {{token}}
+
+### get keyGiverDrops stats
+GET {{url}}/api/keygivers/drops/stats/?time=last2months
+Authorization: Bearer {{token}}
+
+### get keyGiverDrops stats
+GET {{url}}/api/keygivers/drops/stats/?time=last6months
+Authorization: Bearer {{token}}
+
+### get keyGiverDrops stats
+GET {{url}}/api/keygivers/drops/stats/?time=current_year
+Authorization: Bearer {{token}}
+
+### get keyGiverDrops stats
+GET {{url}}/api/keygivers/drops/stats/?time=last12months
+Authorization: Bearer {{token}}
+
+### get keyGiverDrops stats
+GET {{url}}/api/keygivers/drops/stats/?time=alltime
+Authorization: Bearer {{token}}
+
 ### add new keyGiverDrop
 POST {{url}}/api/keygivers/drops/
 Authorization: Bearer {{token}}

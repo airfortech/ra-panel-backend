@@ -4,8 +4,10 @@ import { createRandomDate } from "./generatorUtils/createRandomDate";
 
 export const keyGiverDrops = (keys?: string[], keyGivers?: string[]) =>
   new Array(config.tests.keyGiverDrops).fill(null).map(item => {
+    const dropDate = createRandomDate(config.tests.keyGiverDropsMonthsBack);
+
     const data = {
-      dropDate: createRandomDate(1),
+      dropDate,
       keyGiver: keyGivers[Math.floor(Math.random() * keyGivers.length)],
       drop: randomFromOptions(
         null,
@@ -17,6 +19,7 @@ export const keyGiverDrops = (keys?: string[], keyGivers?: string[]) =>
         createRandomDate(1, 1),
         config.tests.keyGiverDropsNoNextDatePercentage
       ),
+      createdAt: dropDate,
     };
     return data;
   });
