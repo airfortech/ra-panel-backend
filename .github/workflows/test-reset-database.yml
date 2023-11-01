@@ -2,6 +2,8 @@ name: "[Test] Reset database"
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * 3"
 
 jobs:
   create-users:

@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { KeyGiverDropsStats } from "../types/KeyGiverDrop";
 
+// TODO: add start and end dates as params
 export const fillKeyGiverDropsStatsDays = (
   keyGiverDropsStats: KeyGiverDropsStats[]
 ) => {
