@@ -6,7 +6,7 @@ on:
     - cron: "0 12 * * 3"
 
 jobs:
-  create-users:
+  reset-database:
     runs-on: ubuntu-latest
     env:
       SSH_USERNAME: ${{secrets.SSH_USERNAME_TEST}}
