@@ -1,0 +1,188 @@
+### these tests use https://marketplace.visualstudio.com/items?itemName=humao.rest-client vscode plugin
+
+### Global variables
+@token = {{login.response.body.data.token}}
+@itemId = {{keys.response.body.data.items[0].id}}
+
+### Auth Api
+### Login - Soldato
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Soldato",
+    "password": "test1234"
+}
+
+### Login - Caporegime
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Caporegime",
+    "password": "test1234"
+}
+
+### Login - Consigliore
+# @name login
+POST {{url}}/api/auth/login
+content-type: application/json
+
+{
+    "role": "Consigliore",
+    "password": "test1234"
+}
+
+### Logout
+# @name login
+GET {{url}}/api/auth/logout
+Authorization: Bearer {{token}}
+
+### items Api
+### get all items
+# @name keys
+GET {{url}}/api/items
+Authorization: Bearer {{token}}
+
+### get item details
+GET {{url}}/api/items/{{itemId}}
+Authorization: Bearer {{token}}
+
+### get all magic items
+# @name keys
+GET {{url}}/api/items?magic=true
+Authorization: Bearer {{token}}
+
+### get all weapons
+# @name keys
+GET {{url}}/api/items?type=weapon
+Authorization: Bearer {{token}}
+
+### get all armors
+# @name keys
+GET {{url}}/api/items?type=armor
+Authorization: Bearer {{token}}
+
+### get all shields
+# @name keys
+GET {{url}}/api/items?type=shield
+Authorization: Bearer {{token}}
+
+### get all clothes
+# @name keys
+GET {{url}}/api/items?type=cloth
+Authorization: Bearer {{token}}
+
+### get all jewellery
+# @name keys
+GET {{url}}/api/items?type=jewellery
+Authorization: Bearer {{token}}
+
+### get all stones
+# @name keys
+GET {{url}}/api/items?type=stone
+Authorization: Bearer {{token}}
+
+### get all potions
+# @name keys
+GET {{url}}/api/items?type=potion
+Authorization: Bearer {{token}}
+
+### get all other items
+# @name keys
+GET {{url}}/api/items?type=other
+Authorization: Bearer {{token}}
+
+### add new weapon
+POST {{url}}/api/items/weapon
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "name": "Antyk",
+    "short": "zdobiony antyczny sztylet",
+    "isMagic": true,
+    "weaponType": "sztylet"
+}
+
+### add new armor
+POST {{url}}/api/items/armor
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "short": "lekka tileanska zbroja plytowa",
+    "isMagic": false,
+    "armorClass": "srednia"
+}
+
+### add new shield
+POST {{url}}/api/items/shield
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "short": "rogata tarcza",
+    "isMagic": false,
+    "shieldParry": 9
+}
+
+### add new cloth
+POST {{url}}/api/items/cloth
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "short": "czerwona zwiewna sukienka",
+    "isMagic": false,
+}
+
+### add new jewellery
+POST {{url}}/api/items/jewellery
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "short": "zlota polyskliwa obraczka",
+    "isMagic": false,
+}
+
+### add new stone
+POST {{url}}/api/items/stone
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "short": "wielobarwny turmalin",
+}
+
+### add new potion
+POST {{url}}/api/items/potion
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "short": "biala trojkatna flaszka",
+}
+
+### update item
+PATCH {{url}}/api/items/{{itemId}}
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "name": "Antyk",
+    "short": "zdobiony antyczny sztylet",
+    "isMagic": true,
+    "weaponType": "sztylet"
+}
+
+### delete item
+DELETE {{url}}/api/items/{{itemId}}
+Authorization: Bearer {{token}}
+
+### delete item - bad id
+DELETE {{url}}/api/items/6345d568ae474b
+Authorization: Bearer {{token}}
