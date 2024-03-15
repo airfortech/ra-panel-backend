@@ -27,6 +27,7 @@ export interface Item {
   armorBluntRes: number;
   shieldParry: number;
   weight: number;
+  volume: number;
   durability: ItemDurability;
   specialBonus: string;
   occurrence: string;
@@ -34,7 +35,6 @@ export interface Item {
   vendorCost: number;
   description: string;
   comment: string;
-  isActive: boolean;
 }
 
 export interface ItemResponse extends Omit<Item, "isActive"> {

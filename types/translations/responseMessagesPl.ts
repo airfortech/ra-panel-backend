@@ -112,6 +112,25 @@ export const messagesPl = {
     keyGiverDropUpdated: "Drop został zaktualizowany.",
     keyGiverDropDeleted: "Drop został usunięty.",
   },
+  items: {
+    nameTooLong: "Nazwa powinna mieć maksymalnie 50 znaków.",
+    itemShortExists: (short: string) =>
+      `Przedmiot: ${short} istnieje. Wybierz inny szort.`,
+    shortTooLong: "Szort powinien mieć maksymalnie 50 znaków.",
+    shortIsRequired: "Szort jest wymagany.",
+    invalidType: "Zły typ przedmiotu.",
+    typeIsRequired: "Typ przedmiotu jest wymagany.",
+    invalidWeaponType: "Zły typ broni.",
+    invalidWeaponHand: "Zła wartość chwytu broni.",
+    invalidArmorClass: "Zła wartość klasy pancerza.",
+    invalidDurability: "Zła wartość przetrwania przedmiotu.",
+    specialBonusTooLong:
+      "Specjalne właściwości mogą mieć maksymalnie 400 znaków.",
+    occurrenceTooLong:
+      "Występowanie przedmiotu może mieć maksymalnie 200 znaków.",
+    descriptionTooLong: "Opis musi mieć maksymalnie 4000 znaków.",
+    commentTooLong: "Komentarz musi mieć maksymalnie 4000 znaków.",
+  },
   date: {
     invalidDate: "Nieprawidłowy format daty.",
   },
