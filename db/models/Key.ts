@@ -10,7 +10,7 @@ const keySchema = new Schema<IKey>({
   name: {
     type: String,
     trim: true,
-    maxLength: [50, messages[config.lang].keys.nameTooLong],
+    maxLength: [80, messages[config.lang].keys.nameTooLong],
     required: [true, messages[config.lang].keys.nameIsRequired],
   },
   treasury: {
