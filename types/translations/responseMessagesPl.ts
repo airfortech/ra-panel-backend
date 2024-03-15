@@ -87,7 +87,7 @@ export const messagesPl = {
   keys: {
     keyExists: (name: string) => `Klucz: ${name} istnieje. Wybierz inny.`,
     keyNotExists: "Taki klucz nie istnieje.",
-    nameTooLong: "Nazwa powinna mieć maksymalnie 50 znaków.",
+    nameTooLong: "Nazwa powinna mieć maksymalnie 80 znaków.",
     nameIsRequired: "Nazwa jest wymagana.",
     wrongTreasuryIdProvided: "Id skarbca jest niepoprawne.",
     wrongDomain: "Niepoprawna nazwa domeny.",

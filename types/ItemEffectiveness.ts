@@ -1,0 +1,16 @@
+export enum ItemEffectiveness {
+  "kompletnie nieskuteczny",
+  "strasznie nieskuteczny",
+  "bardzo nieskuteczny",
+  "raczej nieskuteczny",
+  "malo skuteczny",
+  "niezbyt skuteczny",
+  "raczej skuteczny",
+  "dosyc skuteczny",
+  "calkiem skuteczny",
+  "bardzo skuteczny",
+  "niezwykle skuteczny",
+  "wyjatkowo skuteczny",
+  "zabojczo skuteczny",
+  "fantastycznie skuteczny",
+}
