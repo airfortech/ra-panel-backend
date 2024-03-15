@@ -111,6 +111,23 @@ export const messagesEn = {
     keyGiverDropUpdated: "KeyGiver drop has been updated.",
     keyGiverDropDeleted: "KeyGiver drop has been deleted.",
   },
+  items: {
+    nameTooLong: "Name should have maximum 50 characters.",
+    itemShortExists: (short: string) =>
+      `Item short: ${short} exists. Choose other one.`,
+    shortTooLong: "Short should have maximum 50 characters.",
+    shortIsRequired: "Short type is required.",
+    invalidType: "Wrong item type.",
+    typeIsRequired: "Item type is required.",
+    invalidWeaponType: "Wrong weapon type.",
+    invalidWeaponHand: "Wrong weapon hand.",
+    invalidArmorClass: "Wrong armor class.",
+    invalidDurability: "Wrong item durability.",
+    specialBonusTooLong: "Special bonus should have maximum 400 characters.",
+    occurrenceTooLong: "Occurrence should have maximum 200 characters.",
+    descriptionTooLong: "Description should have maximum 4000 characters.",
+    commentTooLong: "Comment should have maximum 4000 characters.",
+  },
   date: {
     invalidDate: "Invalid date format.",
   },

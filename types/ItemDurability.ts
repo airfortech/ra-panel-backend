@@ -1,10 +1,10 @@
 export enum ItemDurability {
-  "naprawde dlugo",
-  "bardzo dlugo",
-  "dlugo",
-  "raczej dlugo",
-  "troche",
-  "raczej krotko",
-  "krotko",
-  "bardzo krotko",
+  "naprawde dlugo" = "naprawde dlugo",
+  "bardzo dlugo" = "bardzo dlugo",
+  "dlugo" = "dlugo",
+  "raczej dlugo" = "raczej dlugo",
+  "troche" = "troche",
+  "raczej krotko" = "raczej krotko",
+  "krotko" = "krotko",
+  "bardzo krotko" = "bardzo krotko",
 }
