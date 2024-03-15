@@ -1,0 +1,15 @@
+export enum ItemWeaponBalance {
+  "wyjatkowo zle",
+  "bardzo zle",
+  "zle",
+  "bardzo kiepsko",
+  "kiepsko",
+  "przyzwoicie",
+  "srednio",
+  "niezle",
+  "dosc dobrze",
+  "dobrze",
+  "bardzo dobrze",
+  "doskonale",
+  "perfekcyjnie",
+}
