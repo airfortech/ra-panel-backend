@@ -77,10 +77,14 @@ const itemSchema = new Schema<IItem>({
   },
   weaponEffectiveness: {
     type: Number,
+    min: [1, messages[config.lang].items.weaponEffectivenessTooLow],
+    max: [14, messages[config.lang].items.weaponEffectivenessTooHigh],
     default: null,
   },
   weaponBalance: {
     type: Number,
+    min: [1, messages[config.lang].items.weaponBalanceTooLow],
+    max: [14, messages[config.lang].items.weaponBalanceTooHigh],
     default: null,
   },
   isWeaponSilver: {
@@ -125,18 +129,26 @@ const itemSchema = new Schema<IItem>({
   },
   armorPiercingRes: {
     type: Number,
+    min: [1, messages[config.lang].items.armorResTooLow],
+    max: [12, messages[config.lang].items.armorResTooHigh],
     default: null,
   },
   armorSlashingRes: {
     type: Number,
+    min: [1, messages[config.lang].items.armorResTooLow],
+    max: [12, messages[config.lang].items.armorResTooHigh],
     default: null,
   },
   armorBluntRes: {
     type: Number,
+    min: [1, messages[config.lang].items.armorResTooLow],
+    max: [12, messages[config.lang].items.armorResTooHigh],
     default: null,
   },
   shieldParry: {
     type: Number,
+    min: [1, messages[config.lang].items.shieldParryTooLow],
+    max: [14, messages[config.lang].items.shieldParryTooHigh],
     default: null,
   },
   weight: {

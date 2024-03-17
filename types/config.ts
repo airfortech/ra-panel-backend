@@ -48,5 +48,9 @@ export interface Config {
     armorClassSpecifiedPercentage: number;
     armorStatsPercentage: number;
     armorBodyPartSpecifiedPercentage: number;
+    shields: number;
+    magicShieldsPercentage: number;
+    shieldStatsPercentage: number;
+    shieldParrySpecifiedPercentage: number;
   };
 }

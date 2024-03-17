@@ -67,5 +67,9 @@ export const config: Config = {
     armorClassSpecifiedPercentage: 40,
     armorStatsPercentage: 40,
     armorBodyPartSpecifiedPercentage: 50,
+    shields: 40,
+    magicShieldsPercentage: 30,
+    shieldStatsPercentage: 40,
+    shieldParrySpecifiedPercentage: 50,
   },
 };
