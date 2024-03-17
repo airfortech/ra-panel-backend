@@ -88,12 +88,12 @@ export const weapons: Item[] = randomShorts(
     ),
     weight: randomFromOptions(
       null,
-      randomNumberFromRange(1, 9000),
+      randomNumberFromRange(20, 9000),
       config.tests.weightPercentage
     ),
     volume: randomFromOptions(
       null,
-      randomNumberFromRange(1, 2000),
+      randomNumberFromRange(20, 2000),
       config.tests.volumePercentage
     ),
     durability: isMagic

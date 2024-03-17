@@ -115,6 +115,14 @@ const itemSchema = new Schema<IItem>({
     type: Boolean,
     default: null,
   },
+  armorFoots: {
+    type: Boolean,
+    default: null,
+  },
+  armorHands: {
+    type: Boolean,
+    default: null,
+  },
   armorPiercingRes: {
     type: Number,
     default: null,

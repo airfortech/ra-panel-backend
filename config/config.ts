@@ -62,5 +62,10 @@ export const config: Config = {
     weaponDamageTypeSpecifiedPercentage: 30,
     weaponStatsPercentage: 30,
     silverWeaponsPercentage: 20,
+    armors: 40,
+    magicArmorsPercentage: 30,
+    armorClassSpecifiedPercentage: 40,
+    armorStatsPercentage: 40,
+    armorBodyPartSpecifiedPercentage: 50,
   },
 };
