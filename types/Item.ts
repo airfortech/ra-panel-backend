@@ -11,22 +11,26 @@ export interface Item {
   type: ItemTypes;
   weaponType: ItemWeapon;
   weaponHand: ItemWeaponHand;
-  weaponSlashingDamage: number;
-  weaponPiercingDamage: number;
-  weaponBluntDamage: number;
+  weaponSlashingDamage: boolean;
+  weaponPiercingDamage: boolean;
+  weaponBluntDamage: boolean;
   weaponEffectiveness: number;
   weaponBalance: number;
+  isWeaponSilver: boolean;
   armorClass: ItemArmorClass;
   armorHead: boolean;
   armorLeftArm: boolean;
   armorRightArm: boolean;
   armorChest: boolean;
   armorLegs: boolean;
+  armorFoots: boolean;
+  armorHands: boolean;
   armorPiercingRes: number;
   armorSlashingRes: number;
   armorBluntRes: number;
   shieldParry: number;
   weight: number;
+  volume: number;
   durability: ItemDurability;
   specialBonus: string;
   occurrence: string;
@@ -34,7 +38,6 @@ export interface Item {
   vendorCost: number;
   description: string;
   comment: string;
-  isActive: boolean;
 }
 
 export interface ItemResponse extends Omit<Item, "isActive"> {

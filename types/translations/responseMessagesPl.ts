@@ -112,6 +112,36 @@ export const messagesPl = {
     keyGiverDropUpdated: "Drop został zaktualizowany.",
     keyGiverDropDeleted: "Drop został usunięty.",
   },
+  items: {
+    nameTooLong: "Nazwa powinna mieć maksymalnie 50 znaków.",
+    itemShortExists: (short: string) =>
+      `Przedmiot: ${short} istnieje. Wybierz inny szort.`,
+    shortTooLong: "Szort powinien mieć maksymalnie 50 znaków.",
+    shortIsRequired: "Szort jest wymagany.",
+    invalidType: "Zły typ przedmiotu.",
+    typeIsRequired: "Typ przedmiotu jest wymagany.",
+    invalidWeaponType: "Zły typ broni.",
+    invalidWeaponHand: "Zła wartość chwytu broni.",
+    invalidArmorClass: "Zła wartość klasy pancerza.",
+    invalidDurability: "Zła wartość przetrwania przedmiotu.",
+    specialBonusTooLong:
+      "Specjalne właściwości mogą mieć maksymalnie 400 znaków.",
+    occurrenceTooLong:
+      "Występowanie przedmiotu może mieć maksymalnie 200 znaków.",
+    descriptionTooLong: "Opis musi mieć maksymalnie 4000 znaków.",
+    commentTooLong: "Komentarz musi mieć maksymalnie 4000 znaków.",
+    weaponEffectivenessTooLow: "Skuteczność broni nie może być mniejsza niż 1.",
+    weaponEffectivenessTooHigh:
+      "Skuteczność broni nie może być większa niż 14.",
+    weaponBalanceTooLow: "Wyważenie broni nie może być mniejsze niż 1.",
+    weaponBalanceTooHigh: "Wyważenie broni nie może być większe niż 14.",
+    armorResTooLow:
+      "Jakość ochrony przed obrażeniami nie może być mniejsza niż 1.",
+    armorResTooHigh:
+      "Jakość ochrony przed obrażeniami nie może być większa niż 12.",
+    shieldParryTooLow: "Parowanie tarczy nie może być mniejsze niż 1.",
+    shieldParryTooHigh: "Parowanie tarczy nie może być większe niż 12.",
+  },
   date: {
     invalidDate: "Nieprawidłowy format daty.",
   },
