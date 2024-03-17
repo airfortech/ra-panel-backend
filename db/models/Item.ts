@@ -50,7 +50,7 @@ const itemSchema = new Schema<IItem>({
   weaponType: {
     type: String,
     enum: {
-      values: [...Object.values(ItemWeapon)],
+      values: [...Object.values(ItemWeapon), null],
       message: messages[config.lang].items.invalidWeaponType,
     },
     default: null,
@@ -58,21 +58,21 @@ const itemSchema = new Schema<IItem>({
   weaponHand: {
     type: String,
     enum: {
-      values: [...Object.values(ItemWeaponHand)],
+      values: [...Object.values(ItemWeaponHand), null],
       message: messages[config.lang].items.invalidWeaponHand,
     },
     default: null,
   },
   weaponSlashingDamage: {
-    type: Number,
+    type: Boolean,
     default: null,
   },
   weaponPiercingDamage: {
-    type: Number,
+    type: Boolean,
     default: null,
   },
   weaponBluntDamage: {
-    type: Number,
+    type: Boolean,
     default: null,
   },
   weaponEffectiveness: {
@@ -83,10 +83,14 @@ const itemSchema = new Schema<IItem>({
     type: Number,
     default: null,
   },
+  isWeaponSilver: {
+    type: Boolean,
+    default: null,
+  },
   armorClass: {
     type: String,
     enum: {
-      values: [...Object.values(ItemArmorClass)],
+      values: [...Object.values(ItemArmorClass), null],
       message: messages[config.lang].items.invalidArmorClass,
     },
     default: null,
@@ -138,7 +142,7 @@ const itemSchema = new Schema<IItem>({
   durability: {
     type: String,
     enum: {
-      values: [...Object.values(ItemDurability)],
+      values: [...Object.values(ItemDurability), null],
       message: messages[config.lang].items.invalidDurability,
     },
     default: null,
