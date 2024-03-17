@@ -73,5 +73,7 @@ export const config: Config = {
     shieldParrySpecifiedPercentage: 50,
     clothes: 40,
     magicClothesPercentage: 20,
+    jewellery: 40,
+    magicJewelleryPercentage: 40,
   },
 };

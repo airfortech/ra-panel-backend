@@ -39,7 +39,6 @@ export const armorNouns = [
   "napiersnik",
   "zbroja plytowa",
   "helm",
-  "napiersnik",
   "przylbica",
   "kaftan",
   "kirys",

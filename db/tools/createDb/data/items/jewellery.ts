@@ -7,35 +7,35 @@ import { generateText } from "../generatorUtils/randomText";
 import { randomShorts } from "../generatorUtils/randomShorts";
 import { randomNumberFromRange } from "../../../../../utils/randomNumberFromRange";
 import {
-  clothAdjectives1,
-  clothAdjectives2,
-  clothNouns,
-} from "../generatorData/items/clothes";
+  jewelleryAdjectives1,
+  jewelleryAdjectives2,
+  jewelleryNouns,
+} from "../generatorData/items/jewellery";
 import { config } from "../../../../../config/config";
 
-export const clothes: Item[] = randomShorts(
-  config.tests.clothes,
-  clothAdjectives1,
-  clothAdjectives2,
-  clothNouns
+export const jewellery: Item[] = randomShorts(
+  config.tests.jewellery,
+  jewelleryAdjectives1,
+  jewelleryAdjectives2,
+  jewelleryNouns
 ).map(short => {
   const isMagic = randomFromOptions(
     true,
     false,
-    config.tests.magicClothesPercentage
+    config.tests.magicJewelleryPercentage
   );
   return {
     short,
     isMagic,
-    type: ItemTypes.cloth,
+    type: ItemTypes.jewellery,
     weight: randomFromOptions(
       null,
-      randomNumberFromRange(40, 2000),
+      randomNumberFromRange(20, 800),
       config.tests.weightPercentage
     ),
     volume: randomFromOptions(
       null,
-      randomNumberFromRange(200, 8000),
+      randomNumberFromRange(8, 200),
       config.tests.volumePercentage
     ),
     durability: isMagic
