@@ -11,11 +11,12 @@ export interface Item {
   type: ItemTypes;
   weaponType: ItemWeapon;
   weaponHand: ItemWeaponHand;
-  weaponSlashingDamage: number;
-  weaponPiercingDamage: number;
-  weaponBluntDamage: number;
+  weaponSlashingDamage: boolean;
+  weaponPiercingDamage: boolean;
+  weaponBluntDamage: boolean;
   weaponEffectiveness: number;
   weaponBalance: number;
+  isWeaponSilver: boolean;
   armorClass: ItemArmorClass;
   armorHead: boolean;
   armorLeftArm: boolean;

@@ -31,5 +31,17 @@ export interface Config {
     keyGiverDropsMonthsBack: number;
     keyGiverDropsNoDropPercentage: number;
     keyGiverDropsNoNextDatePercentage: number;
+    weapons: number;
+    magicWeaponsPercentage: number;
+    weaponHandSpecifiedPercentage: number;
+    weaponDamageTypeSpecifiedPercentage: number;
+    weaponStatsPercentage: number;
+    silverWeaponsPercentage: number;
+    weightPercentage: number;
+    volumePercentage: number;
+    costPercentage: number;
+    vendorCostPercentage: number;
+    itemsDescriptionPercentage: number;
+    itemsCommentPercentage: number;
   };
 }
