@@ -23,6 +23,8 @@ export interface Item {
   armorRightArm: boolean;
   armorChest: boolean;
   armorLegs: boolean;
+  armorFoots: boolean;
+  armorHands: boolean;
   armorPiercingRes: number;
   armorSlashingRes: number;
   armorBluntRes: number;
