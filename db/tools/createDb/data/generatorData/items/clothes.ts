@@ -43,7 +43,6 @@ export const clothNouns = [
   "suknia",
   "plaszcz",
   "szata",
-  "peleryna",
   "spodnica",
   "bluzka",
   "pas",

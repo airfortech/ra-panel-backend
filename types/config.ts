@@ -54,5 +54,7 @@ export interface Config {
     shieldParrySpecifiedPercentage: number;
     clothes: number;
     magicClothesPercentage: number;
+    jewellery: number;
+    magicJewelleryPercentage: number;
   };
 }
