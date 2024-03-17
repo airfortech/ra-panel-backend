@@ -130,6 +130,17 @@ export const messagesPl = {
       "Występowanie przedmiotu może mieć maksymalnie 200 znaków.",
     descriptionTooLong: "Opis musi mieć maksymalnie 4000 znaków.",
     commentTooLong: "Komentarz musi mieć maksymalnie 4000 znaków.",
+    weaponEffectivenessTooLow: "Skuteczność broni nie może być mniejsza niż 1.",
+    weaponEffectivenessTooHigh:
+      "Skuteczność broni nie może być większa niż 14.",
+    weaponBalanceTooLow: "Wyważenie broni nie może być mniejsze niż 1.",
+    weaponBalanceTooHigh: "Wyważenie broni nie może być większe niż 14.",
+    armorResTooLow:
+      "Jakość ochrony przed obrażeniami nie może być mniejsza niż 1.",
+    armorResTooHigh:
+      "Jakość ochrony przed obrażeniami nie może być większa niż 12.",
+    shieldParryTooLow: "Parowanie tarczy nie może być mniejsze niż 1.",
+    shieldParryTooHigh: "Parowanie tarczy nie może być większe niż 12.",
   },
   date: {
     invalidDate: "Nieprawidłowy format daty.",
