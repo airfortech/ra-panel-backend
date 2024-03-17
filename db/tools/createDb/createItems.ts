@@ -2,6 +2,7 @@ import { Item } from "../../models/Item";
 import { armors } from "./data/items/armors";
 import { clothes } from "./data/items/clothes";
 import { jewellery } from "./data/items/jewellery";
+import { potions } from "./data/items/potions";
 import { shields } from "./data/items/shields";
 import { stones } from "./data/items/stones";
 import { weapons } from "./data/items/weapons";
@@ -28,6 +29,9 @@ export const createItems = async () => {
     console.log("Creating stones...");
     await Item.insertMany(stones);
     console.log("Stones created. ✔");
+    console.log("Creating potions...");
+    await Item.insertMany(potions);
+    console.log("Potions created. ✔");
     console.log("Items created. ✔");
   } catch (e) {
     throw e;
