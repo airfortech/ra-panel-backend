@@ -3,6 +3,7 @@ import { armors } from "./data/items/armors";
 import { clothes } from "./data/items/clothes";
 import { jewellery } from "./data/items/jewellery";
 import { shields } from "./data/items/shields";
+import { stones } from "./data/items/stones";
 import { weapons } from "./data/items/weapons";
 
 export const createItems = async () => {
@@ -24,6 +25,9 @@ export const createItems = async () => {
     console.log("Creating jewellery...");
     await Item.insertMany(jewellery);
     console.log("Jewellery created. ✔");
+    console.log("Creating stones...");
+    await Item.insertMany(stones);
+    console.log("Stones created. ✔");
     console.log("Items created. ✔");
   } catch (e) {
     throw e;
