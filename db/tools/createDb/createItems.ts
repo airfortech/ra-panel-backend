@@ -1,5 +1,6 @@
 import { Item } from "../../models/Item";
 import { armors } from "./data/items/armors";
+import { clothes } from "./data/items/clothes";
 import { shields } from "./data/items/shields";
 import { weapons } from "./data/items/weapons";
 
@@ -16,6 +17,9 @@ export const createItems = async () => {
     console.log("Creating shields...");
     await Item.insertMany(shields);
     console.log("Shields created. ✔");
+    console.log("Creating clothes...");
+    await Item.insertMany(clothes);
+    console.log("Clothes created. ✔");
     console.log("Items created. ✔");
   } catch (e) {
     throw e;
