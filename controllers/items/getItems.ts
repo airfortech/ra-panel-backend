@@ -1,11 +1,11 @@
 import { Status } from "../../types/responseMessages";
 import { Request } from "../../types/Request";
 import { ItemResponse } from "../../types/Item";
-import { Response } from "express";
-import { Item } from "../../db/models/Item";
 import { ItemTypes } from "../../types/ItemTypes";
 import { ItemWeapon } from "../../types/ItemWeapon";
 import { ItemArmorClass } from "../../types/ItemArmorClass";
+import { Response } from "express";
+import { Item } from "../../db/models/Item";
 
 export const getItems = async (req: Request, res: Response) => {
   try {

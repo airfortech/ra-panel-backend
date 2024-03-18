@@ -140,7 +140,8 @@ export const messagesPl = {
     armorResTooHigh:
       "Jakość ochrony przed obrażeniami nie może być większa niż 12.",
     shieldParryTooLow: "Parowanie tarczy nie może być mniejsze niż 1.",
-    shieldParryTooHigh: "Parowanie tarczy nie może być większe niż 12.",
+    shieldParryTooHigh: "Parowanie tarczy nie może być większe niż 14.",
+    itemNotExists: "Taki przedmiot nie istnieje.",
   },
   date: {
     invalidDate: "Nieprawidłowy format daty.",

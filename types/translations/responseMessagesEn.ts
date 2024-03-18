@@ -135,6 +135,7 @@ export const messagesEn = {
     armorResTooHigh: "Armor resistance must be max 12.",
     shieldParryTooLow: "Shield parry must be at least 1.",
     shieldParryTooHigh: "Shield parry must be max 14.",
+    itemNotExists: "Such item not exists.",
   },
   date: {
     invalidDate: "Invalid date format.",
