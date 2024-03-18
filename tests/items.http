@@ -60,9 +60,24 @@ Authorization: Bearer {{token}}
 GET {{url}}/api/items?type=weapon
 Authorization: Bearer {{token}}
 
+### get all daggers
+# @name keys
+GET {{url}}/api/items?type=weapon&weaponType=dagger
+Authorization: Bearer {{token}}
+
 ### get all armors
 # @name keys
 GET {{url}}/api/items?type=armor
+Authorization: Bearer {{token}}
+
+### get all magic armors
+# @name keys
+GET {{url}}/api/items?type=armor&isMagic=true
+Authorization: Bearer {{token}}
+
+### get all heavy armors
+# @name keys
+GET {{url}}/api/items?type=armor&armorClass=heavy
 Authorization: Bearer {{token}}
 
 ### get all shields
