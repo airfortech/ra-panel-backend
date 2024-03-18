@@ -117,7 +117,7 @@ content-type: application/json
 
 {
     "name": "Antyk",
-    "short": "zdobiony antyczny sztylet",
+    "short": "zdobiony antyczny sztylet3",
     "isMagic": true,
     "weaponType": "sztylet"
 }

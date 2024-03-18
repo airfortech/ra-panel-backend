@@ -142,6 +142,10 @@ export const messagesPl = {
     shieldParryTooLow: "Parowanie tarczy nie może być mniejsze niż 1.",
     shieldParryTooHigh: "Parowanie tarczy nie może być większe niż 14.",
     itemNotExists: "Taki przedmiot nie istnieje.",
+    itemAdded: (short: string) => `Przedmiot: ${short} został dodany.`,
+    itemUpdated: (short: string) =>
+      `Przedmiot: ${short} został zaktualizowany.`,
+    itemDeleted: (short: string) => `Przedmiot: ${short} został usunięty.`,
   },
   date: {
     invalidDate: "Nieprawidłowy format daty.",

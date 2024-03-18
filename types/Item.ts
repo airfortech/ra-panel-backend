@@ -40,7 +40,7 @@ export interface Item {
   comment: string;
 }
 
-export interface ItemResponse extends Omit<Item, "isActive"> {
+export interface ItemResponse extends Item {
   id: string;
 }
 
@@ -48,7 +48,6 @@ export interface ItemAddRequest {
   name?: string;
   short: string;
   isMagic?: boolean;
-  type: ItemTypes;
   weight?: number;
   volume?: number;
   durability?: ItemDurability;
