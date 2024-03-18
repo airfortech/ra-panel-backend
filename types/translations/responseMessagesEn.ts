@@ -136,6 +136,9 @@ export const messagesEn = {
     shieldParryTooLow: "Shield parry must be at least 1.",
     shieldParryTooHigh: "Shield parry must be max 14.",
     itemNotExists: "Such item not exists.",
+    itemAdded: (short: string) => `Item: ${short} has been added.`,
+    itemUpdated: (short: string) => `Item: ${short} has been updated.`,
+    itemDeleted: (short: string) => `Item: ${short} has been deleted.`,
   },
   date: {
     invalidDate: "Invalid date format.",

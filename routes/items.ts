@@ -3,6 +3,7 @@ import { Router } from "express";
 import { auth } from "../utils/auth";
 import { getItems } from "../controllers/items/getItems";
 import { getItem } from "../controllers/items/getItem";
+import { addWeapon } from "../controllers/items/addWeapon";
 
 export const itemsRouter = Router();
 
@@ -26,4 +27,5 @@ itemsRouter
       UserRole.mudlet
     ),
     getItem
-  );
+  )
+  .post("/weapon", auth(UserRole.consigliore, UserRole.caporegime), addWeapon);
