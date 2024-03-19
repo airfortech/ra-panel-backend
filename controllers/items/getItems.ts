@@ -9,7 +9,10 @@ import { Item } from "../../db/models/Item";
 
 export const getItems = async (req: Request, res: Response) => {
   try {
-    const isMagic = Boolean(req.query.isMagic);
+    const isMagic =
+      typeof req.query.isMagic === "string"
+        ? JSON.parse(req.query.isMagic)
+        : undefined;
     const type = ItemTypes[req.query.type as keyof typeof ItemTypes];
     const weaponType =
       ItemWeapon[req.query.weaponType as keyof typeof ItemWeapon];
@@ -17,7 +20,7 @@ export const getItems = async (req: Request, res: Response) => {
       ItemArmorClass[req.query.armorClass as keyof typeof ItemArmorClass];
 
     const items = await Item.find({
-      isMagic,
+      ...(isMagic !== undefined && { isMagic }),
       type,
       ...(weaponType !== undefined && { weaponType }),
       ...(armorClass !== undefined && { armorClass }),

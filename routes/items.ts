@@ -6,6 +6,7 @@ import { auth } from "../utils/auth";
 import { getItems } from "../controllers/items/getItems";
 import { getItem } from "../controllers/items/getItem";
 import { addItem } from "../controllers/items/addItem";
+import { deleteItem } from "../controllers/items/deleteItem";
 
 export const itemsRouter = Router();
 
@@ -69,4 +70,5 @@ itemsRouter
     "/other",
     auth(UserRole.consigliore, UserRole.caporegime),
     (req: Request, res) => addItem(req, res, ItemTypes.other)
-  );
+  )
+  .delete("/:id", auth(UserRole.consigliore, UserRole.caporegime), deleteItem);
