@@ -7,6 +7,7 @@ import { getItems } from "../controllers/items/getItems";
 import { getItem } from "../controllers/items/getItem";
 import { addItem } from "../controllers/items/addItem";
 import { deleteItem } from "../controllers/items/deleteItem";
+import { updateItem } from "../controllers/items/updateItem";
 
 export const itemsRouter = Router();
 
@@ -71,4 +72,5 @@ itemsRouter
     auth(UserRole.consigliore, UserRole.caporegime),
     (req: Request, res) => addItem(req, res, ItemTypes.other)
   )
+  .patch("/:id", auth(UserRole.consigliore, UserRole.caporegime), updateItem)
   .delete("/:id", auth(UserRole.consigliore, UserRole.caporegime), deleteItem);

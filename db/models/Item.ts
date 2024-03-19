@@ -149,7 +149,7 @@ const itemSchema = new Schema<IItem>(
     shieldParry: {
       type: Number,
       min: [1, messages[config.lang].items.shieldParryTooLow],
-      max: [14, messages[config.lang].items.shieldParryTooHigh],
+      max: [12, messages[config.lang].items.shieldParryTooHigh],
       default: null,
     },
     weight: {

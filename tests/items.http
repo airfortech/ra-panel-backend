@@ -188,7 +188,8 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "short": "jakis inny przedmiot"
+    "short": "jakis inny przedmiot4",
+    "isMagic": "trues"
 }
 
 ### update item
@@ -197,9 +198,9 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "name": "Antyk",
-    "short": "zdobiony antyczny sztylet",
+    "name": "Antyk3",
     "isMagic": true,
+    "type": "bron",
     "weaponType": "sztylet"
 }
 
