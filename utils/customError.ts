@@ -36,6 +36,11 @@ export const handleError = (
       status: Status.error,
       message: err.errors[firstErrorKey].message,
     });
+  } else if (err instanceof mongoose.Error.CastError) {
+    res.status(400).json({
+      status: Status.error,
+      message: err.message,
+    });
   } else {
     const lang = req.lang || config.lang;
     res

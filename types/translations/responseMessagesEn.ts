@@ -134,11 +134,12 @@ export const messagesEn = {
     armorResTooLow: "Armor resistance must be at least 1.",
     armorResTooHigh: "Armor resistance must be max 12.",
     shieldParryTooLow: "Shield parry must be at least 1.",
-    shieldParryTooHigh: "Shield parry must be max 14.",
+    shieldParryTooHigh: "Shield parry must be max 12.",
     itemNotExists: "Such item not exists.",
     itemAdded: (short: string) => `Item: ${short} has been added.`,
     itemUpdated: (short: string) => `Item: ${short} has been updated.`,
     itemDeleted: (short: string) => `Item: ${short} has been deleted.`,
+    noTypeProvided: "Item type must be provided.",
   },
   date: {
     invalidDate: "Invalid date format.",

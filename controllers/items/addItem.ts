@@ -14,7 +14,6 @@ import { addArmor } from "./armor/addArmor";
 import { addOtherItem } from "./other/addOtherItem";
 import { addShield } from "./shield/addShield";
 import { CustomError } from "../../utils/customError";
-import { getErrorsMessages } from "../../utils/getErrorsMessages";
 
 export const addItem = async (req: Request, res: Response, type: ItemTypes) => {
   try {
@@ -45,8 +44,6 @@ export const addItem = async (req: Request, res: Response, type: ItemTypes) => {
       message: messages[req.lang].items.itemAdded(short),
     });
   } catch (e) {
-    if (e.errors)
-      throw new CustomError(getErrorsMessages(e.errors)[0], 400, Status.error);
     throw e;
   }
 };
