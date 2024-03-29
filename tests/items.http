@@ -60,9 +60,9 @@ Authorization: Bearer {{token}}
 GET {{url}}/api/items?type=weapon
 Authorization: Bearer {{token}}
 
-### get all daggers
+### get all swords
 # @name keys
-GET {{url}}/api/items?type=weapon&weaponType=dagger
+GET {{url}}/api/items?type=weapon&weaponType=sword
 Authorization: Bearer {{token}}
 
 ### get all armors
@@ -201,7 +201,8 @@ content-type: application/json
     "name": "Antyk3",
     "isMagic": true,
     "type": "bron",
-    "weaponType": "sztylet"
+    "weaponType": "miecz",
+    "weaponBalance": 13
 }
 
 ### delete item

@@ -34,43 +34,101 @@ itemsRouter
   )
   .post(
     "/weapon",
-    auth(UserRole.consigliore, UserRole.caporegime),
+    auth(
+      UserRole.consigliore,
+      UserRole.caporegime,
+      UserRole.soldato,
+      UserRole.mudlet
+    ),
     (req: Request, res) => addItem(req, res, ItemTypes.weapon)
   )
   .post(
     "/armor",
-    auth(UserRole.consigliore, UserRole.caporegime),
+    auth(
+      UserRole.consigliore,
+      UserRole.caporegime,
+      UserRole.soldato,
+      UserRole.mudlet
+    ),
     (req: Request, res) => addItem(req, res, ItemTypes.armor)
   )
   .post(
     "/shield",
-    auth(UserRole.consigliore, UserRole.caporegime),
+    auth(
+      UserRole.consigliore,
+      UserRole.caporegime,
+      UserRole.soldato,
+      UserRole.mudlet
+    ),
     (req: Request, res) => addItem(req, res, ItemTypes.shield)
   )
   .post(
     "/cloth",
-    auth(UserRole.consigliore, UserRole.caporegime),
+    auth(
+      UserRole.consigliore,
+      UserRole.caporegime,
+      UserRole.soldato,
+      UserRole.mudlet
+    ),
     (req: Request, res) => addItem(req, res, ItemTypes.cloth)
   )
   .post(
     "/jewellery",
-    auth(UserRole.consigliore, UserRole.caporegime),
+    auth(
+      UserRole.consigliore,
+      UserRole.caporegime,
+      UserRole.soldato,
+      UserRole.mudlet
+    ),
     (req: Request, res) => addItem(req, res, ItemTypes.jewellery)
   )
   .post(
     "/stone",
-    auth(UserRole.consigliore, UserRole.caporegime),
+    auth(
+      UserRole.consigliore,
+      UserRole.caporegime,
+      UserRole.soldato,
+      UserRole.mudlet
+    ),
     (req: Request, res) => addItem(req, res, ItemTypes.stone)
   )
   .post(
     "/potion",
-    auth(UserRole.consigliore, UserRole.caporegime),
+    auth(
+      UserRole.consigliore,
+      UserRole.caporegime,
+      UserRole.soldato,
+      UserRole.mudlet
+    ),
     (req: Request, res) => addItem(req, res, ItemTypes.potion)
   )
   .post(
     "/other",
-    auth(UserRole.consigliore, UserRole.caporegime),
+    auth(
+      UserRole.consigliore,
+      UserRole.caporegime,
+      UserRole.soldato,
+      UserRole.mudlet
+    ),
     (req: Request, res) => addItem(req, res, ItemTypes.other)
   )
-  .patch("/:id", auth(UserRole.consigliore, UserRole.caporegime), updateItem)
-  .delete("/:id", auth(UserRole.consigliore, UserRole.caporegime), deleteItem);
+  .patch(
+    "/:id",
+    auth(
+      UserRole.consigliore,
+      UserRole.caporegime,
+      UserRole.soldato,
+      UserRole.mudlet
+    ),
+    updateItem
+  )
+  .delete(
+    "/:id",
+    auth(
+      UserRole.consigliore,
+      UserRole.caporegime,
+      UserRole.soldato,
+      UserRole.mudlet
+    ),
+    deleteItem
+  );

@@ -39,11 +39,9 @@ export const armors: Item[] = randomShorts(
     short,
     isMagic,
     type: ItemTypes.armor,
-    armorClass: randomFromOptions(
-      randomFromArray(Object.values(ItemArmorClass)) as ItemArmorClass,
-      null,
-      config.tests.armorClassSpecifiedPercentage
-    ),
+    armorClass: randomFromArray(
+      Object.values(ItemArmorClass)
+    ) as ItemArmorClass,
     armorHead: areBodyPartsProvided ? randomFromArray([true, false]) : null,
     armorLeftArm: areBodyPartsProvided ? randomFromArray([true, false]) : null,
     armorRightArm: areBodyPartsProvided ? randomFromArray([true, false]) : null,

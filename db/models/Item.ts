@@ -27,10 +27,8 @@ const itemSchema = new Schema<IItem>(
       unique: true,
       validate: {
         validator: async (short: string) => {
-          const existingKeyGiver = await mongoose
-            .model("Item")
-            .findOne({ short });
-          return !existingKeyGiver;
+          const existingItem = await mongoose.model("Item").findOne({ short });
+          return !existingItem;
         },
         message: ({ value }) =>
           messages[config.lang].items.itemShortExists(value),
@@ -81,12 +79,24 @@ const itemSchema = new Schema<IItem>(
       min: [1, messages[config.lang].items.weaponEffectivenessTooLow],
       max: [14, messages[config.lang].items.weaponEffectivenessTooHigh],
       default: null,
+      validate: {
+        validator: (value: number | null) => {
+          return value === null || Number.isInteger(value);
+        },
+        message: messages[config.lang].items.weaponEffectivenessNotInteger,
+      },
     },
     weaponBalance: {
       type: Number,
       min: [1, messages[config.lang].items.weaponBalanceTooLow],
       max: [14, messages[config.lang].items.weaponBalanceTooHigh],
       default: null,
+      validate: {
+        validator: (value: number | null) => {
+          return value === null || Number.isInteger(value);
+        },
+        message: messages[config.lang].items.weaponBalanceNotInteger,
+      },
     },
     isWeaponSilver: {
       type: Boolean,
@@ -133,32 +143,72 @@ const itemSchema = new Schema<IItem>(
       min: [1, messages[config.lang].items.armorResTooLow],
       max: [12, messages[config.lang].items.armorResTooHigh],
       default: null,
+      validate: {
+        validator: (value: number | null) => {
+          return value === null || Number.isInteger(value);
+        },
+        message: messages[config.lang].items.armorResNotInteger,
+      },
     },
     armorSlashingRes: {
       type: Number,
       min: [1, messages[config.lang].items.armorResTooLow],
       max: [12, messages[config.lang].items.armorResTooHigh],
       default: null,
+      validate: {
+        validator: (value: number | null) => {
+          return value === null || Number.isInteger(value);
+        },
+        message: messages[config.lang].items.armorResNotInteger,
+      },
     },
     armorBluntRes: {
       type: Number,
       min: [1, messages[config.lang].items.armorResTooLow],
       max: [12, messages[config.lang].items.armorResTooHigh],
       default: null,
+      validate: {
+        validator: (value: number | null) => {
+          return value === null || Number.isInteger(value);
+        },
+        message: messages[config.lang].items.armorResNotInteger,
+      },
     },
     shieldParry: {
       type: Number,
       min: [1, messages[config.lang].items.shieldParryTooLow],
       max: [12, messages[config.lang].items.shieldParryTooHigh],
       default: null,
+      validate: {
+        validator: (value: number | null) => {
+          return value === null || Number.isInteger(value);
+        },
+        message: messages[config.lang].items.shieldParryNotInteger,
+      },
     },
     weight: {
       type: Number,
+      min: [1, messages[config.lang].items.itemWeightTooLow],
+      max: [1000000, messages[config.lang].items.itemWeightTooHigh],
       default: null,
+      validate: {
+        validator: (value: number | null) => {
+          return value === null || Number.isInteger(value);
+        },
+        message: messages[config.lang].items.itemWeightNotInteger,
+      },
     },
     volume: {
       type: Number,
+      min: [1, messages[config.lang].items.itemVolumeTooLow],
+      max: [1000000, messages[config.lang].items.itemVolumeTooHigh],
       default: null,
+      validate: {
+        validator: (value: number | null) => {
+          return value === null || Number.isInteger(value);
+        },
+        message: messages[config.lang].items.itemVolumeNotInteger,
+      },
     },
     durability: {
       type: String,
@@ -172,7 +222,7 @@ const itemSchema = new Schema<IItem>(
       type: String,
       trim: true,
       maxLength: [400, messages[config.lang].items.specialBonusTooLong],
-      default: null,
+      default: "",
     },
     occurrence: {
       type: String,
@@ -182,10 +232,14 @@ const itemSchema = new Schema<IItem>(
     },
     cost: {
       type: Number,
+      min: [0, messages[config.lang].items.itemCostTooLow],
+      max: [10000, messages[config.lang].items.itemCostTooHigh],
       default: null,
     },
     vendorCost: {
       type: Number,
+      min: [0, messages[config.lang].items.itemVendorCostTooLow],
+      max: [10000, messages[config.lang].items.itemVendorCostTooHigh],
       default: null,
     },
     description: {

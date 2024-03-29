@@ -1,5 +1,4 @@
 import { messages, Status } from "../../types/responseMessages";
-import { KeyUpdateRequest } from "../../types/Key";
 import { Request } from "../../types/Request";
 import { ItemTypes } from "../../types/ItemTypes";
 import { Item } from "../../db/models/Item";
@@ -16,7 +15,7 @@ export const updateItem = async (req: Request, res: Response) => {
   try {
     const _id = req.params.id;
     isIdValid(_id, messages[req.lang].items.itemNotExists, 404);
-    const data = req.body as KeyUpdateRequest;
+    const data = req.body as ItemUpdateRequest;
     const type = req.body.type as ItemTypes;
     if (!type)
       throw new CustomError(messages[req.lang].items.noTypeProvided, 400);
@@ -28,11 +27,9 @@ export const updateItem = async (req: Request, res: Response) => {
         : type === ItemTypes.shield
         ? updateShield(data as ItemUpdateRequest, type)
         : updateOtherItem(data as ItemUpdateRequest, type);
-    const item = await Item.findOneAndUpdate(
-      { _id },
-      { ...args },
-      { runValidators: true }
-    );
+    const item = await Item.findOne({
+      _id,
+    });
     if (!item)
       throw new CustomError(
         messages[req.lang].items.itemNotExists,
@@ -40,6 +37,11 @@ export const updateItem = async (req: Request, res: Response) => {
         Status.error
       );
     const short = req.body.short?.trim().toLowerCase() || item.short;
+    await Item.findOneAndUpdate(
+      { _id },
+      { ...args, short: short === item.short ? undefined : short },
+      { runValidators: true }
+    );
     return res.status(200).json({
       status: Status.success,
       message: messages[req.lang].items.itemUpdated(short),
