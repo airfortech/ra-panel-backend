@@ -133,14 +133,37 @@ export const messagesPl = {
     weaponEffectivenessTooLow: "Skuteczność broni nie może być mniejsza niż 1.",
     weaponEffectivenessTooHigh:
       "Skuteczność broni nie może być większa niż 14.",
+    weaponEffectivenessNotInteger:
+      "Skuteczność broni musi być liczbą całkowitą.",
     weaponBalanceTooLow: "Wyważenie broni nie może być mniejsze niż 1.",
     weaponBalanceTooHigh: "Wyważenie broni nie może być większe niż 14.",
+    weaponBalanceNotInteger: "Wyważenie broni musi być liczbą całkowitą.",
     armorResTooLow:
       "Jakość ochrony przed obrażeniami nie może być mniejsza niż 1.",
     armorResTooHigh:
       "Jakość ochrony przed obrażeniami nie może być większa niż 12.",
+    armorResNotInteger:
+      "Jakość ochrony przed obrażeniami musi być liczbą całkowitą.",
     shieldParryTooLow: "Parowanie tarczy nie może być mniejsze niż 1.",
     shieldParryTooHigh: "Parowanie tarczy nie może być większe niż 12.",
+    shieldParryNotInteger: "Parowanie tarczy musi być liczbą całkowitą.",
+    itemWeightTooLow: "Waga przedmiotu nie może być mniejsza niż 1.",
+    itemWeightTooHigh: "Waga przedmiotu nie może być większa niż 1 000 000.",
+    itemWeightNotInteger: "Waga przedmiotu musi być liczbą całkowitą.",
+    itemVolumeTooLow: "Objętość przedmiotu nie może być mniejsza niż 1.",
+    itemVolumeTooHigh:
+      "Objętość przedmiotu nie może być większa niż 1 000 000.",
+    itemVolumeNotInteger: "Objętość przedmiotu musi być liczbą całkowitą.",
+    itemCostTooLow: "Koszt przedmiotu nie może być mniejszy niż 0.",
+    itemCostTooHigh: "Koszt przedmiotu nie może być większy niż 10 000.",
+    itemVendorCostTooLow: "Koszt zlecenia nie może być mniejszy niż 0.",
+    itemVendorCostTooHigh: "Koszt zlecenia nie może być większy niż 10 000.",
+    itemNotExists: "Taki przedmiot nie istnieje.",
+    itemAdded: (short: string) => `Przedmiot: ${short} został dodany.`,
+    itemUpdated: (short: string) =>
+      `Przedmiot: ${short} został zaktualizowany.`,
+    itemDeleted: (short: string) => `Przedmiot: ${short} został usunięty.`,
+    noTypeProvided: "Typ przedmiotu jest wymagany.",
   },
   date: {
     invalidDate: "Nieprawidłowy format daty.",

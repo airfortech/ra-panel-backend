@@ -60,9 +60,24 @@ Authorization: Bearer {{token}}
 GET {{url}}/api/items?type=weapon
 Authorization: Bearer {{token}}
 
+### get all swords
+# @name keys
+GET {{url}}/api/items?type=weapon&weaponType=sword
+Authorization: Bearer {{token}}
+
 ### get all armors
 # @name keys
 GET {{url}}/api/items?type=armor
+Authorization: Bearer {{token}}
+
+### get all magic armors
+# @name keys
+GET {{url}}/api/items?type=armor&isMagic=true
+Authorization: Bearer {{token}}
+
+### get all heavy armors
+# @name keys
+GET {{url}}/api/items?type=armor&armorClass=heavy
 Authorization: Bearer {{token}}
 
 ### get all shields
@@ -136,7 +151,7 @@ content-type: application/json
 
 {
     "short": "czerwona zwiewna sukienka",
-    "isMagic": false,
+    "isMagic": false
 }
 
 ### add new jewellery
@@ -146,7 +161,7 @@ content-type: application/json
 
 {
     "short": "zlota polyskliwa obraczka",
-    "isMagic": false,
+    "isMagic": false
 }
 
 ### add new stone
@@ -155,7 +170,7 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "short": "wielobarwny turmalin",
+    "short": "wielobarwny turmalin"
 }
 
 ### add new potion
@@ -164,7 +179,17 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "short": "biala trojkatna flaszka",
+    "short": "biala trojkatna flaszka"
+}
+
+### add other item
+POST {{url}}/api/items/other
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "short": "jakis inny przedmiot4",
+    "isMagic": "trues"
 }
 
 ### update item
@@ -173,10 +198,11 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "name": "Antyk",
-    "short": "zdobiony antyczny sztylet",
+    "name": "Antyk3",
     "isMagic": true,
-    "weaponType": "sztylet"
+    "type": "bron",
+    "weaponType": "miecz",
+    "weaponBalance": 13
 }
 
 ### delete item

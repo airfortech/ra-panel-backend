@@ -40,25 +40,89 @@ export interface Item {
   comment: string;
 }
 
-export interface ItemResponse extends Omit<Item, "isActive"> {
+export interface ItemResponse extends Item {
   id: string;
 }
 
-export interface ShortItemResponse
-  extends Omit<
-    ItemResponse,
-    "description" | "treasury" | "domain" | "comment"
-  > {}
-
-export interface ItemAddRequest
-  extends Omit<Item, "isActive" | "treasury" | "description" | "comment"> {
-  treasury: string | null;
+export interface ItemAddRequest {
+  name?: string;
+  short: string;
+  isMagic?: boolean;
+  weight?: number;
+  volume?: number;
+  durability?: ItemDurability;
+  specialBonus?: string;
+  occurrence?: string;
+  cost?: number;
+  vendorCost?: number;
   description?: string;
   comment?: string;
 }
 
-export interface ItemUpdateRequest
-  extends Omit<ItemAddRequest, "name" | "domain" | "treasury"> {
+export interface ItemAddWeaponRequest extends ItemAddRequest {
+  weaponType: ItemWeapon;
+  weaponHand?: ItemWeaponHand;
+  weaponSlashingDamage?: boolean;
+  weaponPiercingDamage?: boolean;
+  weaponBluntDamage?: boolean;
+  weaponEffectiveness?: number;
+  weaponBalance?: number;
+  isWeaponSilver?: boolean;
+}
+
+export interface ItemAddArmorRequest extends ItemAddRequest {
+  armorClass?: ItemArmorClass;
+  armorHead?: boolean;
+  armorLeftArm?: boolean;
+  armorRightArm?: boolean;
+  armorChest?: boolean;
+  armorLegs?: boolean;
+  armorFoots?: boolean;
+  armorHands?: boolean;
+  armorPiercingRes?: number;
+  armorSlashingRes?: number;
+  armorBluntRes?: number;
+}
+
+export interface ItemAddShieldRequest extends ItemAddRequest {
+  armorPiercingRes?: number;
+  armorSlashingRes?: number;
+  armorBluntRes?: number;
+  shieldParry?: number;
+}
+
+export interface ItemUpdateRequest {
   name?: string;
-  treasury?: string | null;
+  short?: string;
+  type: ItemTypes;
+  isMagic?: boolean;
+  weight?: number;
+  volume?: number;
+  durability?: ItemDurability;
+  specialBonus?: string;
+  occurrence?: string;
+  cost?: number;
+  vendorCost?: number;
+  description?: string;
+  comment?: string;
+  weaponType: ItemWeapon;
+  weaponHand?: ItemWeaponHand;
+  weaponSlashingDamage?: boolean;
+  weaponPiercingDamage?: boolean;
+  weaponBluntDamage?: boolean;
+  weaponEffectiveness?: number;
+  weaponBalance?: number;
+  isWeaponSilver?: boolean;
+  armorClass?: ItemArmorClass;
+  armorHead?: boolean;
+  armorLeftArm?: boolean;
+  armorRightArm?: boolean;
+  armorChest?: boolean;
+  armorLegs?: boolean;
+  armorFoots?: boolean;
+  armorHands?: boolean;
+  armorPiercingRes?: number;
+  armorSlashingRes?: number;
+  armorBluntRes?: number;
+  shieldParry?: number;
 }
