@@ -8,6 +8,7 @@ import { getItem } from "../controllers/items/getItem";
 import { addItem } from "../controllers/items/addItem";
 import { deleteItem } from "../controllers/items/deleteItem";
 import { updateItem } from "../controllers/items/updateItem";
+import { getMagicItems } from "../controllers/items/getMagicItems";
 
 export const itemsRouter = Router();
 
@@ -21,6 +22,16 @@ itemsRouter
       UserRole.mudlet
     ),
     getItems
+  )
+  .get(
+    "/magic",
+    auth(
+      UserRole.consigliore,
+      UserRole.caporegime,
+      UserRole.soldato,
+      UserRole.mudlet
+    ),
+    getMagicItems
   )
   .get(
     "/:id",

@@ -45,6 +45,12 @@ export interface ItemResponse extends Item {
   id: string;
 }
 
+export interface ItemShortResponse {
+  id: string;
+  name: string;
+  short: string;
+}
+
 export interface ItemAddRequest {
   name?: string;
   short: string;

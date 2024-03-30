@@ -52,7 +52,7 @@ Authorization: Bearer {{token}}
 
 ### get all magic items
 # @name keys
-GET {{url}}/api/items?magic=true
+GET {{url}}/api/items/magic
 Authorization: Bearer {{token}}
 
 ### get all weapons
