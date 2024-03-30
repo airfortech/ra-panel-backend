@@ -33,6 +33,7 @@ export const shields: Item[] = randomShorts(
     short,
     isMagic,
     type: ItemTypes.shield,
+    slot: randomFromOptions(true, false, config.tests.magicWeaponsPercentage),
     armorPiercingRes: areStatsProvided ? randomNumberFromRange(1, 12) : null,
     armorSlashingRes: areStatsProvided ? randomNumberFromRange(1, 12) : null,
     armorBluntRes: areStatsProvided ? randomNumberFromRange(1, 12) : null,

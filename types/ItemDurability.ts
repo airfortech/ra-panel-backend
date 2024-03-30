@@ -1,4 +1,6 @@
 export enum ItemDurability {
+  "niezniszczalny" = "niezniszczalny",
+  "zuzywalny" = "zuzywalny",
   "naprawde dlugo" = "naprawde dlugo",
   "bardzo dlugo" = "bardzo dlugo",
   "dlugo" = "dlugo",

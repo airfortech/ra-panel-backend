@@ -75,5 +75,6 @@ export const config: Config = {
     magicClothesPercentage: 20,
     jewellery: 40,
     magicJewelleryPercentage: 40,
+    itemSlotsPercentage: 30,
   },
 };

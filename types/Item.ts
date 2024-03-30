@@ -17,6 +17,7 @@ export interface Item {
   weaponEffectiveness: number;
   weaponBalance: number;
   isWeaponSilver: boolean;
+  slot: boolean;
   armorClass: ItemArmorClass;
   armorHead: boolean;
   armorLeftArm: boolean;
@@ -48,6 +49,7 @@ export interface ItemAddRequest {
   name?: string;
   short: string;
   isMagic?: boolean;
+  slot?: boolean;
   weight?: number;
   volume?: number;
   durability?: ItemDurability;
@@ -96,6 +98,7 @@ export interface ItemUpdateRequest {
   short?: string;
   type: ItemTypes;
   isMagic?: boolean;
+  slot?: boolean;
   weight?: number;
   volume?: number;
   durability?: ItemDurability;

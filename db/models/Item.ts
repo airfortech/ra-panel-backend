@@ -102,6 +102,10 @@ const itemSchema = new Schema<IItem>(
       type: Boolean,
       default: null,
     },
+    slot: {
+      type: Boolean,
+      default: null,
+    },
     armorClass: {
       type: String,
       enum: {

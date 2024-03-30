@@ -56,5 +56,6 @@ export interface Config {
     magicClothesPercentage: number;
     jewellery: number;
     magicJewelleryPercentage: number;
+    itemSlotsPercentage: number;
   };
 }

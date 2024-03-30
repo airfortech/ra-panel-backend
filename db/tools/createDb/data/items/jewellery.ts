@@ -28,6 +28,7 @@ export const jewellery: Item[] = randomShorts(
     short,
     isMagic,
     type: ItemTypes.jewellery,
+    slot: randomFromOptions(true, false, config.tests.magicWeaponsPercentage),
     weight: randomFromOptions(
       null,
       randomNumberFromRange(20, 800),

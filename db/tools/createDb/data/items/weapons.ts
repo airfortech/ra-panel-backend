@@ -48,6 +48,7 @@ export const weapons: Item[] = randomShorts(
     short,
     isMagic,
     type: ItemTypes.weapon,
+    slot: randomFromOptions(true, false, config.tests.magicWeaponsPercentage),
     weaponType: swordNouns.includes(weaponType)
       ? ItemWeapon.sword
       : axeNouns.includes(weaponType)

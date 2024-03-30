@@ -42,6 +42,7 @@ export const armors: Item[] = randomShorts(
     armorClass: randomFromArray(
       Object.values(ItemArmorClass)
     ) as ItemArmorClass,
+    slot: randomFromOptions(true, false, config.tests.magicWeaponsPercentage),
     armorHead: areBodyPartsProvided ? randomFromArray([true, false]) : null,
     armorLeftArm: areBodyPartsProvided ? randomFromArray([true, false]) : null,
     armorRightArm: areBodyPartsProvided ? randomFromArray([true, false]) : null,
