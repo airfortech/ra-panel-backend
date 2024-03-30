@@ -188,6 +188,13 @@ export const messagesEn = {
       editKeys: "edit keys",
       deleteKeys: "delete keys",
     },
+    items: {
+      category: "Items",
+      getItems: "get items list",
+      addItems: "add new items",
+      editItems: "edit items",
+      deleteItems: "delete items",
+    },
     locations: {
       category: "Locations",
       getLocations: "get locations list",

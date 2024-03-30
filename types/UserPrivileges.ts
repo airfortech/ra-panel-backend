@@ -27,8 +27,15 @@ export const userPrivileges = (
   const isAllowed = (...allowedRoles: UserRole[]) => {
     return allowedRoles.includes(userRole);
   };
-  const { enemies, keyGiverDrops, keyGivers, keys, locations, settings } =
-    messages[lang].privileges;
+  const {
+    enemies,
+    keyGiverDrops,
+    keyGivers,
+    keys,
+    items,
+    locations,
+    settings,
+  } = messages[lang].privileges;
   return [
     {
       category: enemies.category,
@@ -147,6 +154,47 @@ export const userPrivileges = (
         {
           action: keys.deleteKeys,
           isAllowed: isAllowed(UserRole.consigliore),
+        },
+      ],
+    },
+    {
+      category: items.category,
+      actions: [
+        {
+          action: items.getItems,
+          isAllowed: isAllowed(
+            UserRole.consigliore,
+            UserRole.caporegime,
+            UserRole.soldato,
+            UserRole.mudlet
+          ),
+        },
+        {
+          action: items.addItems,
+          isAllowed: isAllowed(
+            UserRole.consigliore,
+            UserRole.caporegime,
+            UserRole.soldato,
+            UserRole.mudlet
+          ),
+        },
+        {
+          action: items.editItems,
+          isAllowed: isAllowed(
+            UserRole.consigliore,
+            UserRole.caporegime,
+            UserRole.soldato,
+            UserRole.mudlet
+          ),
+        },
+        {
+          action: items.deleteItems,
+          isAllowed: isAllowed(
+            UserRole.consigliore,
+            UserRole.caporegime,
+            UserRole.soldato,
+            UserRole.mudlet
+          ),
         },
       ],
     },

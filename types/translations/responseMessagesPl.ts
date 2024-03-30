@@ -197,6 +197,13 @@ export const messagesPl = {
       editKeys: "edytować klucze",
       deleteKeys: "usuwać klucze",
     },
+    items: {
+      category: "Przedmioty",
+      getItems: "pobierać listę przedmiotów",
+      addItems: "dodawać przedmioty",
+      editItems: "edytować przedmioty",
+      deleteItems: "usuwać przedmioty",
+    },
     locations: {
       category: "Lokacje",
       getLocations: "pobierać listę lokacji",
