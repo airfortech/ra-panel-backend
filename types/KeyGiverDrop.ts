@@ -1,10 +1,12 @@
 import { Types } from "mongoose";
 import { ShortKeyResponse } from "./Key";
 import { ShortKeyGiverResponse, ShortestKeyGiverResponse } from "./KeyGiver";
+import { ItemShortResponse } from "./Item";
 
 export interface KeyGiverDrop {
   keyGiver: Types.ObjectId;
   drop: Types.ObjectId | null;
+  magicDrops: Types.ObjectId[];
   dropDate: number;
   nextRespawnDate: number | null;
   createdAt: number;
@@ -12,40 +14,52 @@ export interface KeyGiverDrop {
 }
 
 export interface KeyGiverDropResponse
-  extends Omit<KeyGiverDrop, "isActive" | "keyGiver" | "drop"> {
+  extends Omit<KeyGiverDrop, "isActive" | "keyGiver" | "drop" | "magicDrops"> {
   id: string;
   keyGiver: ShortKeyGiverResponse;
   drop: ShortKeyResponse | null;
+  magicDrops: ItemShortResponse[];
 }
 
 export interface KeyGiverDropShortResponse
-  extends Omit<KeyGiverDrop, "isActive" | "keyGiver" | "drop" | "createdAt"> {
+  extends Omit<
+    KeyGiverDrop,
+    "isActive" | "keyGiver" | "drop" | "createdAt" | "magicDrops"
+  > {
   id: string;
   drop: ShortKeyResponse | null;
+  magicDrops: ItemShortResponse[];
 }
 
 export interface KeyDropShortResponse
-  extends Omit<KeyGiverDropShortResponse, "drop"> {
+  extends Omit<KeyGiverDropShortResponse, "drop" | "magicDrops"> {
   keyGiver: ShortestKeyGiverResponse;
 }
 
 export interface KeyGiverDropAddRequest
   extends Omit<
     KeyGiverDrop,
-    "isActive" | "keyGiver" | "drop" | "nextRespawnDate" | "createdAt"
+    | "isActive"
+    | "keyGiver"
+    | "drop"
+    | "nextRespawnDate"
+    | "createdAt"
+    | "magicDrops"
   > {
   keyGiver: string;
   drop: string | null;
+  magicDrops: string[];
 }
 
 export interface KeyGiverDropUpdateRequest
   extends Omit<
     KeyGiverDropAddRequest,
-    "keyGiver" | "drop" | "dropDate" | "nextRespawnDate"
+    "keyGiver" | "drop" | "dropDate" | "nextRespawnDate" | "magicDrops"
   > {
   keyGiver: string;
   drop?: string | null;
   dropDate?: number;
+  magicDrops?: string[];
 }
 
 export interface KeyGiverDropsStats {

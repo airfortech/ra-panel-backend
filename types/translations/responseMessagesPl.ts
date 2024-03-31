@@ -111,6 +111,9 @@ export const messagesPl = {
     keyGiverDropAdded: "Drop został dodany.",
     keyGiverDropUpdated: "Drop został zaktualizowany.",
     keyGiverDropDeleted: "Drop został usunięty.",
+    magicDropNotExists: "Jeden lub więcej magicznych przedmiotów nie istnieje.",
+    wrongMagicDropIdProvided:
+      "Jedno lub więcej id magicznych przedmiotów jest niepoprawnych.",
   },
   items: {
     nameTooLong: "Nazwa powinna mieć maksymalnie 50 znaków.",

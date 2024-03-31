@@ -30,6 +30,7 @@ export interface Config {
     keyGiverDrops: number;
     keyGiverDropsMonthsBack: number;
     keyGiverDropsNoDropPercentage: number;
+    keyGiverDropsNoMagicItemsDropPercentage: number;
     keyGiverDropsNoNextDatePercentage: number;
     weightPercentage: number;
     volumePercentage: number;

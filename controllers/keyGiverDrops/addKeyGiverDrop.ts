@@ -3,7 +3,10 @@ import { messages, Status } from "../../types/responseMessages";
 import { Request } from "../../types/Request";
 import { Response } from "express";
 import dayjs from "dayjs";
-import { isIdValid } from "../../db/validators/universalValidators";
+import {
+  areIdsValid,
+  isIdValid,
+} from "../../db/validators/universalValidators";
 import { KeyGiver } from "../../db/models/KeyGiver";
 import { KeyGiverDrop } from "../../db/models/KeyGiverDrop";
 import { CustomError } from "../../utils/customError";
@@ -15,12 +18,18 @@ export const addKeyGiverDrop = async (req: Request, res: Response) => {
     const {
       keyGiver: keyGiverId,
       drop,
+      magicDrops,
       dropDate,
     } = req.body as KeyGiverDropAddRequest;
     isIdValid(
       keyGiverId,
       messages[req.lang].keyGiverDrops.keyGiverNotExists,
       404
+    );
+    areIdsValid(
+      magicDrops,
+      messages[req.lang].keyGiverDrops.wrongMagicDropIdProvided,
+      400
     );
     if (drop)
       isIdValid(drop, messages[req.lang].keyGiverDrops.keyNotExists, 400);
@@ -55,6 +64,7 @@ export const addKeyGiverDrop = async (req: Request, res: Response) => {
     await new KeyGiverDrop({
       keyGiver: keyGiverId,
       drop,
+      magicDrops,
       dropDate: finalDropDate,
       nextRespawnDate,
     }).save();

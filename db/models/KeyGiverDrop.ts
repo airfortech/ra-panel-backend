@@ -45,6 +45,29 @@ const keyGiverDropSchema = new Schema<IKeyGiverDrop>({
       message: messages[config.lang].keyGiverDrops.keyNotExists,
     },
   },
+  magicDrops: {
+    type: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Item",
+      },
+    ],
+    default: [],
+    validate: {
+      validator: async (value: Types.ObjectId[]) => {
+        if (value.length === 0) return true;
+        const itemIds = value.filter(
+          (id, index) => value.indexOf(id) === index
+        );
+        const existingItems = await mongoose
+          .model("Item")
+          .countDocuments({ _id: { $in: itemIds } });
+
+        return existingItems === itemIds.length;
+      },
+      message: messages[config.lang].keyGiverDrops.magicDropNotExists,
+    },
+  },
   dropDate: {
     type: Number,
     default: () => dayjs().unix(),

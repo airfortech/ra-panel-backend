@@ -110,6 +110,8 @@ export const messagesEn = {
     keyGiverDropAdded: "KeyGiver drop has been added.",
     keyGiverDropUpdated: "KeyGiver drop has been updated.",
     keyGiverDropDeleted: "KeyGiver drop has been deleted.",
+    magicDropNotExists: "One or more magic items do not exist.",
+    wrongMagicDropIdProvided: "One or more magic item id are not valid.",
   },
   items: {
     nameTooLong: "Name should have maximum 50 characters.",

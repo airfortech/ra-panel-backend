@@ -49,6 +49,7 @@ export const config: Config = {
     keyGiverDrops: 500,
     keyGiverDropsMonthsBack: 50,
     keyGiverDropsNoDropPercentage: 50,
+    keyGiverDropsNoMagicItemsDropPercentage: 50,
     keyGiverDropsNoNextDatePercentage: 20,
     itemsCommentPercentage: 20,
     itemsDescriptionPercentage: 20,
