@@ -26,6 +26,13 @@ export const getNewestKeyGiverDrops = async (req: Request, res: Response) => {
         },
       },
       {
+        $addFields: {
+          magicDrops: {
+            $ifNull: ["$magicDrops", []],
+          },
+        },
+      },
+      {
         $group: {
           _id: "$keyGiver",
           newestRespawnDate: { $max: "$nextRespawnDate" },
@@ -135,7 +142,7 @@ export const getNewestKeyGiverDrops = async (req: Request, res: Response) => {
                 }),
               },
               drop: drop ? { id: drop.id, name: drop.name } : null,
-              magicDrops: magicDrops.map(({ id, name, short }) => {
+              magicDrops: magicDrops?.map(({ id, name, short }) => {
                 return {
                   id,
                   name,
