@@ -9,6 +9,8 @@ import { KeyGiver } from "../../db/models/KeyGiver";
 import { KeyGiverDrop } from "../../db/models/KeyGiverDrop";
 import { Location } from "../../db/models/Location";
 import { getKeyGiverDrops } from "./getKeyGiverDrops";
+import { Item } from "../../db/models/Item";
+import { ItemShortResponse } from "../../types/Item";
 
 export const getNewestKeyGiverDrops = async (req: Request, res: Response) => {
   try {
@@ -21,6 +23,13 @@ export const getNewestKeyGiverDrops = async (req: Request, res: Response) => {
       {
         $match: {
           isActive: true,
+        },
+      },
+      {
+        $addFields: {
+          magicDrops: {
+            $ifNull: ["$magicDrops", []],
+          },
         },
       },
       {
@@ -66,6 +75,7 @@ export const getNewestKeyGiverDrops = async (req: Request, res: Response) => {
     const keyGiverDrops = await KeyGiverDrop.populate<{
       keyGiver: ShortKeyGiverResponse;
       drop: ShortKeyResponse;
+      magicDrops: ItemShortResponse[];
       // INFO: populate options can be array of objects or object
     }>(keyGiverDrops2, [
       {
@@ -87,12 +97,25 @@ export const getNewestKeyGiverDrops = async (req: Request, res: Response) => {
         model: Key,
         match: { isActive: true },
       },
+      {
+        path: "magicDrops",
+        select: "name short",
+        model: Item,
+      },
     ]);
     return res.status(200).json({
       status: Status.success,
       data: {
         keyGiverDrops: keyGiverDrops.map(
-          ({ _id, keyGiver, drop, dropDate, nextRespawnDate, createdAt }) => {
+          ({
+            _id,
+            keyGiver,
+            drop,
+            magicDrops,
+            dropDate,
+            nextRespawnDate,
+            createdAt,
+          }) => {
             const {
               id: keyGiverId,
               name,
@@ -119,6 +142,13 @@ export const getNewestKeyGiverDrops = async (req: Request, res: Response) => {
                 }),
               },
               drop: drop ? { id: drop.id, name: drop.name } : null,
+              magicDrops: magicDrops?.map(({ id, name, short }) => {
+                return {
+                  id,
+                  name,
+                  short,
+                };
+              }),
               dropDate,
               nextRespawnDate,
               createdAt,

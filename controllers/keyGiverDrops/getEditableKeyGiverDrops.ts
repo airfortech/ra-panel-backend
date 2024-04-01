@@ -1,3 +1,5 @@
+import { Item } from "../../db/models/Item";
+import { ItemShortResponse } from "../../types/Item";
 import { KeyGiverDropResponse } from "../../types/KeyGiverDrop";
 import { ShortKeyGiverResponse } from "../../types/KeyGiver";
 import { Request } from "../../types/Request";
@@ -44,12 +46,25 @@ export const getEditableKeyGiverDrops = async (req: Request, res: Response) => {
         select: "name",
         model: Key,
         match: { isActive: true },
+      })
+      .populate<{ magicDrops: ItemShortResponse[] }>({
+        path: "magicDrops",
+        select: "name short",
+        model: Item,
       });
     return res.status(200).json({
       status: Status.success,
       data: {
         keyGiverDrops: keyGiverDrops.map(
-          ({ id, keyGiver, drop, dropDate, nextRespawnDate, createdAt }) => {
+          ({
+            id,
+            keyGiver,
+            drop,
+            magicDrops,
+            dropDate,
+            nextRespawnDate,
+            createdAt,
+          }) => {
             const {
               id: keyGiverId,
               name,
@@ -76,6 +91,13 @@ export const getEditableKeyGiverDrops = async (req: Request, res: Response) => {
                 }),
               },
               drop: drop ? { id: drop.id, name: drop.name } : null,
+              magicDrops: magicDrops.map(({ id, name, short }) => {
+                return {
+                  id,
+                  name,
+                  short,
+                };
+              }),
               dropDate,
               nextRespawnDate,
               createdAt,

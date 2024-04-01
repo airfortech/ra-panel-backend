@@ -7,6 +7,8 @@ import { createUsers } from "./createUsers";
 import { createLocations } from "./createLocations";
 import { createKeyGiverDrops } from "./createKeyGiverDrops";
 import { createSettings } from "./createSettings";
+import { createItems } from "./createItems";
+import { getMagicItems } from "./data/items/getMagicItems";
 
 const createDb = async () => {
   try {
@@ -14,10 +16,12 @@ const createDb = async () => {
     await createUsers();
     await createSettings();
     await createEnemies();
+    await createItems();
+    const magicItems = await getMagicItems();
     const keys = await createKeys();
     const locations = await createLocations();
     const keyGivers = await createKeyGivers(locations);
-    await createKeyGiverDrops(keys, keyGivers);
+    await createKeyGiverDrops(keys, keyGivers, magicItems);
     console.log("Done. ✔");
   } catch (e) {
     console.log(e.message);

@@ -8,6 +8,8 @@ import { KeyGiver } from "../../db/models/KeyGiver";
 import { KeyGiverDrop } from "../../db/models/KeyGiverDrop";
 import { isIdValid } from "../../db/validators/universalValidators";
 import { CustomError } from "../../utils/customError";
+import { ItemShortResponse } from "../../types/Item";
+import { Item } from "../../db/models/Item";
 
 export const getKeyGiverDrops = async (req: Request, res: Response) => {
   try {
@@ -26,20 +28,31 @@ export const getKeyGiverDrops = async (req: Request, res: Response) => {
     const keyGiverDrops = await KeyGiverDrop.find({
       isActive: true,
       keyGiver: id,
-    }).populate<{ drop: ShortKeyResponse }>({
-      path: "drop",
-      select: "name",
-      model: Key,
-      match: { isActive: true },
-    });
+    })
+      .populate<{ drop: ShortKeyResponse }>({
+        path: "drop",
+        select: "name",
+        model: Key,
+        match: { isActive: true },
+      })
+      .populate<{ magicDrops: ItemShortResponse[] }>({
+        path: "magicDrops",
+        select: "name short",
+        model: Item,
+      });
     return res.status(200).json({
       status: Status.success,
       data: {
         keyGiverDrops: keyGiverDrops.map(
-          ({ id, drop, dropDate, nextRespawnDate }) => {
+          ({ id, drop, magicDrops, dropDate, nextRespawnDate }) => {
             const data: KeyGiverDropShortResponse = {
               id,
               drop: drop ? { id: drop.id, name: drop.name } : null,
+              magicDrops: magicDrops.map(({ id, name, short }) => ({
+                id,
+                name,
+                short,
+              })),
               dropDate,
               nextRespawnDate,
             };

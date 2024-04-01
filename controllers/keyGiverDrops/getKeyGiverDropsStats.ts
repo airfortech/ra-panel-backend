@@ -20,7 +20,7 @@ export const getKeyGiverDropsStats = async (req: Request, res: Response) => {
 
     switch (time) {
       case KeyGiverDropsStatsTimeOptions.currentWeek:
-        keyGiverDropsStats = await byDayQuery(1, defaultTimezone, "week");
+        keyGiverDropsStats = await byDayQuery(1, defaultTimezone, "isoWeek");
         break;
       case KeyGiverDropsStatsTimeOptions.last5days:
         keyGiverDropsStats = await byDayQuery(5, defaultTimezone, "day");

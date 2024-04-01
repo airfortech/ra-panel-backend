@@ -20,6 +20,7 @@ import { createInitialSettings } from "./db/tools/createInitialSettings";
 import { languageDetector } from "./utils/languageDetector";
 import { config } from "./config/config";
 import { settingsRouter } from "./routes/settings";
+import { itemsRouter } from "./routes/items";
 
 export const shedules: {
   backupSchedule: ScheduledTask | null;
@@ -51,6 +52,7 @@ app.use("/api/locations", locationsRouter);
 app.use("/api/keygivers/drops", keyGiverDropsRouter);
 app.use("/api/keygivers", keyGiversRouter);
 app.use("/api/keys", keysRouter);
+app.use("/api/items", itemsRouter);
 app.use("/api/privileges", privilegesRouter);
 app.use("/api/backups", backupsRouter);
 app.use("/api/users", usersRouter);
