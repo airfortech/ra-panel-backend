@@ -18,7 +18,10 @@ export const fillKeyGiverDropsStatsDays = (
     } else
       newKeyGiverDropsStats.push({
         keyGiversDone: 0,
-        drops: 0,
+        keys: 0,
+        magicDrops: 0,
+        keyGiversWithAnyDrops: 0,
+        keyGiversWithMagicDrops: 0,
         date: dayjs.unix(i).format("YYYY.MM.DD"),
       });
   }

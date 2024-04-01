@@ -12,4 +12,5 @@ export enum ItemWeaponBalance {
   "bardzo dobrze",
   "doskonale",
   "perfekcyjnie",
+  "genialnie",
 }

@@ -26,6 +26,9 @@ export const byMonthQuery = async (
     },
     {
       $addFields: {
+        magicDrops: {
+          $ifNull: ["$magicDrops", []],
+        },
         dropDate: {
           $dateToString: {
             format: "%Y.%m",
@@ -39,14 +42,47 @@ export const byMonthQuery = async (
       $group: {
         _id: "$dropDate",
         keyGiversDone: { $count: {} },
-        drops: { $sum: { $cond: [{ $ne: ["$drop", null] }, 1, 0] } },
+        keys: { $sum: { $cond: [{ $ne: ["$drop", null] }, 1, 0] } },
+        magicDrops: {
+          $sum: {
+            $size: {
+              $filter: {
+                input: "$magicDrops",
+                as: "magicDrop",
+                cond: { $ne: ["$$magicDrop", null] },
+              },
+            },
+          },
+        },
+        keyGiversWithMagicDrops: {
+          $sum: {
+            $cond: [{ $gt: [{ $size: "$magicDrops" }, 0] }, 1, 0],
+          },
+        },
+        keyGiversWithAnyDrops: {
+          $sum: {
+            $cond: [
+              {
+                $or: [
+                  { $ne: ["$drop", null] },
+                  { $gt: [{ $size: "$magicDrops" }, 0] },
+                ],
+              },
+              1,
+              0,
+            ],
+          },
+        },
       },
     },
     {
       $project: {
         date: "$_id",
         keyGiversDone: 1,
-        drops: 1,
+        keys: 1,
+        magicDrops: 1,
+        keyGiversWithMagicDrops: 1,
+        keyGiversWithAnyDrops: 1,
         _id: 0,
       },
     },

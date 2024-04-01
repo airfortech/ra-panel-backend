@@ -29,11 +29,22 @@ export const byWeekQuery = async (months: number, timezone: string) => {
     },
     {
       $addFields: {
-        dropDate: {
+        magicDrops: {
+          $ifNull: ["$magicDrops", []],
+        },
+        monday: {
           $dateFromParts: {
             isoWeekYear: { $isoWeekYear: "$dropDate" },
             isoWeek: { $isoWeek: "$dropDate" },
             isoDayOfWeek: 1,
+            timezone: timezone,
+          },
+        },
+        sunday: {
+          $dateFromParts: {
+            isoWeekYear: { $isoWeekYear: "$dropDate" },
+            isoWeek: { $isoWeek: "$dropDate" },
+            isoDayOfWeek: 7,
             timezone: timezone,
           },
         },
@@ -42,21 +53,66 @@ export const byWeekQuery = async (months: number, timezone: string) => {
     {
       $group: {
         _id: {
-          $dateToString: {
-            format: "%Y.%m.%d",
-            date: "$dropDate",
-            timezone: timezone,
-          },
+          $concat: [
+            {
+              $dateToString: {
+                format: "%Y.%m.%d",
+                date: "$monday",
+                timezone: timezone,
+              },
+            },
+            "-",
+            {
+              $dateToString: {
+                format: "%d",
+                date: "$sunday",
+                timezone: timezone,
+              },
+            },
+          ],
         },
         keyGiversDone: { $count: {} },
-        drops: { $sum: { $cond: [{ $ne: ["$drop", null] }, 1, 0] } },
+        keys: { $sum: { $cond: [{ $ne: ["$drop", null] }, 1, 0] } },
+        magicDrops: {
+          $sum: {
+            $size: {
+              $filter: {
+                input: "$magicDrops",
+                as: "magicDrop",
+                cond: { $ne: ["$$magicDrop", null] },
+              },
+            },
+          },
+        },
+        keyGiversWithMagicDrops: {
+          $sum: {
+            $cond: [{ $gt: [{ $size: "$magicDrops" }, 0] }, 1, 0],
+          },
+        },
+        keyGiversWithAnyDrops: {
+          $sum: {
+            $cond: [
+              {
+                $or: [
+                  { $ne: ["$drop", null] },
+                  { $gt: [{ $size: "$magicDrops" }, 0] },
+                ],
+              },
+              1,
+              0,
+            ],
+          },
+        },
       },
     },
     {
       $project: {
         date: "$_id",
         keyGiversDone: 1,
-        drops: 1,
+        keys: 1,
+        magicDrops: 1,
+        keyGiversWithMagicDrops: 1,
+        keyGiversWithAnyDrops: 1,
         _id: 0,
       },
     },
