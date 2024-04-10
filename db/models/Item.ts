@@ -239,18 +239,36 @@ const itemSchema = new Schema<IItem>(
       min: [0, messages[config.lang].items.itemCostTooLow],
       max: [10000, messages[config.lang].items.itemCostTooHigh],
       default: null,
+      set: (value: number) => {
+        if (value) {
+          return parseFloat(value.toFixed(2));
+        }
+        return null;
+      },
     },
     vendorCost: {
       type: Number,
       min: [0, messages[config.lang].items.itemVendorCostTooLow],
       max: [10000, messages[config.lang].items.itemVendorCostTooHigh],
       default: null,
+      set: (value: number) => {
+        if (value) {
+          return parseFloat(value.toFixed(2));
+        }
+        return null;
+      },
     },
     npcPurchasePrice: {
       type: Number,
       min: [0, messages[config.lang].items.itemNpcPurchasePriceTooLow],
       max: [10000, messages[config.lang].items.itemNpcPurchasePriceTooHigh],
       default: null,
+      set: (value: number) => {
+        if (value) {
+          return parseFloat(value.toFixed(2));
+        }
+        return null;
+      },
     },
     description: {
       type: String,
