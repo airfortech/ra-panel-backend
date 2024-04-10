@@ -50,6 +50,7 @@ export const getItem = async (req: Request, res: Response) => {
       occurrence,
       cost,
       vendorCost,
+      npcPurchasePrice,
       description,
       comment,
     } = item;
@@ -87,6 +88,7 @@ export const getItem = async (req: Request, res: Response) => {
       occurrence,
       cost,
       vendorCost,
+      npcPurchasePrice,
       description,
       comment,
     };

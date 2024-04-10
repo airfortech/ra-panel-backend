@@ -37,6 +37,7 @@ export interface Item {
   occurrence: string;
   cost: number;
   vendorCost: number;
+  npcPurchasePrice: number;
   description: string;
   comment: string;
 }
@@ -63,6 +64,7 @@ export interface ItemAddRequest {
   occurrence?: string;
   cost?: number;
   vendorCost?: number;
+  npcPurchasePrice?: number;
   description?: string;
   comment?: string;
 }
@@ -112,6 +114,7 @@ export interface ItemUpdateRequest {
   occurrence?: string;
   cost?: number;
   vendorCost?: number;
+  npcPurchasePrice?: number;
   description?: string;
   comment?: string;
   weaponType: ItemWeapon;

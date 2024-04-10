@@ -148,7 +148,7 @@ export const messagesPl = {
     armorResNotInteger:
       "Jakość ochrony przed obrażeniami musi być liczbą całkowitą.",
     shieldParryTooLow: "Parowanie tarczy nie może być mniejsze niż 1.",
-    shieldParryTooHigh: "Parowanie tarczy nie może być większe niż 12.",
+    shieldParryTooHigh: "Parowanie tarczy nie może być większe niż 14.",
     shieldParryNotInteger: "Parowanie tarczy musi być liczbą całkowitą.",
     itemWeightTooLow: "Waga przedmiotu nie może być mniejsza niż 1.",
     itemWeightTooHigh: "Waga przedmiotu nie może być większa niż 1 000 000.",
@@ -161,6 +161,10 @@ export const messagesPl = {
     itemCostTooHigh: "Koszt przedmiotu nie może być większy niż 10 000.",
     itemVendorCostTooLow: "Koszt zlecenia nie może być mniejszy niż 0.",
     itemVendorCostTooHigh: "Koszt zlecenia nie może być większy niż 10 000.",
+    itemNpcPurchasePriceTooLow:
+      "Cena zakupu od NPC nie może być mniejsza niż 0.",
+    itemNpcPurchasePriceTooHigh:
+      "Cena zakupu od NPC nie może być większa niż 10 000.",
     itemNotExists: "Taki przedmiot nie istnieje.",
     itemAdded: (short: string) => `Przedmiot: ${short} został dodany.`,
     itemUpdated: (short: string) =>

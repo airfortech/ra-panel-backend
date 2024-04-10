@@ -4,6 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { ScheduledTask } from "node-cron";
 import "express-async-errors";
+import dayjs from "dayjs";
 import { enemiesRouter } from "./routes/enemies";
 import { authRouter } from "./routes/auth";
 import { backupsRouter } from "./routes/backups";
@@ -29,6 +30,8 @@ export const shedules: {
 };
 
 (async () => {
+  console.log("-------------------------------");
+  console.log(dayjs().format("YYYY-MM-DD HH:mm:ss"));
   await connectToDB();
   await createInitialSettings();
 })();

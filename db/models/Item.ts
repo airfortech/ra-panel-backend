@@ -181,7 +181,7 @@ const itemSchema = new Schema<IItem>(
     shieldParry: {
       type: Number,
       min: [1, messages[config.lang].items.shieldParryTooLow],
-      max: [12, messages[config.lang].items.shieldParryTooHigh],
+      max: [14, messages[config.lang].items.shieldParryTooHigh],
       default: null,
       validate: {
         validator: (value: number | null) => {
@@ -244,6 +244,12 @@ const itemSchema = new Schema<IItem>(
       type: Number,
       min: [0, messages[config.lang].items.itemVendorCostTooLow],
       max: [10000, messages[config.lang].items.itemVendorCostTooHigh],
+      default: null,
+    },
+    npcPurchasePrice: {
+      type: Number,
+      min: [0, messages[config.lang].items.itemNpcPurchasePriceTooLow],
+      max: [10000, messages[config.lang].items.itemNpcPurchasePriceTooHigh],
       default: null,
     },
     description: {
