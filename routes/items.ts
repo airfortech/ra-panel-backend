@@ -9,6 +9,7 @@ import { addItem } from "../controllers/items/addItem";
 import { deleteItem } from "../controllers/items/deleteItem";
 import { updateItem } from "../controllers/items/updateItem";
 import { getMagicItems } from "../controllers/items/getMagicItems";
+import { addItems } from "../controllers/items/addItems";
 
 export const itemsRouter = Router();
 
@@ -122,6 +123,16 @@ itemsRouter
       UserRole.mudlet
     ),
     (req: Request, res) => addItem(req, res, ItemTypes.other)
+  )
+  .post(
+    "/multiple",
+    auth(
+      UserRole.consigliore,
+      UserRole.caporegime,
+      UserRole.soldato,
+      UserRole.mudlet
+    ),
+    addItems
   )
   .patch(
     "/:id",

@@ -1,3 +1,4 @@
+import { ConvertedItem } from "./ConvertTextToItems";
 import { ItemArmorClass } from "./ItemArmorClass";
 import { ItemDurability } from "./ItemDurability";
 import { ItemTypes } from "./ItemTypes";
@@ -137,4 +138,9 @@ export interface ItemUpdateRequest {
   armorSlashingRes?: number;
   armorBluntRes?: number;
   shieldParry?: number;
+}
+
+export interface ItemsAddFormRequest {
+  items: ConvertedItem[];
+  task: "addNew" | "updateAll" | "updateInfosOnly" | "updateValuesOnly";
 }

@@ -159,6 +159,9 @@ export const messagesEn = {
     itemUpdated: (short: string) => `Item: ${short} has been updated.`,
     itemDeleted: (short: string) => `Item: ${short} has been deleted.`,
     noTypeProvided: "Item type must be provided.",
+    multipleItemsAdded: (count: number) => `New items added: ${count}`,
+    multipleItemsAddedAndUpdated: (added: number, updated: number) =>
+      `New items added: ${added}, items updated: ${updated}`,
   },
   date: {
     invalidDate: "Invalid date format.",

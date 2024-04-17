@@ -171,6 +171,10 @@ export const messagesPl = {
       `Przedmiot: ${short} został zaktualizowany.`,
     itemDeleted: (short: string) => `Przedmiot: ${short} został usunięty.`,
     noTypeProvided: "Typ przedmiotu jest wymagany.",
+    multipleItemsAdded: (count: number) =>
+      `Dodano nowych przedmiotów: ${count}`,
+    multipleItemsAddedAndUpdated: (added: number, updated: number) =>
+      `Dodano nowych przedmiotów: ${added}, zaktualizowano: ${updated}`,
   },
   date: {
     invalidDate: "Nieprawidłowy format daty.",

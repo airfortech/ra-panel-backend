@@ -212,3 +212,36 @@ Authorization: Bearer {{token}}
 ### delete item - bad id
 DELETE {{url}}/api/items/6345d568ae474b
 Authorization: Bearer {{token}}
+
+### add multiple items
+POST {{url}}/api/items/multiple
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "items": [
+        {
+            "short": "czerwony dlugi miecz",
+            "isMagic": false,
+            "type": "bron",
+            "weaponType": "miecz",
+            "description": "Lorem"
+        },
+        {
+            "short": "zielony krotki miecz",
+            "isMagic": true,
+            "type": "bron",
+            "weaponType": "miecz",
+            "description": ""
+        },
+        {
+            "short": "zardzewialy toporx2",
+            "isMagic": false,
+            "type": "bron",
+            "weaponType": "topor",
+            "description": ""
+        }
+    ]
+    ,
+    "task": "updateAll"
+}
