@@ -65,6 +65,7 @@ export const messagesPl = {
     descriptionTooLong: "Opis musi mieć maksymalnie 4000 znaków.",
     commentTooLong: "Komentarz musi mieć maksymalnie 4000 znaków.",
     bindsTooLong: "Każdy bind musi mieć maksymalnie 100 znaków.",
+    internalIdTooLong: "Internal ID musi mieć maksymalnie 10 znaków.",
   },
   keyGivers: {
     keyGiverExists: (name: string) => `Klucznik ${name} istnieje.`,

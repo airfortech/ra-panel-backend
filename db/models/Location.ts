@@ -15,9 +15,14 @@ const locationSchema = new Schema<ILocation>({
     max: [99999, messages[config.lang].location.locationNumberNotInRange],
     cast: messages[config.lang].location.locationNotANumber,
   },
+  internalId: {
+    type: String,
+    maxLength: [10, messages[config.lang].location.internalIdTooLong],
+  },
   name: {
     type: String,
     maxLength: [50, messages[config.lang].location.nameTooLong],
+    default: "",
   },
   domain: {
     type: String,

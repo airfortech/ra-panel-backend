@@ -1,3 +1,4 @@
+import internal from "stream";
 import { config } from "../../config/config";
 
 export const messagesEn = {
@@ -64,6 +65,7 @@ export const messagesEn = {
     descriptionTooLong: "Description should have maximum 4000 characters.",
     commentTooLong: "Comment should have maximum 4000 characters.",
     bindsTooLong: "Each bind should have maximum 100 characters.",
+    internalIdTooLong: "Internal ID should have maximum 10 characters.",
   },
   keyGivers: {
     keyGiverExists: (name: string) => `Keygiver ${name} exists.`,

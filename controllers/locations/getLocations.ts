@@ -10,10 +10,20 @@ export const getLocations = async (req: Request, res: Response) => {
       status: Status.success,
       data: {
         locations: locations.map(
-          ({ id, locationId, name, domain, description, comment, binds }) => {
+          ({
+            id,
+            locationId,
+            internalId,
+            name,
+            domain,
+            description,
+            comment,
+            binds,
+          }) => {
             const data: LocationResponse = {
               id,
               locationId,
+              internalId,
               name,
               domain,
               description,
