@@ -42,14 +42,17 @@ export const getKeyGivers = async (req: Request, res: Response) => {
               domain,
               playersToComplete,
               comment,
-              locations: locations.map(({ id, locationId, name, domain }) => {
-                return {
-                  id,
-                  locationId,
-                  name,
-                  domain,
-                };
-              }),
+              locations: locations.map(
+                ({ id, locationId, internalId, name, domain }) => {
+                  return {
+                    id,
+                    locationId,
+                    internalId,
+                    name,
+                    domain,
+                  };
+                }
+              ),
             };
             return data;
           }

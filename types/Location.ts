@@ -2,6 +2,7 @@ import { Domain } from "./Domain";
 
 export interface Location {
   locationId: number;
+  internalId: string;
   name: string;
   domain: Domain;
   description: string;
@@ -19,8 +20,9 @@ export interface ShortLocationResponse
 export interface LocationAddRequest
   extends Omit<
     Location,
-    "name" | "description" | "comment" | "binds" | "isActive"
+    "internalId" | "name" | "description" | "comment" | "binds" | "isActive"
   > {
+  internalId?: string;
   name?: string;
   description?: string;
   comment?: string;

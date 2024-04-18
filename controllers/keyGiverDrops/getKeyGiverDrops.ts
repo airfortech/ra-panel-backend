@@ -78,14 +78,17 @@ export const getKeyGiverDrops = async (
                 short,
                 domain,
                 respawnTime,
-                locations: locations.map(({ id, locationId, name, domain }) => {
-                  return {
-                    id,
-                    locationId,
-                    name,
-                    domain,
-                  };
-                }),
+                locations: locations.map(
+                  ({ id, locationId, internalId, name, domain }) => {
+                    return {
+                      id,
+                      locationId,
+                      internalId,
+                      name,
+                      domain,
+                    };
+                  }
+                ),
               },
               drop: drop ? { id: drop.id, name: drop.name } : null,
               magicDrops: magicDrops.map(({ id, name, short }) => {
