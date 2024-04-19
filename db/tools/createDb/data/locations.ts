@@ -1,5 +1,6 @@
 import { Domain } from "../../../../types/Domain";
 import { Location } from "../../../../types/Location";
+import { randomUUID } from "crypto";
 import { locationNames } from "./generatorData/locationNames";
 import { randomFromArray } from "./generatorUtils/randomFromArray";
 import { randomFromOptions } from "./generatorUtils/randomFromOptions";
@@ -13,6 +14,7 @@ export const locations: Location[] = randomNames(
 ).map(name => {
   return {
     locationId: Math.floor(Math.random() * 100000),
+    internalId: randomUUID().slice(-10),
     name: name,
     domain: randomFromOptions(
       Domain.unknown,

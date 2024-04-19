@@ -69,6 +69,7 @@ export const getItems = async (req: Request, res: Response) => {
               occurrence,
               cost,
               vendorCost,
+              npcPurchasePrice,
               description,
               comment,
             }) => {
@@ -106,6 +107,7 @@ export const getItems = async (req: Request, res: Response) => {
                 occurrence,
                 cost,
                 vendorCost,
+                npcPurchasePrice,
                 description,
                 comment,
               };

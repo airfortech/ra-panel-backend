@@ -1,3 +1,4 @@
+import { ConvertedItem } from "./ConvertTextToItems";
 import { ItemArmorClass } from "./ItemArmorClass";
 import { ItemDurability } from "./ItemDurability";
 import { ItemTypes } from "./ItemTypes";
@@ -37,6 +38,7 @@ export interface Item {
   occurrence: string;
   cost: number;
   vendorCost: number;
+  npcPurchasePrice: number;
   description: string;
   comment: string;
 }
@@ -63,6 +65,7 @@ export interface ItemAddRequest {
   occurrence?: string;
   cost?: number;
   vendorCost?: number;
+  npcPurchasePrice?: number;
   description?: string;
   comment?: string;
 }
@@ -112,6 +115,7 @@ export interface ItemUpdateRequest {
   occurrence?: string;
   cost?: number;
   vendorCost?: number;
+  npcPurchasePrice?: number;
   description?: string;
   comment?: string;
   weaponType: ItemWeapon;
@@ -134,4 +138,9 @@ export interface ItemUpdateRequest {
   armorSlashingRes?: number;
   armorBluntRes?: number;
   shieldParry?: number;
+}
+
+export interface ItemsAddFormRequest {
+  items: ConvertedItem[];
+  task: "addNew" | "updateAll" | "updateInfosOnly" | "updateValuesOnly";
 }

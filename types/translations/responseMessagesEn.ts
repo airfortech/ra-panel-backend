@@ -1,3 +1,4 @@
+import internal from "stream";
 import { config } from "../../config/config";
 
 export const messagesEn = {
@@ -64,6 +65,7 @@ export const messagesEn = {
     descriptionTooLong: "Description should have maximum 4000 characters.",
     commentTooLong: "Comment should have maximum 4000 characters.",
     bindsTooLong: "Each bind should have maximum 100 characters.",
+    internalIdTooLong: "Internal ID should have maximum 10 characters.",
   },
   keyGivers: {
     keyGiverExists: (name: string) => `Keygiver ${name} exists.`,
@@ -140,7 +142,7 @@ export const messagesEn = {
     armorResTooHigh: "Armor resistance must be max 12.",
     armorResNotInteger: "Armor resistance must be an integer number.",
     shieldParryTooLow: "Shield parry must be at least 1.",
-    shieldParryTooHigh: "Shield parry must be max 12.",
+    shieldParryTooHigh: "Shield parry must be max 14.",
     shieldParryNotInteger: "Shield parry must be an integer number.",
     itemWeightTooLow: "Item weight must be at least 1.",
     itemWeightTooHigh: "Item weight must be max 1 000 000.",
@@ -152,11 +154,16 @@ export const messagesEn = {
     itemCostTooHigh: "Item cost must be max 10 000.",
     itemVendorCostTooLow: "Item vendor cost must be at least 0.",
     itemVendorCostTooHigh: "Item vendor cost must be max 10 000.",
+    itemNpcPurchasePriceTooLow: "Item npc purchase price must be at least 0.",
+    itemNpcPurchasePriceTooHigh: "Item npc purchase price must be max 10 000.",
     itemNotExists: "Such item not exists.",
     itemAdded: (short: string) => `Item: ${short} has been added.`,
     itemUpdated: (short: string) => `Item: ${short} has been updated.`,
     itemDeleted: (short: string) => `Item: ${short} has been deleted.`,
     noTypeProvided: "Item type must be provided.",
+    multipleItemsAdded: (count: number) => `New items added: ${count}`,
+    multipleItemsAddedAndUpdated: (added: number, updated: number) =>
+      `New items added: ${added}, items updated: ${updated}`,
   },
   date: {
     invalidDate: "Invalid date format.",
